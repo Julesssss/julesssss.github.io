@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Maven | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Maven | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Maven | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/tools/maven" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/tools/maven">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,74 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-03-15T11:42:00+00:00" itemprop="datePublished">15 Mar, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">Maven</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <h2 id="checkstyle">Checkstyle</h2>
+<p>To check all the errors in checkstyle and where they’re located:</p>
+<ol>
+  <li>go to the project’s folder where the error triggers</li>
+  <li>open <code class="highlighter-rouge">target/checkstyle-result.xml</code></li>
+  <li>search for <code class="highlighter-rouge">="error"</code></li>
+  <li>there the classes’ name and the error line # can be seen</li>
+</ol>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h2 id="pmd">PMD</h2>
+<p>To find where the error is located. Search for the String <code class="highlighter-rouge">priority="1"</code>. If nothing is found, search for prio 2, 3…
+<!--more--></p>
+
+<h2 id="launch-options">Launch options</h2>
+<h3 id="resume-a-build-from-the-microservice-where-it-failed">Resume a build from the microservice where it failed</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nt">-rf</span> myproject clean <span class="nb">install</span>
+</code></pre></div></div>
+
+<h3 id="build-only-two-modules-from-the-project">Build only two modules from the project</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nt">-pl</span> module1,module2 clean <span class="nb">install</span>
+</code></pre></div></div>
+
+<h3 id="dependency-version-ranges">Dependency version ranges</h3>
+<p><em>(work always with the latest version of a dependency)</em></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--Specifies from 1.1.0 on. The latest one --&gt;</span>
+<span class="nt">&lt;version&gt;</span>[1.1.0,)<span class="nt">&lt;/version&gt;</span>
+</code></pre></div></div>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Maven&p[summary]=Checkstyle
+To check all the errors in checkstyle and where they’re located:
+
+  go to the project’s folder where the error triggers
+  open...&p[url]=https://julesssss.github.io/notes/tools/maven" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/tools/maven&text=Checkstyle
+To check all the errors in checkstyle and where they’re located:
+
+  go to the project’s folder where the error triggers
+  open...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>From Java to Kotlin (2/2) - Idioms | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="From Java to Kotlin (2/2) - Idioms | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="From Java to Kotlin (2/2) - Idioms | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-idioms" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-idioms">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,131 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-06-16T11:57:00+01:00" itemprop="datePublished">16 Jun, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">From Java to Kotlin (2/2) - Idioms</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <p>Kotlin’s has built-in support for common java patterns. This are some of them.</p>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h4 id="create-pojos-plain-old-java-object">Create POJOs (Plain Old Java Object)</h4>
+<p>This provides the class with <code class="highlighter-rouge">getters</code> (and <code class="highlighter-rouge">setters</code> for <code class="highlighter-rouge">vars</code>) as also <code class="highlighter-rouge">.toString()</code>,
+ <code class="highlighter-rouge">equals()</code>, <code class="highlighter-rouge">copy()</code> etc.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data class Person(val name: String, var age: Int)
+</code></pre></div></div>
+
+<h4 id="params-with-default-values">Params with default values</h4>
+<p>It’s possible to give default values to parameters</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">default</span><span class="o">(</span><span class="nl">arg1:</span> <span class="nc">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">arg2:</span> <span class="nc">String</span> <span class="o">=</span> <span class="s">"oh no"</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// whatever</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<!--more-->
+<h4 id="filter-a-list">Filter a list</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">filterPositives</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">val</span> <span class="n">list</span> <span class="o">=</span> <span class="n">listOf</span><span class="o">(-</span><span class="mi">2</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span>
+  <span class="n">val</span> <span class="n">positives</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="check-is-class-instanceof">Check is class instanceOf()</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">isInstanceOf</span><span class="o">(</span><span class="nl">obj:</span> <span class="nc">Any</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">when</span><span class="o">(</span><span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">is</span> <span class="nc">String</span> <span class="o">-&gt;</span> <span class="s">"str"</span>
+        <span class="n">is</span> <span class="nc">Integer</span> <span class="o">-&gt;</span> <span class="s">"int"</span>
+        <span class="k">else</span> <span class="o">-&gt;</span> <span class="s">"whatever"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="ranges-usage">Ranges usage</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fun ranges(value: Int) {
+
+    // includes 10
+    for(i in 1..10) {}
+
+    // does not include 10  
+    for(i in 1 until 10) {}
+
+    // goes in steps of i+=2
+    for (i in 2..10 step 2) {}
+
+    // from 10 to 1, both included
+    for (i in 10 downTo 1) {}
+
+    if(value in 1..10) {}
+
+}
+</code></pre></div></div>
+
+<h4 id="lazy-property">Lazy property</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">val</span> <span class="nl">p:</span> <span class="nc">String</span> <span class="n">by</span> <span class="n">lazy</span> <span class="o">{</span>
+    <span class="s">"compute the String here"</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="execute-if-not-null--else">Execute if not null / else</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">executeIfNotNull</span><span class="o">(</span><span class="nl">str:</span> <span class="nc">String</span><span class="o">?)</span> <span class="o">{</span>
+    <span class="n">str</span><span class="o">?.</span><span class="na">let</span> <span class="o">{</span>
+        <span class="n">println</span><span class="o">(</span><span class="s">"is not null!"</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">fun</span> <span class="nf">ifNotNullElse</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">val</span> <span class="n">files</span> <span class="o">=</span> <span class="nc">File</span><span class="o">(</span><span class="s">"test"</span><span class="o">).</span><span class="na">listFiles</span><span class="o">()</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">files</span><span class="o">?.</span><span class="na">size</span> <span class="o">?:</span> <span class="s">"empty"</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="get-first-item-of-possibly-empty-collection">Get first item of possibly empty collection</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">getFirstItem</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">val</span> <span class="n">emails</span> <span class="o">=</span> <span class="n">emptyList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;()</span>
+    <span class="n">val</span> <span class="n">mainEmail</span> <span class="o">=</span> <span class="n">emails</span><span class="o">.</span><span class="na">firstOrNull</span><span class="o">()</span> <span class="o">?:</span> <span class="s">""</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="consume-a-nullable-boolean">Consume a nullable Boolean</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">val</span> <span class="nl">b:</span> <span class="nc">Boolean</span><span class="o">?</span> <span class="o">=</span> <span class="o">...</span>
+<span class="k">if</span><span class="o">(</span><span class="n">b</span> <span class="o">==</span> <span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+  <span class="c1">// b is false or null</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="references">Reference(s)</h3>
+<p><a href="https://kotlinlang.org/docs/reference/idioms.html">https://kotlinlang.org/docs/reference/idioms.html</a></p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=From Java to Kotlin (2/2) - Idioms&p[summary]=Kotlin’s has built-in support for common java patterns. This are some of them.
+
+Create POJOs (Plain Old Java Object)
+This provides the cl...&p[url]=https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-idioms" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-idioms&text=Kotlin’s has built-in support for common java patterns. This are some of them.
+
+Create POJOs (Plain Old Java Object)
+This provides the cl...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

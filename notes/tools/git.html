@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Git CLI | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Git CLI | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Git CLI | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/tools/git" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/tools/git">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,101 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-07-08T12:39:00+01:00" itemprop="datePublished">8 Jul, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">Git CLI</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <h2 id="config">Config</h2>
+<ul>
+  <li>see config <code class="highlighter-rouge">git config -l</code></li>
+  <li>modify username <code class="highlighter-rouge">git config --global user.name "newName"</code></li>
+  <li>modify email <code class="highlighter-rouge">git config --global user.mail "new@mail.com"</code></li>
+</ul>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h2 id="git-bisect">Git bisect</h2>
+<p>Is a tool to find the exact commit where a bug was introduced.</p>
+
+<h3 id="usage">Usage</h3>
+<p>I have a file with the following content and an obvious bug</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Row row row your car at the river
+</code></pre></div></div>
+<!--more-->
+<p>This is the git history</p>
+<ul>
+  <li>master - <code class="highlighter-rouge">added word river</code></li>
+  <li><code class="highlighter-rouge">changed word boat for cat</code></li>
+  <li><code class="highlighter-rouge">added word the</code></li>
+  <li><code class="highlighter-rouge">added word at</code></li>
+  <li><code class="highlighter-rouge">added word boat</code></li>
+  <li><code class="highlighter-rouge">added word your</code></li>
+  <li><code class="highlighter-rouge">added third row</code></li>
+  <li><code class="highlighter-rouge">added second row</code></li>
+  <li><code class="highlighter-rouge">added word row</code></li>
+  <li><code class="highlighter-rouge">Initial commit</code></li>
+</ul>
+
+<p>We need to select a good and a bad commit. We’ll select the last one as bad because the bug is there, and as good the first one.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git bisect good 6f47e638a6bc5f4210218d77f1c43e34cc16470c  
+git bisect bad 8a2d118528471d48d87942b8097093dd04476b25
+</code></pre></div></div>
+
+<p>Then it’s going to navigate the commit history, changing the actual commit, and we have to check the file and indicate if it’s still good or it already contains the bug. We do so with</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git bisect good
+git bisect bad
+</code></pre></div></div>
+
+<p>At the end of all, it tell us the exact commit where the bug was introduced</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cff142cdac62f6845d69ea4694c4c5e6606f2294 is the first bad commit
+commit cff142cdac62f6845d69ea4694c4c5e6606f2294
+Author: Mario Codes &lt;xxx&gt;
+Date:   Mon Jul 8 16:06:33 2019 +0200
+
+    changed word boat <span class="k">for </span>car
+</code></pre></div></div>
+
+<p>And we have to exit it with</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git bisect reset
+</code></pre></div></div>
+
+<h3 id="references">Reference(s)</h3>
+<p><a href="https://git-scm.com/docs/git-bisect">https://git-scm.com/docs/git-bisect</a><br />
+<a href="https://www.metaltoad.com/blog/beginners-guide-git-bisect-process-elimination">https://www.metaltoad.com/blog/beginners-guide-git-bisect-process-elimination</a></p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Git CLI&p[summary]=Config
+
+  see config git config -l
+  modify username git config --global user.name "newName"
+  modify email git config --global user.mail...&p[url]=https://julesssss.github.io/notes/tools/git" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/tools/git&text=Config
+
+  see config git config -l
+  modify username git config --global user.name "newName"
+  modify email git config --global user.mail...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

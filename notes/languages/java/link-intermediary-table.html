@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>How to link an intermediary table | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="How to link an intermediary table | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="How to link an intermediary table | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/languages/java/link-intermediary-table" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/languages/java/link-intermediary-table">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,223 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-05-28T07:25:00+01:00" itemprop="datePublished">28 May, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">How to link an intermediary table</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <p><em>(This was done with MySQL, Hibernate and Lombok)</em></p>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<p><strong>Setting:</strong> We have two Entities, <code class="highlighter-rouge">Category</code> and <code class="highlighter-rouge">Code</code>. Some <em>categories</em> must contain x <em>codes</em>, others cannot contain y <em>codes</em> and we want to leave open the possibility to “must contain z but not p” at the same time.</p>
+
+<p><strong>How:</strong> At database level we’ll have 4 tables with the following structure</p>
+
+<h4 id="client_category">client_category</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">FIELD_NAME</th>
+      <th style="text-align: center">FIELD_TYPE</th>
+      <th style="text-align: center">CONSTRAINTS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">id</td>
+      <td style="text-align: center">bigint(19)</td>
+      <td style="text-align: center">PK (primary key)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">example_string</td>
+      <td style="text-align: center">varchar(255)</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">example_bool</td>
+      <td style="text-align: center">tinyint(1)</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<!--more-->
+
+<h4 id="client_code">client_code</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">FIELD_NAME</th>
+      <th style="text-align: center">FIELD_TYPE</th>
+      <th style="text-align: center">CONSTRAINTS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">id</td>
+      <td style="text-align: center">bigint(19)</td>
+      <td style="text-align: center">PK</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">value</td>
+      <td style="text-align: center">varchar(255)</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="client_category_contains_code">client_category_contains_code</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">FIELD_NAME</th>
+      <th style="text-align: center">FIELD_TYPE</th>
+      <th style="text-align: center">CONSTRAINTS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">id</td>
+      <td style="text-align: center">bigint(19)</td>
+      <td style="text-align: center">PK</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">client_category_pk</td>
+      <td style="text-align: center">bigint(19)</td>
+      <td style="text-align: center">FK_client_category_contains_code</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">client_code_pk</td>
+      <td style="text-align: center">bigint(19)</td>
+      <td style="text-align: center">FK_client_code_contains_code</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="client_category_does_not_contain_code">client_category_does_not_contain_code</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">FIELD_NAME</th>
+      <th style="text-align: center">FIELD_TYPE</th>
+      <th style="text-align: center">CONSTRAINTS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">id</td>
+      <td style="text-align: center">bigint(19)</td>
+      <td style="text-align: center">PK</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">client_category_pk</td>
+      <td style="text-align: center">bigint(19)</td>
+      <td style="text-align: center">FK_client_category_does_not_contain_code</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">client_code_pk</td>
+      <td style="text-align: center">bigint(19)</td>
+      <td style="text-align: center">FK_client_code_does_not_contain_code</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The FKs (foreign keys) of the last two tables point to the PKs of <em>client_category</em> and <em>client_code</em> respectively. Important to be able to create this constraints is that they are the same type and have the same length.</p>
+
+<p>This are the Java classes, representation of our Entities:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="nd">@Getter</span>
+<span class="nd">@Setter</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"client_code"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClientCode</span> <span class="o">{</span>
+
+  <span class="nd">@Id</span>
+  <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span>
+    <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+  <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"value"</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">value</span><span class="o">;</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Entity</span>
+<span class="nd">@Getter</span>
+<span class="nd">@Setter</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"client_category"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClientCategory</span> <span class="o">{</span>
+
+  <span class="nd">@Id</span>
+  <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span>
+    <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+  <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"example_string"</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">exampleString</span><span class="o">;</span>
+
+  <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"example_bool"</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="nc">Boolean</span> <span class="n">exampleBool</span><span class="o">;</span>
+
+  <span class="nd">@OneToMany</span><span class="o">(</span><span class="n">fetch</span> <span class="o">=</span> <span class="nc">FetchType</span><span class="o">.</span><span class="na">EAGER</span><span class="o">)</span>
+  <span class="nd">@JoinTable</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span>
+    <span class="s">"client_category_contains_code"</span><span class="o">,</span>
+    <span class="n">joinColumns</span> <span class="o">=</span>
+      <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"client_category_pk"</span><span class="o">,</span>
+                  <span class="n">referencedColumnName</span> <span class="o">=</span> <span class="s">"id"</span><span class="o">),</span>
+    <span class="n">inverseJoinColumns</span> <span class="o">=</span>
+      <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"client_code_pk"</span><span class="o">,</span>
+                  <span class="n">referencedColumnName</span> <span class="o">=</span> <span class="s">"id"</span><span class="o">))</span>
+  <span class="kd">private</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">ClientCode</span><span class="o">&gt;</span> <span class="n">containsCode</span><span class="o">;</span>
+
+  <span class="nd">@OneToMany</span><span class="o">(</span><span class="n">fetch</span> <span class="o">=</span> <span class="nc">FetchType</span><span class="o">.</span><span class="na">EAGER</span><span class="o">)</span>
+  <span class="nd">@JoinTable</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span>
+    <span class="s">"client_category_does_not_contain_code"</span><span class="o">,</span>
+    <span class="n">joinColumns</span> <span class="o">=</span>
+      <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"client_category_pk"</span><span class="o">,</span>
+                  <span class="n">referencedColumnName</span> <span class="o">=</span> <span class="s">"id"</span><span class="o">),</span>
+    <span class="n">inverseJoinColumns</span> <span class="o">=</span>
+      <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"client_code_pk"</span><span class="o">,</span>
+                  <span class="n">referencedColumnName</span> <span class="o">=</span> <span class="s">"id"</span><span class="o">))</span>  
+  <span class="kd">private</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">ClientCode</span><span class="o">&gt;</span> <span class="n">doesNotContainCode</span><span class="o">;</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The connection between tables at Java is built through <em>javax annotations</em>. This way, when we use our DAOs to retrieve a <code class="highlighter-rouge">ClientCategory</code>, <em>Hibernate</em> will automatically retrieve all the <code class="highlighter-rouge">ClientCode</code> and populate them into the appropiate <code class="highlighter-rouge">Set&lt;ClientCode&gt;</code>.</p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=How to link an intermediary table&p[summary]=(This was done with MySQL, Hibernate and Lombok)
+
+Setting: We have two Entities, Category and Code. Some categories must contain x codes,...&p[url]=https://julesssss.github.io/notes/languages/java/link-intermediary-table" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/languages/java/link-intermediary-table&text=(This was done with MySQL, Hibernate and Lombok)
+
+Setting: We have two Entities, Category and Code. Some categories must contain x codes,...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>ReactJS | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="ReactJS | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="ReactJS | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/frontend/react" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/frontend/react">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,116 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-08-11T08:35:00+01:00" itemprop="datePublished">11 Aug, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">ReactJS</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <p>JavaScript library for building user interfaces. Created by Facebook.</p>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h2 id="yarn">Yarn</h2>
+<p>JavaScript package manager compatible with <code class="highlighter-rouge">npm</code> that helps automate the process of installing, updating, configuring, and removing npm packages.</p>
+
+<h3 id="install-on-ubuntu">Install on Ubuntu</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># add Yarn repository</span>
+curl <span class="nt">-sS</span> https://dl.yarnpkg.com/debian/pubkey.gpg | <span class="nb">sudo </span>apt-key add -  
+
+<span class="nb">echo</span> <span class="s2">"deb https://dl.yarnpkg.com/debian/ stable main"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/yarn.list  
+
+<span class="nb">sudo </span>apt-get update  
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>yarn  
+yarn <span class="nt">--version</span> <span class="c"># verify</span>
+</code></pre></div></div>
+<!--more-->
+<h3 id="create-react-project">Create React Project</h3>
+<ul>
+  <li><code class="highlighter-rouge">yarn create react-app my-react-app-name</code> creates a template</li>
+  <li><code class="highlighter-rouge">yarn start</code> starts the development server</li>
+  <li><code class="highlighter-rouge">yarn build</code> bundles the app into static files for prod</li>
+  <li><code class="highlighter-rouge">yarn test</code>  starts the test runner</li>
+</ul>
+
+<h2 id="react-components">React Components</h2>
+<p>They let you split the UI into dependant, reusable pieces. They must always start with a capital letter. Components may refer to other components in their output.</p>
+
+<p>Try to split them into standalone units, as small as possible, as this does code more reusable in larger apps.</p>
+
+<p>Declaration as a <code class="highlighter-rouge">.jsx</code> file</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">HelloWorld</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">World</span><span class="o">!&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">HelloWorld</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">render()</code> returns what needs to be displayed as part of the component.</p>
+
+<p><code class="highlighter-rouge">export default HelloWorld</code> Each JS file is a module. If you want elements from one module to be used in another, you need to export them.</p>
+
+<p>Usage of our custom component</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">App</span><span class="dl">"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">HelloWorld</span><span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="important-methods">Important Methods</h3>
+<p><code class="highlighter-rouge">componentDidMount()</code> React defines a lifecycle for its components. This method will be called as soon as the component is mounted.</p>
+
+<h2 id="formik">Formik</h2>
+<p>React component to build forms</p>
+
+<h3 id="formik-does-not-reload-a-parameter">Formik does not (re)load a parameter</h3>
+<p>Check if at <code class="highlighter-rouge">&lt;Formik&gt;</code> tag the following flag has been enabled <code class="highlighter-rouge">enableReinitialize={true}</code>. The reason is that the <code class="highlighter-rouge">render()</code> method may render it once empty, and the second time it wouldn’t load.</p>
+
+<p>The start tag should look as follows</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">Formik</span>
+    <span class="nx">enableReinitialize</span><span class="o">=</span><span class="p">{</span><span class="kc">true</span><span class="p">}</span>
+    <span class="nx">initialValues</span><span class="o">=&gt;</span>
+</code></pre></div></div>
+
+<h3 id="references">Reference(s)</h3>
+<p><a href="https://www.springboottutorial.com/spring-boot-react-full-stack-crud-maven-application">https://www.springboottutorial.com/spring-boot-react-full-stack-crud-maven-application</a><br />
+<a href="https://reactjs.org/docs/components-and-props.html">https://reactjs.org/docs/components-and-props.html</a></p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=ReactJS&p[summary]=JavaScript library for building user interfaces. Created by Facebook.
+
+Yarn
+JavaScript package manager compatible with npm that helps aut...&p[url]=https://julesssss.github.io/notes/frontend/react" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frontend/react&text=JavaScript library for building user interfaces. Created by Facebook.
+
+Yarn
+JavaScript package manager compatible with npm that helps aut...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

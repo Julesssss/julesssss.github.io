@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Spring CORS | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Spring CORS | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Spring CORS | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/frameworks/java/spring/cors" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/frameworks/java/spring/cors">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,87 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-08-13T13:40:00+01:00" itemprop="datePublished">13 Aug, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">Spring CORS</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <h2 id="cors-cross-origin-resource-sharing">CORS (Cross-Origin Resource Sharing)</h2>
+<p>It’s a mechanism to let a web application running at one domain, protocol or port have permission to access resources from a server at a different one.</p>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<p>This is needed if you have, for example, a Frontend running on port :3000 (React) consuming a Backend API running on port :34831 (custom port for Spring). Unless CORS are set, FE will not be able to access BE resources.</p>
+
+<h2 id="in-spring">In Spring</h2>
+<p>It’s possible to enable them for a single <code class="highlighter-rouge">RestResource</code> or globally for the whole application.</p>
+
+<p><em>(This example has been done in Kotlin)</em></p>
+
+<h3 id="by-restresource">By RestResource</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RestController</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"courses"</span><span class="o">)</span>
+<span class="nd">@CrossOrigin</span><span class="o">(</span><span class="s">"http://localhost:3000"</span><span class="o">)</span>
+<span class="kd">class</span> <span class="nc">CourseRestResource</span> <span class="o">{</span>
+  <span class="c1">// dependencies and methods</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<!--more-->
+
+<h3 id="globally">Globally</h3>
+<p>This is done at a <code class="highlighter-rouge">SpringConfig</code> level, creating a new <code class="highlighter-rouge">@Bean</code> as follows.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Configuration</span>
+<span class="nd">@ComponentScan</span><span class="o">(</span><span class="n">basePackages</span> <span class="o">=</span> <span class="o">[</span><span class="s">"redacted"</span><span class="o">])</span>
+<span class="kd">class</span> <span class="nc">SpringConfig</span> <span class="o">{</span>
+
+  <span class="nd">@Bean</span>
+  <span class="n">fun</span> <span class="nf">corsFilter</span><span class="o">():</span> <span class="nc">CorsFilter</span> <span class="o">{</span>
+    <span class="n">val</span> <span class="n">origin</span> <span class="o">=</span> <span class="s">"http://localhost:3000"</span>
+    <span class="n">val</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">listOf</span><span class="o">(</span><span class="s">"Origin"</span><span class="o">,</span> <span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"Accept"</span><span class="o">)</span>
+    <span class="n">val</span> <span class="n">methods</span> <span class="o">=</span> <span class="n">listOf</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="s">"POST"</span><span class="o">,</span> <span class="s">"PUT"</span><span class="o">,</span> <span class="s">"OPTIONS"</span><span class="o">,</span> <span class="s">"DELETE"</span><span class="o">)</span>
+    <span class="n">val</span> <span class="n">source</span> <span class="o">=</span> <span class="nc">UrlBasedCorsConfigurationSource</span><span class="o">()</span>
+    <span class="n">val</span> <span class="n">config</span> <span class="o">=</span> <span class="nc">CorsConfiguration</span><span class="o">()</span>
+    <span class="n">config</span><span class="o">.</span><span class="na">allowCredentials</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="n">config</span><span class="o">.</span><span class="na">allowedOrigins</span> <span class="o">=</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">singletonList</span><span class="o">(</span><span class="n">origin</span><span class="o">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="na">allowedHeaders</span> <span class="o">=</span> <span class="n">headers</span>
+    <span class="n">config</span><span class="o">.</span><span class="na">allowedMethods</span> <span class="o">=</span> <span class="n">methods</span>
+    <span class="n">source</span><span class="o">.</span><span class="na">registerCorsConfiguration</span><span class="o">(</span><span class="s">"/**"</span><span class="o">,</span> <span class="n">config</span><span class="o">)</span>
+    <span class="k">return</span> <span class="nf">CorsFilter</span><span class="o">(</span><span class="n">source</span><span class="o">)</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="resources">Resource(s)</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</a><br />
+<a href="https://stackoverflow.com/questions/51720552/enabling-cors-globally-in-spring-boot">https://stackoverflow.com/questions/51720552/enabling-cors-globally-in-spring-boot</a></p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Spring CORS&p[summary]=CORS (Cross-Origin Resource Sharing)
+It’s a mechanism to let a web application running at one domain, protocol or port have permission to...&p[url]=https://julesssss.github.io/notes/frameworks/java/spring/cors" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frameworks/java/spring/cors&text=CORS (Cross-Origin Resource Sharing)
+It’s a mechanism to let a web application running at one domain, protocol or port have permission to...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

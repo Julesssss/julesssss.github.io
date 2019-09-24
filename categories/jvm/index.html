@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Category: jvm | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Category: jvm | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Category: jvm | Jules Rosser &mdash; Android Engineer " />
 
-    <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
-    <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
-    <meta name="twitter:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
+    <meta name="description" content="Category: jvm">
+    <meta name="description" property="og:description" content="Category: jvm" />
+    <meta name="twitter:description" content="Category: jvm" />
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/categories/jvm/" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/categories/jvm/">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,17 +7486,117 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <h1>Posts From Category: jvm</h1>
+
+
+<article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-06-16T11:57:00+01:00" itemprop="datePublished">16 Jun, 2019</time></li>
+            
+        </ul>
+        <h2 itemprop="name headline"><a href="https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-idioms">From Java to Kotlin (2/2) - Idioms</a></h2>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <p>Kotlin’s has built-in support for common java patterns. This are some of them.</p>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h4 id="create-pojos-plain-old-java-object">Create POJOs (Plain Old Java Object)</h4>
+<p>This provides the class with <code class="highlighter-rouge">getters</code> (and <code class="highlighter-rouge">setters</code> for <code class="highlighter-rouge">vars</code>) as also <code class="highlighter-rouge">.toString()</code>,
+ <code class="highlighter-rouge">equals()</code>, <code class="highlighter-rouge">copy()</code> etc.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data class Person(val name: String, var age: Int)
+</code></pre></div></div>
 
+<h4 id="params-with-default-values">Params with default values</h4>
+<p>It’s possible to give default values to parameters</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">default</span><span class="o">(</span><span class="nl">arg1:</span> <span class="nc">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">arg2:</span> <span class="nc">String</span> <span class="o">=</span> <span class="s">"oh no"</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// whatever</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+
+
+        
+            <p><a href="/notes/languages/kotlin/from-java-to-kotlin-idioms" role="button">Read More</a></p>
+        
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=From Java to Kotlin (2/2) - Idioms&p[summary]=Kotlin’s has built-in support for common java patterns. This are some of them.
+
+Create POJOs (Plain Old Java Object)
+This provides the cl...&p[url]=https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-idioms" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-idioms&text=Kotlin’s has built-in support for common java patterns. This are some of them.
+
+Create POJOs (Plain Old Java Object)
+This provides the cl...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
+</article>
+
+<article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        <ul>
+            <li><time datetime="2019-06-14T13:57:00+01:00" itemprop="datePublished">14 Jun, 2019</time></li>
+            
+        </ul>
+        <h2 itemprop="name headline"><a href="https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-basic-syntax">From Java to Kotlin (1/2) - Basic Syntax</a></h2>
+    </header>
+
+    <div class="post-content">
+        <p>Guide on differences to jump from Java developer to Kotlin developer.</p>
+
+<h4 id="class-instantiation">Class instantiation</h4>
+<p>No <code class="highlighter-rouge">new</code> operator is needed</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="nc">Whatever</span> <span class="o">{</span>
+      <span class="n">fun</span> <span class="nf">createClass</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">val</span> <span class="n">person</span> <span class="o">=</span> <span class="nc">Person</span><span class="o">()</span>
+      <span class="o">}</span>    
+  <span class="o">}</span>
+</code></pre></div></div>
+
+
+
+        
+            <p><a href="/notes/languages/kotlin/from-java-to-kotlin-basic-syntax" role="button">Read More</a></p>
+        
+    </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=From Java to Kotlin (1/2) - Basic Syntax&p[summary]=Guide on differences to jump from Java developer to Kotlin developer.
+
+Class instantiation
+No new operator is needed
+  class Whatever {
+ ...&p[url]=https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-basic-syntax" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-basic-syntax&text=Guide on differences to jump from Java developer to Kotlin developer.
+
+Class instantiation
+No new operator is needed
+  class Whatever {
+ ...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
 
             </main>

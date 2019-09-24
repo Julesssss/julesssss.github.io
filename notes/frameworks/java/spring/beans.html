@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Spring Beans | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Spring Beans | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Spring Beans | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/frameworks/java/spring/beans" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/frameworks/java/spring/beans">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,177 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-03-25T12:09:00+00:00" itemprop="datePublished">25 Mar, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">Spring Beans</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <p>A spring bean is the basic building block of a Spring App. In its basis, it’s an Object which Spring Framework manages at runtime.</p>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<p>This management includes:</p>
+<ul>
+  <li>Creating an Object</li>
+  <li>Filling dependencies</li>
+  <li>Intercepting method calls</li>
+  <li>Destroying the Object</li>
+</ul>
+
+<h2 id="define-a-spring-bean">Define a Spring Bean</h2>
+<p>There’re 3 ways:</p>
+
+<ul>
+  <li>declare it with <code class="highlighter-rouge">@Component</code> annotation</li>
+  <li><code class="highlighter-rouge">@Bean</code> annotation at a Bean Factory</li>
+  <li><code class="highlighter-rouge">.xml</code> config. file <em>(old way)</em>
+<!--more--></li>
+</ul>
+
+<h3 id="component">@Component</h3>
+<p>This is the most common way if you own the source code and it hasn’t any special dependency. It has to be used together with component scanning.</p>
+
+<p>It includes the following 3 derivatives. The difference is purely informative.</p>
+<ul>
+  <li><code class="highlighter-rouge">@Service</code></li>
+  <li><code class="highlighter-rouge">@Repository</code></li>
+  <li><code class="highlighter-rouge">@Controller</code></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyService</span> <span class="o">{</span>
+  <span class="c1">// code</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="bean">@Bean</h3>
+<p>For classes you don’t own, you have to declare them with <code class="highlighter-rouge">@Bean</code> at a configuration class. Also for your own classes which have weird dependencies and Spring cannot auto-inject them.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MySpringConfig</span> <span class="o">{</span>
+
+  <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"notMyService"</span><span class="o">)</span> <span class="c1">// name optional</span>
+  <span class="kd">public</span> <span class="nc">NotMyService</span> <span class="nf">notMyService</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">NotMyService</span><span class="o">();</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="bean-properties">Bean Properties</h2>
+
+<ul>
+  <li>class</li>
+  <li>name</li>
+  <li>dependencies</li>
+  <li>scope</li>
+  <li>initialization mode</li>
+  <li>initialization / destruction callback</li>
+</ul>
+
+<h3 id="name">Name</h3>
+<p>Spring automatically gives a name to your beans. It uses it to identify each one. Mostly, it’s common to set your own bean name when you have more than one different instance for a class and you need to differentiate them.</p>
+
+<h3 id="dependencies">Dependencies</h3>
+<p>We inject them with <code class="highlighter-rouge">@Autowired</code> annotation at the constructor.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="o">{</span>
+
+  <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MyDependency</span> <span class="n">myDep</span><span class="o">;</span>
+
+  <span class="nd">@Autowired</span>
+  <span class="kd">public</span> <span class="nf">MyComponent</span><span class="o">(</span><span class="kd">final</span> <span class="nc">MyDependency</span> <span class="n">myDep</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">myDep</span> <span class="o">=</span> <span class="n">myDep</span><span class="o">;</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The tag it’s not needed if we only have 1 constructor. If we have more, we have to mark
+one of them so Springs knows which one to auto-inject.</p>
+
+<h3 id="scope">Scope</h3>
+<p>It defines how many instances of a class the framework creates at runtime.<br />
+<strong>The default behaviour is singleton!</strong></p>
+
+<ul>
+  <li>singleton - just one instance</li>
+  <li>prototype - a new one on every inject</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Bean</span>
+<span class="nd">@Scope</span><span class="o">(</span><span class="s">"prototype"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">NotMyService</span> <span class="nf">notMyService</span><span class="o">()</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nf">NotMyService</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Component</span>
+<span class="nd">@Scope</span><span class="o">(</span><span class="s">"prototype"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="o">{</span>
+  <span class="c1">// code</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="initialization-mode">Initialization Mode</h3>
+<p>When the application starts, Spring creates all singleton beans at startup. This detects errors in the beans, but makes the startup slow. <code class="highlighter-rouge">@lazy</code> delays the creation
+of a Bean to when it’s first needed.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Lazy</span>
+<span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="o">{</span>
+  <span class="c1">// Code</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="initialization--destruction-callback">Initialization / destruction Callback</h3>
+<p>This is to execute some logic, after the bean was fully built and its dependencies
+were injected or before the bean is destroyed.</p>
+
+<h4 id="own-bean">own bean</h4>
+<ul>
+  <li>Make the class implement the interface <code class="highlighter-rouge">InitializingBean</code> / <code class="highlighter-rouge">DisposableBean</code> and implement the method which comes with it.</li>
+  <li>Or create our own method and tag it with javax <code class="highlighter-rouge">@PostContruct</code> / <code class="highlighter-rouge">@PreDestroy</code></li>
+</ul>
+
+<h4 id="external-bean">external bean</h4>
+<p>Implement a method <em>(it may be private)</em> and do the following at the declaration of the bean:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Bean</span><span class="o">(</span><span class="n">initMethod</span><span class="o">=</span><span class="s">"methodName"</span><span class="o">,</span> <span class="n">destroyMethod</span><span class="o">=</span><span class="s">"name"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">NotMyService</span> <span class="nf">notMyService</span><span class="o">()</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nf">NotMyService</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="reference">Reference</h2>
+<p><a href="http://dolszewski.com/spring/spring-bean/">http://dolszewski.com/spring/spring-bean/</a></p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Spring Beans&p[summary]=A spring bean is the basic building block of a Spring App. In its basis, it’s an Object which Spring Framework manages at runtime.
+
+This ...&p[url]=https://julesssss.github.io/notes/frameworks/java/spring/beans" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frameworks/java/spring/beans&text=A spring bean is the basic building block of a Spring App. In its basis, it’s an Object which Spring Framework manages at runtime.
+
+This ...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

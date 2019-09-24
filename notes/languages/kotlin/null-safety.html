@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Kotlin - null safety | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Kotlin - null safety | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Kotlin - null safety | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/languages/kotlin/null-safety" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/languages/kotlin/null-safety">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,65 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-05-06T14:57:00+01:00" itemprop="datePublished">6 May, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">Kotlin - null safety</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <p>Kotlin differences between nullable and non-nullable references</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="nl">nonNullable:</span> <span class="nc">String</span> <span class="o">=</span> <span class="s">"Hello World"</span>
+<span class="n">nonNullable</span> <span class="o">=</span> <span class="kc">null</span> <span class="c1">// compilation error</span>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<span class="kt">var</span> <span class="nl">nullable:</span> <span class="nc">String</span><span class="o">?</span> <span class="o">=</span> <span class="s">"This is nullable!"</span>
+<span class="n">nullable</span> <span class="o">=</span> <span class="kc">null</span> <span class="c1">// okay</span>
+</code></pre></div></div>
+
+<p>As this is the case, you cannot assign a nullable variable to a non-nullable variable directly. You have to assign first a default value which will be used in case the nullable variable is null. This is done through the <strong><em>Elvis operator</em></strong>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="nl">nullable:</span> <span class="nc">String</span><span class="o">?</span> <span class="o">=</span> <span class="s">"This is nullable"</span>
+<span class="kt">var</span> <span class="nl">newNonNullable:</span> <span class="nc">String</span> <span class="o">=</span> <span class="n">nullable</span> <span class="o">?:</span> <span class="s">"default value"</span>
+</code></pre></div></div>
+<!--more-->
+<p>It also has a <strong><em>safe call operator</em></strong> to avoid methods being called on <em>null</em> references.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="nl">nullable:</span> <span class="nc">String</span><span class="o">?</span> <span class="o">=</span> <span class="s">"This is nullable"</span>
+<span class="kt">var</span> <span class="nl">parsed:</span> <span class="nc">Int</span><span class="o">?</span> <span class="o">=</span> <span class="n">nullable</span><span class="o">?.</span><span class="na">length</span> <span class="c1">// 16</span>
+
+<span class="n">nullable</span> <span class="o">=</span> <span class="kc">null</span>
+<span class="n">parsed</span> <span class="o">=</span> <span class="n">nullable</span><span class="o">?.</span><span class="na">length</span> <span class="c1">// nullable.length is never called, and parsed is set to null</span>
+</code></pre></div></div>
+
+<h3 id="references">Reference(s)</h3>
+<p><a href="https://blog.scottlogic.com/2019/04/29/kotlin-vs-java.html">https://blog.scottlogic.com/2019/04/29/kotlin-vs-java.html</a></p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Kotlin - null safety&p[summary]=Kotlin differences between nullable and non-nullable references
+var nonNullable: String = "Hello World"
+nonNullable = null // compilation...&p[url]=https://julesssss.github.io/notes/languages/kotlin/null-safety" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/languages/kotlin/null-safety&text=Kotlin differences between nullable and non-nullable references
+var nonNullable: String = "Hello World"
+nonNullable = null // compilation...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

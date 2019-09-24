@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Golang - installation | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Golang - installation | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Golang - installation | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/languages/go/installation" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/languages/go/installation">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,99 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-03-14T15:48:00+00:00" itemprop="datePublished">14 Mar, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">Golang - installation</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <h2 id="check-installation">Check installation</h2>
+<ul>
+  <li><code class="highlighter-rouge">go version</code></li>
+</ul>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h2 id="environment-variables">Environment variables</h2>
+
+<p><strong>GOROOT</strong><br />
+Folder where go was installated. It must only be set when installing to a custom location.</p>
+
+<p><strong>GOPATH</strong><br />
+Place to get, build and install packages outside the standard Go Tree.<br />
+<!--more-->
+<a href="https://stackoverflow.com/questions/7970390/what-should-be-the-values-of-gopath-and-goroot">Source</a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># golang</span>
+<span class="nb">export </span><span class="nv">GOPATH</span><span class="o">=</span>/home/msanchez/go/packages
+<span class="nb">export </span><span class="nv">GOROOT</span><span class="o">=</span>/home/msanchez/Programs/go
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$GOROOT</span>/bin:<span class="nv">$GOPATH</span>/bin
+</code></pre></div></div>
+
+<h2 id="ide-preparation">IDE preparation</h2>
+<p>I use Sublime, to get it ready:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">ctrl + shift + p</code></li>
+  <li><code class="highlighter-rouge">install package</code></li>
+</ul>
+
+<p>Install the packages:</p>
+<ul>
+  <li><code class="highlighter-rouge">GoOracle</code></li>
+  <li><code class="highlighter-rouge">All Autocomplete</code></li>
+</ul>
+
+<p><em>(missing steps)</em></p>
+
+<ul>
+  <li>install <a href="https://github.com/golang/sublime-build">https://github.com/golang/sublime-build</a></li>
+</ul>
+
+<p>To compile / build / run</p>
+<ul>
+  <li><code class="highlighter-rouge">ctrl + shift + P</code></li>
+  <li><code class="highlighter-rouge">go install</code></li>
+  <li><code class="highlighter-rouge">go run</code></li>
+</ul>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Golang - installation&p[summary]=Check installation
+
+  go version
+
+
+Environment variables
+
+GOROOT
+Folder where go was installated. It must only be set when installing to ...&p[url]=https://julesssss.github.io/notes/languages/go/installation" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/languages/go/installation&text=Check installation
+
+  go version
+
+
+Environment variables
+
+GOROOT
+Folder where go was installated. It must only be set when installing to ...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

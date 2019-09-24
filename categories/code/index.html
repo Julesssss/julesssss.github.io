@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Category: code | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Category: code | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Category: code | Jules Rosser &mdash; Android Engineer " />
 
-    <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
-    <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
-    <meta name="twitter:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
+    <meta name="description" content="Category: code">
+    <meta name="description" property="og:description" content="Category: code" />
+    <meta name="twitter:description" content="Category: code" />
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/categories/code/" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/categories/code/">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,17 +7486,194 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <h1>Posts From Category: code</h1>
+
+
+<article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-03-14T16:20:00+00:00" itemprop="datePublished">14 Mar, 2019</time></li>
+            
+        </ul>
+        <h2 itemprop="name headline"><a href="https://julesssss.github.io/notes/languages/go/code">Golang - code cheat sheet</a></h2>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <h1 id="installation">Installation</h1>
+<h2 id="compile">Compile</h2>
+<p>To compile / build / run in Sublime</p>
+<ol>
+  <li><code class="highlighter-rouge">ctrl + shift + P</code></li>
+  <li><code class="highlighter-rouge">go run</code></li>
+</ol>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h2 id="multiple-workspaces">Multiple workspaces</h2>
+<p>For a custom installation, it’s possible to give more than one value to <code class="highlighter-rouge">GOPATH</code>.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">GOPATH</span><span class="o">=</span><span class="s2">"/home/msanchez/go/packages/bin:/home/msanchez/Documents/Personal/Github/language_testing/golang"</span>
+</code></pre></div></div>
 
+<p>The first value is used as default to install packages. The second and next ones may be used as standalone workspaces. It’s important for the root of the workspace to be <code class="highlighter-rouge">/src</code>, otherwise it will complain and not compile into <code class="highlighter-rouge">/bin</code>.</p>
+
+<h1 id="code">Code</h1>
+<h2 id="template">Template</h2>
+<p>This is all needed to test.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="variables">Variables</h2>
+<p>Semicolons are <strong>not</strong> needed.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">age</span> <span class="kt">int</span> <span class="c">// assigned to 0 by default</span>
+<span class="k">var</span> <span class="n">footSize</span> <span class="o">=</span> <span class="m">45</span> <span class="c">// type inference</span>
+<span class="c">// multiple variables of same type</span>
+<span class="k">var</span> <span class="n">headSize</span><span class="p">,</span> <span class="n">waistSize</span> <span class="o">=</span> <span class="m">200</span><span class="p">,</span> <span class="m">70</span>
+<span class="c">// constant declaration</span>
+<span class="k">const</span>  <span class="n">height</span> <span class="o">=</span> <span class="m">180</span>
+
+<span class="k">var</span> <span class="p">(</span> <span class="c">// multiple variables of different type</span>
+  <span class="n">name</span>     <span class="o">=</span> <span class="s">"Mario"</span>
+  <span class="n">myAge</span>    <span class="o">=</span> <span class="m">5</span>
+  <span class="n">lastName</span> <span class="o">=</span> <span class="s">"nope"</span>
+<span class="p">)</span>
+
+<span class="c">// shorthand declaration</span>
+<span class="n">heartSize</span><span class="p">,</span> <span class="n">country</span> <span class="o">:=</span> <span class="m">100</span><span class="p">,</span> <span class="s">"Italia"</span>
+
+<span class="c">// the space btw. variables is automatically given</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"my age is:"</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span>
+  <span class="s">"and my foot size: "</span><span class="p">,</span> <span class="n">footSize</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="functions">Functions</h2>
+<h3 id="declaration">declaration</h3>
+<p>The basic structure for a Function is</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">functionName</span><span class="p">(</span><span class="n">parameterName</span> <span class="k">type</span><span class="p">)</span> <span class="n">returnType</span> <span class="p">{</span>
+  <span class="c">// code</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The parameters and the return type are optional. So the following is also valid go</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">functionName</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c">// code</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>For consecutive parameters with the same type, it is only needed to declare it once</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// param1 is an int too</span>
+<span class="k">func</span> <span class="n">functionName</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Multiple return values</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">functionName</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span> <span class="kt">int</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span> <span class="o">:=</span> <span class="n">functionName</span><span class="p">(</span><span class="m">12</span><span class="p">,</span> <span class="m">64</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Named, multiple return values</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">functionName</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span> <span class="kt">int</span><span class="p">)(</span><span class="n">result1</span><span class="p">,</span> <span class="n">result2</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">result1</span> <span class="o">=</span> <span class="n">param1</span>
+  <span class="n">result2</span> <span class="o">=</span> <span class="n">param2</span>
+  <span class="k">return</span> <span class="c">// no explicit return value</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="blank-identifier">blank identifier</h3>
+<p><code class="highlighter-rouge">_</code> is known as the blank identifier. It can be used in place of any value of any type to discard it.</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// what happens if I only need result1 and want to discard result2?</span>
+<span class="k">func</span> <span class="n">functionName</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span> <span class="kt">int</span><span class="p">)(</span><span class="n">result1</span><span class="p">,</span> <span class="n">result2</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">result1</span> <span class="o">=</span> <span class="n">param1</span>
+  <span class="n">result2</span> <span class="o">=</span> <span class="n">param2</span>
+  <span class="k">return</span> <span class="c">// no explicit return value</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">param1</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">functionName</span><span class="p">(</span><span class="m">12</span><span class="p">,</span> <span class="m">64</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="packages">Packages</h2>
+<p>Every go exec must have an entry point. This is a <code class="highlighter-rouge">main</code> function which has to reside in the <code class="highlighter-rouge">main</code> package.</p>
+
+<p>We have the following tree:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>src/
+    programm/
+        custom_package/
+            custom.go <span class="c"># custom class</span>
+    programm.go <span class="c"># This is the main</span>
+</code></pre></div></div>
+
+<p>To install the custom package from <code class="highlighter-rouge">/src</code> execute <code class="highlighter-rouge">go install programm</code></p>
+
+<p>To import the contents from <code class="highlighter-rouge">custom.go</code> and use it at <code class="highlighter-rouge">programm.go</code> we’ll have to import it with a relative path</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"packages/custom"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c">// code</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Only the functions which start with a capital letter at <code class="highlighter-rouge">custom.go</code> will be exported and accessible from the outside.</p>
+
+<h2 id="reference">Reference</h2>
+<p><a href="https://golangbot.com/learn-golang-series/">https://golangbot.com/learn-golang-series/</a></p>
+
+
+        
+            <p><a href="/notes/languages/go/code" role="button">Read More</a></p>
+        
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Golang - code cheat sheet&p[summary]=Installation
+Compile
+To compile / build / run in Sublime
+
+  ctrl + shift + P
+  go run
+
+
+Multiple workspaces
+For a custom installation, it...&p[url]=https://julesssss.github.io/notes/languages/go/code" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/languages/go/code&text=Installation
+Compile
+To compile / build / run in Sublime
+
+  ctrl + shift + P
+  go run
+
+
+Multiple workspaces
+For a custom installation, it...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
 
             </main>
