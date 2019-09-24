@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>From Java to Kotlin (1/2) - Basic Syntax | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="From Java to Kotlin (1/2) - Basic Syntax | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="From Java to Kotlin (1/2) - Basic Syntax | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-basic-syntax" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-basic-syntax">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,147 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-06-14T13:57:00+01:00" itemprop="datePublished">14 Jun, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">From Java to Kotlin (1/2) - Basic Syntax</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <p>Guide on differences to jump from Java developer to Kotlin developer.</p>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h4 id="class-instantiation">Class instantiation</h4>
+<p>No <code class="highlighter-rouge">new</code> operator is needed</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="nc">Whatever</span> <span class="o">{</span>
+      <span class="n">fun</span> <span class="nf">createClass</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">val</span> <span class="n">person</span> <span class="o">=</span> <span class="nc">Person</span><span class="o">()</span>
+      <span class="o">}</span>    
+  <span class="o">}</span>
+</code></pre></div></div>
+<!--more-->
+<h4 id="function-declaration">Function declaration</h4>
+<p>Two <code class="highlighter-rouge">Int</code> parameters and an <code class="highlighter-rouge">Int</code> return value</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">sum</span><span class="o">(</span><span class="nl">arg1:</span> <span class="nc">Int</span><span class="o">,</span> <span class="nl">arg2:</span> <span class="nc">Int</span><span class="o">):</span> <span class="nc">Int</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="n">arg1</span> <span class="o">+</span> <span class="n">arg2</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The return value may be inferred and the function used as an expression</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">sum</span><span class="o">(</span><span class="nl">arg1:</span> <span class="nc">Int</span><span class="o">,</span> <span class="nl">arg2:</span> <span class="nc">Int</span><span class="o">)</span> <span class="o">=</span> <span class="n">arg1</span> <span class="o">+</span> <span class="n">arg2</span>
+</code></pre></div></div>
+
+<h4 id="variables">Variables</h4>
+<p>There’re 2 types of variables <code class="highlighter-rouge">val</code> and <code class="highlighter-rouge">var</code>. The first is a read-only variable and the former may be re-assigned.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">variables</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">val</span> <span class="nl">readOnly:</span> <span class="nc">Int</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// type assigned on declaration</span>
+  <span class="kt">var</span> <span class="n">normalVariable</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">// type inferred</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="string-templates">String templates</h4>
+<p>Strings are more powerful than on Java</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">val</span> <span class="n">string1</span> <span class="o">=</span> <span class="s">"a is $a"</span>
+<span class="c1">// would print "a is 1"</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">val</span> <span class="n">string2</span> <span class="o">=</span> <span class="s">"${string1. replace("</span><span class="n">is</span><span class="o">,</span> <span class="s">"was)}, but now is $a"</span>
+<span class="c1">// would print "a was 1, but now is 2"</span>
+</code></pre></div></div>
+
+<h4 id="null-safety">Null Safety</h4>
+<p>Kotlin differences between nullable and non-nullable references</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="nl">nonNullable:</span> <span class="nc">String</span> <span class="o">=</span> <span class="s">"Hello world"</span>
+<span class="n">nonNullable</span> <span class="o">=</span> <span class="kc">null</span> <span class="c1">// compilation error</span>
+
+<span class="kt">var</span> <span class="nl">nullable:</span> <span class="nc">String</span><span class="o">?</span> <span class="o">=</span> <span class="s">"Hello world"</span>
+<span class="n">nullable</span> <span class="o">=</span> <span class="kc">null</span> <span class="c1">// okay</span>
+</code></pre></div></div>
+
+<p>For more information about this, search for my <em>Kotlin - null safety</em> post.</p>
+
+<h4 id="is-operator">‘Is’ operator</h4>
+<p>Checks the type of a variable</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">obj</span> <span class="o">!</span><span class="n">is</span> <span class="nc">String</span><span class="o">)</span>
+  <span class="k">return</span> <span class="kc">null</span>
+<span class="k">else</span>
+  <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="na">length</span> <span class="c1">// automatic cast to string</span>
+</code></pre></div></div>
+
+<h3 id="expressions">Expressions</h3>
+<h4 id="when-expression">‘When’ expression</h4>
+<p>Is similar to Java’s switch</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">whenExpression</span><span class="o">(</span><span class="nl">obj:</span> <span class="nc">Any</span><span class="o">):</span> <span class="nc">String</span> <span class="o">=</span>
+  <span class="n">when</span><span class="o">(</span><span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+    <span class="mi">1</span> <span class="o">-&gt;</span> <span class="s">"one"</span>
+    <span class="s">"hello"</span> <span class="o">-&gt;</span> <span class="s">"greeting"</span>
+    <span class="n">is</span> <span class="nc">Long</span> <span class="o">-&gt;</span> <span class="s">"Long"</span>
+    <span class="k">else</span> <span class="o">-&gt;</span> <span class="s">"anything"</span>
+  <span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="conditional-expressions">Conditional expressions</h4>
+<p>Just as methods, conditionals may be used as expressions</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">cond</span><span class="o">(</span><span class="nl">a:</span> <span class="nc">Int</span><span class="o">,</span> <span class="nl">b:</span> <span class="nc">Int</span><span class="o">)</span> <span class="o">=</span> <span class="k">if</span><span class="o">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">)</span> <span class="n">a</span> <span class="k">else</span> <span class="n">b</span>
+</code></pre></div></div>
+
+<h4 id="if-expression">‘If’ expression</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">ifExpression</span><span class="o">(</span><span class="nl">arg1:</span> <span class="nc">Int</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">val</span> <span class="n">result</span> <span class="o">=</span> <span class="k">if</span><span class="o">(</span><span class="n">arg1</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="s">"one"</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">arg1</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="s">"two"</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="s">"three"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="trycatch-expression">‘Try/catch’ expression</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">tryCatchExpression</span><span class="o">(</span><span class="nl">arg1:</span> <span class="nc">Int</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">val</span> <span class="n">result</span> <span class="o">=</span> <span class="k">try</span> <span class="o">{</span>
+        <span class="n">arg1</span> <span class="o">/</span> <span class="mi">0</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nl">ex:</span> <span class="nc">ArithmeticException</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="nf">IllegalStateException</span><span class="o">(</span><span class="n">ex</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="references">Reference(s)</h3>
+<p><a href="https://kotlinlang.org/docs/reference/basic-syntax.html">https://kotlinlang.org/docs/reference/basic-syntax.html</a></p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=From Java to Kotlin (1/2) - Basic Syntax&p[summary]=Guide on differences to jump from Java developer to Kotlin developer.
+
+Class instantiation
+No new operator is needed
+  class Whatever {
+ ...&p[url]=https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-basic-syntax" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/languages/kotlin/from-java-to-kotlin-basic-syntax&text=Guide on differences to jump from Java developer to Kotlin developer.
+
+Class instantiation
+No new operator is needed
+  class Whatever {
+ ...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

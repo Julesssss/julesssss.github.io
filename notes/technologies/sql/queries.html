@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>SQL cheat-sheet | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="SQL cheat-sheet | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="SQL cheat-sheet | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/technologies/sql/queries" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/technologies/sql/queries">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,134 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-04-02T12:48:00+01:00" itemprop="datePublished">2 Apr, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">SQL cheat-sheet</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <h3 id="ddl-queries">DDL Queries</h3>
+<ul>
+  <li>Show all dbs - <code class="highlighter-rouge">SHOW DATABASES;</code></li>
+  <li>Select one - <code class="highlighter-rouge">USE {$db};</code></li>
+  <li>Show tables in a db - <code class="highlighter-rouge">SHOW TABLES;</code></li>
+  <li>Show description of DB - <code class="highlighter-rouge">DESCRIBE {$db}</code></li>
+</ul>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h5 id="create-new-table">Create new table</h5>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">table_name</span> <span class="p">(</span>
+	<span class="n">id</span> <span class="nb">numeric</span><span class="p">,</span>
+	<span class="n">description</span> <span class="nb">text</span><span class="p">);</span>
+</code></pre></div></div>
+<!--more-->
+<h3 id="dml-queries">DML Queries</h3>
+<h4 id="update">Update</h4>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span> <span class="n">table_redacted</span>
+	<span class="k">SET</span> <span class="k">state</span> <span class="o">=</span> <span class="nv">"IMPORTED"</span>
+	<span class="k">WHERE</span> <span class="k">state</span> <span class="o">=</span> <span class="nv">"EXPORTED_FAILED"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="selects">Selects</h4>
+<h5 id="join">join</h5>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
+	<span class="k">FROM</span> <span class="n">data_transaction</span> <span class="n">t</span> <span class="k">JOIN</span>
+		<span class="n">transaction_item</span> <span class="n">i</span>
+	<span class="k">ON</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">data_transaction_number</span>
+		<span class="o">=</span> <span class="n">i</span><span class="p">.</span><span class="n">data_transaction_id</span><span class="p">)</span>
+	<span class="k">WHERE</span> <span class="n">t</span><span class="p">.</span><span class="n">data_transaction_number</span> <span class="o">=</span> <span class="mi">123456</span><span class="p">;</span>
+</code></pre></div></div>
+<h5 id="and--or-preference-order">and / or preference order</h5>
+<p>The category HAS to be <code class="highlighter-rouge">SG</code> OR <code class="highlighter-rouge">SH</code> + all the previous conditions.</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span> <span class="k">type</span><span class="p">,</span> <span class="k">operator</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="k">state</span>
+	<span class="k">FROM</span> <span class="k">prefix</span><span class="p">.</span><span class="n">table_redacted</span>
+	<span class="k">WHERE</span> <span class="k">type</span> <span class="o">=</span> <span class="nv">"S"</span>
+	<span class="k">AND</span> <span class="k">operator</span> <span class="o">!=</span> <span class="nv">"ASD"</span>
+	<span class="k">AND</span> <span class="p">(</span><span class="n">category</span> <span class="o">=</span> <span class="nv">"SG"</span>
+	<span class="k">OR</span> <span class="n">category</span> <span class="o">=</span> <span class="nv">"SH"</span><span class="p">)</span>
+	<span class="k">LIMIT</span> <span class="mi">200</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h5 id="having">having</h5>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">title</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+	<span class="k">FROM</span> <span class="n">appointment</span>
+	<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">title</span><span class="p">,</span> <span class="n">start_date</span>
+	<span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
+	<span class="k">ORDER</span> <span class="k">BY</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h5 id="date-like">date like</h5>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+	<span class="k">FROM</span> <span class="n">invoice_position</span>
+	<span class="k">WHERE</span> <span class="n">reference_date</span> <span class="k">LIKE</span> <span class="nv">"%2019-01%"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h5 id="between">between</h5>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">state</span>
+	<span class="k">FROM</span> <span class="n">invoice_position</span>
+	<span class="k">WHERE</span> <span class="n">id</span> <span class="k">BETWEEN</span> <span class="mi">140</span> <span class="k">AND</span> <span class="mi">144</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="subqueries">Subqueries</h4>
+<p>Find all Items from all Invoices, which belong to a transaction with a card_uid <code class="highlighter-rouge">0410ed522d5e81</code></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">transaction_item</span>
+<span class="k">WHERE</span> <span class="n">data_transaction_id</span> <span class="k">IN</span> <span class="p">(</span>
+	<span class="k">SELECT</span> <span class="n">data_transaction_number</span>
+		<span class="k">FROM</span> <span class="n">data_transaction</span>
+		<span class="k">WHERE</span> <span class="n">card_uid</span> <span class="o">=</span> <span class="nv">"0410ed522d5e81"</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>Delete all invoices except the ones with the card uids I want</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DELETE</span>
+<span class="k">FROM</span> <span class="n">data_transaction</span>
+<span class="k">WHERE</span> <span class="n">data_transaction_number</span> <span class="k">NOT</span> <span class="k">IN</span><span class="p">(</span>
+	<span class="k">SELECT</span> <span class="n">data_transaction_number</span>
+	<span class="k">FROM</span>
+	<span class="p">(</span><span class="k">SELECT</span> <span class="n">data_transaction_number</span>
+		<span class="k">FROM</span> <span class="n">data_transaction</span>
+		<span class="k">WHERE</span> <span class="n">card_uid</span> <span class="o">=</span> <span class="nv">"0410ed522d5e81"</span>
+		<span class="k">OR</span> <span class="n">card_uid</span> <span class="o">=</span> <span class="nv">"0464cd3a2b5e80"</span>
+	<span class="p">)</span> <span class="n">invoice</span>
+<span class="p">);</span>
+</code></pre></div></div>
+<h3 id="reference">Reference</h3>
+<p><a href="https://www.w3schools.in/mysql/ddl-dml-dcl/">https://www.w3schools.in/mysql/ddl-dml-dcl/</a></p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=SQL cheat-sheet&p[summary]=DDL Queries
+
+  Show all dbs - SHOW DATABASES;
+  Select one - USE {$db};
+  Show tables in a db - SHOW TABLES;
+  Show description of DB - D...&p[url]=https://julesssss.github.io/notes/technologies/sql/queries" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/technologies/sql/queries&text=DDL Queries
+
+  Show all dbs - SHOW DATABASES;
+  Select one - USE {$db};
+  Show tables in a db - SHOW TABLES;
+  Show description of DB - D...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

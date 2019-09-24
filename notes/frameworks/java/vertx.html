@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Java frameworks - Vertx notes | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Java frameworks - Vertx notes | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Java frameworks - Vertx notes | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/frameworks/java/vertx" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/frameworks/java/vertx">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,89 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-03-06T12:29:00+00:00" itemprop="datePublished">6 Mar, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">Java frameworks - Vertx notes</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <h3 id="compile--execute">Compile &amp; execute:</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn clean <span class="nb">install  
+</span>java <span class="nt">-jar</span> target/[substitute_with_name]-fat.jar <span class="nt">-cluster</span>
+</code></pre></div></div>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h3 id="standard-vs-worker-verticle">Standard vs Worker Verticle</h3>
+<p>Concurrency is handled completely by Vert.x</p>
+
+<p>When created, a <em>standard verticle</em> will have one Event-loop assigned to it (it’ll always use the same) and the start method it’s called within that Event-loop.
+If it calls other Handlers, it can guarantee that they’ll be executed in the same Event-Loop<br />
+Meanwhile, a <em>worker verticle</em> will have a different Thread assigned to it, everytime it wants to perform a Job.<br />
+If you’re able to use a standard verticle for <em>non-blocking</em> jobs, you’ll save resources every time you execute code with it.</p>
+
+<p>A standard verticle runs in an Event-Loop thread (one of many). If they’re completely blocked, <strong>the whole Program will be blocked and it will just halt.</strong>
+On the other side, the worker verticles run on a different Thread than the main event-loop, so they’re perfect to execute blocking code (another option is an inline <em>.executeBlocking()</em> call). They will never be executed by more than one Thread simultaneously, but they may be executed each time by different Threads.</p>
+
+<p>The downside of using always workers, is that the max. concurrency achievable is much lesser than using normal verticles + workers. With a lot of blocking tasks, you may create a processing queue.
+<!--more--></p>
+<h3 id="multi-threaded-worker-verticles">Multi-threaded worker verticles</h3>
+<p>It can be executed by more than one Thread concurrently. Standard Java techniques for concurrency will be needed when programming. It’s an advanced feature and they’re not supported through all of Vert.x parts.</p>
+
+<h4 id="references">References</h4>
+<p><a href="https://vertx.io/docs/vertx-core/java/#_verticle_types">https://vertx.io/docs/vertx-core/java/#_verticle_types</a><br />
+<a href="https://groups.google.com/forum/#!topic/vertx/4HdQvi2jIJ8">https://groups.google.com/forum/#!topic/vertx/4HdQvi2jIJ8</a></p>
+
+<h3 id="polyglot-verticles">Polyglot Verticles</h3>
+<p><em>(For the example, I’ve used JS)</em><br />
+It needs a new dependency in our <em>pom.xml</em></p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>io.vertx<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>vertx-lang-js<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>3.0.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+<p>Watch out as by default <code class="highlighter-rouge">mvn clean install</code> does not pack <em>*.js</em> files into a <em>-fat.jar</em> if they’re in a default java package. I’ve solved this, by writting the <em>.js</em> verticle into the <em>/resources</em> folder.<br />
+Also, for the <em>.js</em> case, it may be needed to install <em>npm</em> and <em>vertx-3</em> dependencies for it to work.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>npm
+npm <span class="nb">install </span>vertx3-min
+</code></pre></div></div>
+<h4 id="reference">Reference</h4>
+<p><a href="https://github.com/vert-x3/vertx-examples/tree/master/core-examples/src/main/js">https://github.com/vert-x3/vertx-examples/tree/master/core-examples/src/main/js</a></p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Java frameworks - Vertx notes&p[summary]=Compile &amp; execute:
+mvn clean install  
+java -jar target/[substitute_with_name]-fat.jar -cluster
+
+
+Standard vs Worker Verticle
+Concurr...&p[url]=https://julesssss.github.io/notes/frameworks/java/vertx" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frameworks/java/vertx&text=Compile &amp; execute:
+mvn clean install  
+java -jar target/[substitute_with_name]-fat.jar -cluster
+
+
+Standard vs Worker Verticle
+Concurr...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

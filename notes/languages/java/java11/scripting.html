@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Java11 - Run file as a script | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Java11 - Run file as a script | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Java11 - Run file as a script | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/languages/java/java11/scripting" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/languages/java/java11/scripting">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,49 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-03-20T17:09:00+00:00" itemprop="datePublished">20 Mar, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">Java11 - Run file as a script</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <p><em>(This uses &gt; java11)</em></p>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<p>To run a file as Java, we don’t need to do anything special to the <code class="highlighter-rouge">.java</code> file. Just write a class with a <code class="highlighter-rouge">main()</code> method and call it with <code class="highlighter-rouge">java --source 11 file.java</code></p>
+
+<h2 id="linux-shebang">Linux Shebang</h2>
+<p>To start it as a script in Linux we need to add java’s shebang <code class="highlighter-rouge">#!/opt/jdk-11/bin/java --source 11</code> and do it executable <code class="highlighter-rouge">chmod +x file.java</code>. The shebang may need to be replaced if the java path is different.</p>
+
+<h2 id="important">Important</h2>
+<p>If we’re starting a java file as a script, the file’s name <strong>cannot</strong> end with <code class="highlighter-rouge">.java</code> or it won’t work.</p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Java11 - Run file as a script&p[summary]=(This uses &gt; java11)
+
+To run a file as Java, we don’t need to do anything special to the .java file. Just write a class with a main() ...&p[url]=https://julesssss.github.io/notes/languages/java/java11/scripting" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/languages/java/java11/scripting&text=(This uses &gt; java11)
+
+To run a file as Java, we don’t need to do anything special to the .java file. Just write a class with a main() ...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

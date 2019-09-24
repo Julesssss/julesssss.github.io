@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Jekyll | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Jekyll | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Jekyll | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/frontend/jekyll" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/frontend/jekyll">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,117 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-03-06T12:35:00+00:00" itemprop="datePublished">6 Mar, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">Jekyll</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <p><a href="http://jekyllrb.com/">Jekyll</a> is a blog-aware static site generator, written in ruby. It’s used for <a href="https://pages.github.com/">Github Pages</a> and it transforms files written in markdown and liquid into a full HTML web.</p>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h2 id="installation">Installation</h2>
+<p>Pre-requirements:</p>
+<ul>
+  <li><code class="highlighter-rouge">sudo apt-get install ruby-full build-essential zliblg-dev</code></li>
+  <li><code class="highlighter-rouge">sudo gem install jekyll bundler</code></li>
+</ul>
+
+<h2 id="configuration">Configuration</h2>
+<p>The basic config is under <code class="highlighter-rouge">_config.yml</code>
+<!--more--></p>
+<h2 id="usage">Usage</h2>
+<h3 id="local">Local</h3>
+<p>This goes well to test new changes in local. To see how it would look when deployed.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">sudo jekyll new myBlog</code> creates a myBlog folder with all to start. <em>(Only first time).</em></li>
+  <li><code class="highlighter-rouge">sudo bundle exec jekyll serve</code> inside this folder, starts web server at  <code class="highlighter-rouge">localhost:4000</code></li>
+</ul>
+
+<h3 id="github-pages">Github Pages</h3>
+<p>Just edit the <code class="highlighter-rouge">.md</code> files, do a push and it will be automatically updated.</p>
+
+<h2 id="code">Code</h2>
+<h3 id="file-example">file example</h3>
+<p>It will be automatically rendered. The code btw. <code class="highlighter-rouge">---</code> tags is metadata for jekyll.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: page
+title: About
+date:   2019-03-01 16:48:18 +0100
+categories: test post
+permalink: /oh-no/
+---
+
+Oh no! This is a new post.
+</code></pre></div></div>
+
+<h3 id="layouts">layouts</h3>
+<p>Default theme: <a href="https://jekyll.github.io/minima/">minima</a></p>
+
+<h4 id="custom-theme">custom theme</h4>
+<p>Steps to get it running:</p>
+
+<ol>
+  <li>unzip file</li>
+  <li>run <code class="highlighter-rouge">gem instal jekyll bundler</code></li>
+  <li>copy everything from the theme and override everything created by default when <code class="highlighter-rouge">jekyll new myBlog</code></li>
+  <li>run <code class="highlighter-rouge">bundle install</code></li>
+  <li>vim <code class="highlighter-rouge">Gemfile</code> and modify the values <code class="highlighter-rouge">wdm</code> and <code class="highlighter-rouge">&gt;=0.1.0</code> for <code class="highlighter-rouge">listen</code> and <code class="highlighter-rouge">~&gt; 3.0</code>. <em>(This is because wdm is only for windows. Listen is compatible with Linux).</em></li>
+  <li>Modify at <code class="highlighter-rouge">index.md</code> the current value for <code class="highlighter-rouge">default</code></li>
+  <li><code class="highlighter-rouge">bundle exec jekyll serve</code></li>
+</ol>
+
+<h5 id="custom-changes">custom changes</h5>
+<ol>
+  <li>
+    <p>made home a variable.<br />
+Changed the value <code class="highlighter-rouge">Home</code> at the sidebar from a constant to a variable. Made this setting a variable into <code class="highlighter-rouge">_config.yml</code> and calling it at <code class="highlighter-rouge">sidebar.html</code> with <code class="highlighter-rouge">About</code></p>
+  </li>
+  <li>
+    <p>order main menu buttons<br />
+changes at <code class="highlighter-rouge">sidebar.html</code>. Will need a fix when <code class="highlighter-rouge">liquid</code> arrays are improved.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {% assign current_index = 0 %}
+ {% for page in site.pages %}
+ &lt;!-- For every page to check, start a new for loop with counter++ and check if it's the turn for the page to be inserted. --&gt;
+     {% for p in site.pages %}
+         {% if p.layout == 'page' and p.order == current_index %}
+             &lt;a href="{{ p.url | prepend: site.baseurl | prepend: site.url }}" {% if p.url == page.url %}class="active"{% endif %}&gt;{{ p.title }}&lt;/a&gt;
+             {% assign current_index = current_index | plus:1 %}
+         {% endif %}
+     {% endfor %}
+ {% endfor %}
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h5 id="twitter-handle">twitter handle</h5>
+<p>At <code class="highlighter-rouge">_config.yml</code>. I’ve just changed the variable <code class="highlighter-rouge">twitter_username</code> for <code class="highlighter-rouge">linkedin_username</code> as I do not want my Twitter to be public for this kind of things.</p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Jekyll&p[summary]=Jekyll is a blog-aware static site generator, written in ruby. It’s used for Github Pages and it transforms files written in markdown and...&p[url]=https://julesssss.github.io/notes/frontend/jekyll" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frontend/jekyll&text=Jekyll is a blog-aware static site generator, written in ruby. It’s used for Github Pages and it transforms files written in markdown and...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

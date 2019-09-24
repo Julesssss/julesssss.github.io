@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>MongoDB | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="MongoDB | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="MongoDB | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/technologies/mongo" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/technologies/mongo">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,200 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-03-18T13:24:00+00:00" itemprop="datePublished">18 Mar, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">MongoDB</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <h2 id="config">Config</h2>
+<p>Config. to run MongoDB</p>
+<ol>
+  <li>Set <code class="highlighter-rouge">PATH</code> as system variable (<code class="highlighter-rouge">~/.bashrc</code>)</li>
+  <li>Create folders <code class="highlighter-rouge">/data/db</code> and set <code class="highlighter-rouge">rw-</code> permissions to correct user.</li>
+  <li>start <code class="highlighter-rouge">mongod</code></li>
+</ol>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h2 id="queries">Queries</h2>
+<h3 id="find">Find</h3>
+<h4 id="by-element">by element</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.getCollection('documentX').find({ _id : ObjectId("5b7e99a9149559198c5024a4") })
+</code></pre></div></div>
+<!--more-->
+<h4 id="by-sub-element">by sub-element</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.getCollection('doc').find({ "doc.$id" : ObjectId("5bc6ea45c9979cda5f1a7ed6") })
+</code></pre></div></div>
+
+<h4 id="like">like</h4>
+<p>Fields which contains question mark</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.getCollection('doc').find({ "title": /�/ })
+</code></pre></div></div>
+
+<h4 id="sort-by">sort by</h4>
+<p>Latest created</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.getCollection('doc').find({}).sort({ "createdAt":-1 })
+</code></pre></div></div>
+
+<h4 id="limit-results">limit results</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.getCollection('doc').find({}).limit(5)
+</code></pre></div></div>
+
+<h4 id="and--or">and / or</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.getCollection('doc').find({
+    $and : [
+        { "subelement.$id" : ObjectId("58b57fcdc998001a00000004") },
+        { "field2" : "CAR" }
+    ]
+})
+</code></pre></div></div>
+
+<h4 id="date">date</h4>
+<p>greater or equal</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.getCollection('doc').find({
+    "createdAt" : { $gte : new ISODate("2018-10-09 00:00:00.000Z") }
+})
+</code></pre></div></div>
+
+<h4 id="not-equal">not equal</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.getCollection('doc').find({
+    $and : [
+        { "field" : "90" },
+        { "field2" : { $ne : 2 } }
+    ]
+})
+</code></pre></div></div>
+
+<h3 id="subquery">Subquery</h3>
+
+<p>Every doc contains a provided_doc, but from provided_doc I cannot go back to doc.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Obtain all ids from provided_docs which have a competitionId = 90 &amp; regionID != 1
+var docs = db.getCollection('provided_doc').find({
+    $and : [
+        { "competitionId" : "90" },
+        { "regionID" : { $ne : 1 } }
+    ]
+}).map(function(providedDoc) {
+    return providedDoc._id
+});
+
+// search all docs which contain a provided_doc with one of those ids
+db.getCollection('doc').find({"doc.$id" : { $in:docs }});
+</code></pre></div></div>
+<h3 id="check-for-nulls">Check for Nulls</h3>
+<p>Try both options, they may give different results back.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.getCollection('doc_event').find({"orderNum" : {$exists:false}})  
+db.getCollection('doc_event').find({ "orderNum" : null })
+</code></pre></div></div>
+
+<h3 id="update">Update</h3>
+<p><strong>Only change “firstName”</strong> field of this object</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.player.update(
+    { "_id" : ObjectId("5b7e77060e885706eb574118") },
+    { $set :
+        {"firstName" : "Sacha"}
+     }
+)
+</code></pre></div></div>
+
+<h2 id="databases">Databases</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">db</code> - show current database</li>
+  <li><code class="highlighter-rouge">show dbs</code> - show all databases with size</li>
+  <li><code class="highlighter-rouge">use $db</code> - create / select database</li>
+</ul>
+
+<p>drop database</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	use $db
+	$db.dropDatabase()
+</code></pre></div></div>
+
+<h2 id="collections">Collections</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">show collections</code> - show all collections</li>
+  <li><code class="highlighter-rouge">db.collection.drop()</code> - <strong>drop</strong> collection</li>
+</ul>
+
+<p>Create collection</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.createCollection($name, $options {capped, autoIndexId, size, max }) # Parameters
+db.createCollection("my-col", { capped : false, autoIndexId : true})
+</code></pre></div></div>
+
+<h2 id="documents">Documents</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">db.collection.find().pretty()</code> - query all</li>
+</ul>
+
+<p>Create</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.collection.insert({
+	title : "First Document",
+	description : "My first created document",
+	by : "msanchez",
+	url : "www.google.es",
+	tags : ["mongodb", "document", "first"],
+	likes : 100
+})
+</code></pre></div></div>
+
+<h2 id="misc">Misc</h2>
+<h3 id="see-list-of-changes">see list of changes:</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.getCollection('jv_snapshots').find({"globalId.cdoId": "5b7e77060e885706eb574109"})
+</code></pre></div></div>
+
+<h3 id="special-chars">Special chars</h3>
+<p>To select something with specials chars in the same:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.myCollection.drop()      # Collection w. camel case.
+db["my-collection"].drop()  # Collection w. symbols in the name.
+</code></pre></div></div>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=MongoDB&p[summary]=Config
+Config. to run MongoDB
+
+  Set PATH as system variable (~/.bashrc)
+  Create folders /data/db and set rw- permissions to correct use...&p[url]=https://julesssss.github.io/notes/technologies/mongo" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/technologies/mongo&text=Config
+Config. to run MongoDB
+
+  Set PATH as system variable (~/.bashrc)
+  Create folders /data/db and set rw- permissions to correct use...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

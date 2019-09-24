@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Category: frameworks | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Category: frameworks | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Category: frameworks | Jules Rosser &mdash; Android Engineer " />
 
-    <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
-    <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
-    <meta name="twitter:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
+    <meta name="description" content="Category: frameworks">
+    <meta name="description" property="og:description" content="Category: frameworks" />
+    <meta name="twitter:description" content="Category: frameworks" />
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/categories/frameworks/" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/categories/frameworks/">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,17 +7486,408 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <h1>Posts From Category: frameworks</h1>
+
+
+<article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-08-13T13:40:00+01:00" itemprop="datePublished">13 Aug, 2019</time></li>
+            
+        </ul>
+        <h2 itemprop="name headline"><a href="https://julesssss.github.io/notes/frameworks/java/spring/cors">Spring CORS</a></h2>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <h2 id="cors-cross-origin-resource-sharing">CORS (Cross-Origin Resource Sharing)</h2>
+<p>It’s a mechanism to let a web application running at one domain, protocol or port have permission to access resources from a server at a different one.</p>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<p>This is needed if you have, for example, a Frontend running on port :3000 (React) consuming a Backend API running on port :34831 (custom port for Spring). Unless CORS are set, FE will not be able to access BE resources.</p>
 
+<h2 id="in-spring">In Spring</h2>
+<p>It’s possible to enable them for a single <code class="highlighter-rouge">RestResource</code> or globally for the whole application.</p>
+
+<p><em>(This example has been done in Kotlin)</em></p>
+
+<h3 id="by-restresource">By RestResource</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RestController</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"courses"</span><span class="o">)</span>
+<span class="nd">@CrossOrigin</span><span class="o">(</span><span class="s">"http://localhost:3000"</span><span class="o">)</span>
+<span class="kd">class</span> <span class="nc">CourseRestResource</span> <span class="o">{</span>
+  <span class="c1">// dependencies and methods</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+
+
+        
+            <p><a href="/notes/frameworks/java/spring/cors" role="button">Read More</a></p>
+        
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Spring CORS&p[summary]=CORS (Cross-Origin Resource Sharing)
+It’s a mechanism to let a web application running at one domain, protocol or port have permission to...&p[url]=https://julesssss.github.io/notes/frameworks/java/spring/cors" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frameworks/java/spring/cors&text=CORS (Cross-Origin Resource Sharing)
+It’s a mechanism to let a web application running at one domain, protocol or port have permission to...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
+</article>
+
+<article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        <ul>
+            <li><time datetime="2019-04-03T12:10:00+01:00" itemprop="datePublished">3 Apr, 2019</time></li>
+            
+        </ul>
+        <h2 itemprop="name headline"><a href="https://julesssss.github.io/notes/frameworks/java/spring/spring-in-action">Spring in Action (1/5) - Foundational Spring</a></h2>
+    </header>
+
+    <div class="post-content">
+        <p><em>(This are my notes taken from the book Spring in Action 5th Edition)</em></p>
+
+<h2 id="spring-parts">Spring parts</h2>
+<ul>
+  <li><code class="highlighter-rouge">Spring core</code> Provides the core container, dependency injection framework, Spring MVC (Rest APIs), Spring’s web framework and support for template-based JDBC and reactive programming with Spring WebFlux.</li>
+  <li><code class="highlighter-rouge">Spring boot</code> Starter dependencies and autoconfiguration.</li>
+  <li><code class="highlighter-rouge">Spring data</code> Provides the ability to define your application’s data repository as Java interfaces. Works with relational (JPA), document (Mongo) and graph (Neo4j) databases.</li>
+  <li><code class="highlighter-rouge">Spring security</code> Authentication, authorization and API security.</li>
+  <li><code class="highlighter-rouge">Spring integration &amp; Batch</code> helps integrate with other applications</li>
+  <li><code class="highlighter-rouge">Spring cloud</code> helps with microservices</li>
+</ul>
+
+
+
+        
+            <p><a href="/notes/frameworks/java/spring/spring-in-action" role="button">Read More</a></p>
+        
+    </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Spring in Action (1/5) - Foundational Spring&p[summary]=(This are my notes taken from the book Spring in Action 5th Edition)
+
+Spring parts
+
+  Spring core Provides the core container, dependency...&p[url]=https://julesssss.github.io/notes/frameworks/java/spring/spring-in-action" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frameworks/java/spring/spring-in-action&text=(This are my notes taken from the book Spring in Action 5th Edition)
+
+Spring parts
+
+  Spring core Provides the core container, dependency...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
+</article>
+
+<article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        <ul>
+            <li><time datetime="2019-04-01T13:40:00+01:00" itemprop="datePublished">1 Apr, 2019</time></li>
+            
+        </ul>
+        <h2 itemprop="name headline"><a href="https://julesssss.github.io/notes/frameworks/java/spring/thymeleaf">Thymeleaf</a></h2>
+    </header>
+
+    <div class="post-content">
+        <p>Thymeleaf is an HTML template engine, which provides full Spring support.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3&gt;</span>Designate your wrap:<span class="nt">&lt;h3&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">th:each=</span><span class="s">"ingredient: ${wrap}"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"ingredients"</span> <span class="na">type=</span><span class="s">"checkbox"</span>
+            <span class="na">th:value=</span><span class="s">"${ingredient.id}"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">th:text=</span><span class="s">"${ingredient.name}"</span><span class="nt">&gt;</span>ING<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;br/&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="operators">Operators</h2>
+<ul>
+  <li><code class="highlighter-rouge">@{}</code> produces a context-relative path to the <code class="highlighter-rouge">/static/</code> folder</li>
+</ul>
+
+<h2 id="simple-tags">Simple Tags</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">th:src="@{images/taco.png}"</code> retrieves an image with relative path from <code class="highlighter-rouge">/static/</code></li>
+  <li><code class="highlighter-rouge">th:href="@{/styles.css}"</code> retrieve a css file</li>
+</ul>
+
+
+
+        
+            <p><a href="/notes/frameworks/java/spring/thymeleaf" role="button">Read More</a></p>
+        
+    </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Thymeleaf&p[summary]=Thymeleaf is an HTML template engine, which provides full Spring support.
+
+&lt;h3&gt;Designate your wrap:&lt;h3&gt;
+  &lt;div th:each="in...&p[url]=https://julesssss.github.io/notes/frameworks/java/spring/thymeleaf" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frameworks/java/spring/thymeleaf&text=Thymeleaf is an HTML template engine, which provides full Spring support.
+
+&lt;h3&gt;Designate your wrap:&lt;h3&gt;
+  &lt;div th:each="in...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
+</article>
+
+<article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        <ul>
+            <li><time datetime="2019-03-25T12:09:00+00:00" itemprop="datePublished">25 Mar, 2019</time></li>
+            
+        </ul>
+        <h2 itemprop="name headline"><a href="https://julesssss.github.io/notes/frameworks/java/spring/beans">Spring Beans</a></h2>
+    </header>
+
+    <div class="post-content">
+        <p>A spring bean is the basic building block of a Spring App. In its basis, it’s an Object which Spring Framework manages at runtime.</p>
+
+<p>This management includes:</p>
+<ul>
+  <li>Creating an Object</li>
+  <li>Filling dependencies</li>
+  <li>Intercepting method calls</li>
+  <li>Destroying the Object</li>
+</ul>
+
+<h2 id="define-a-spring-bean">Define a Spring Bean</h2>
+<p>There’re 3 ways:</p>
+
+<ul>
+  <li>declare it with <code class="highlighter-rouge">@Component</code> annotation</li>
+  <li><code class="highlighter-rouge">@Bean</code> annotation at a Bean Factory</li>
+  <li><code class="highlighter-rouge">.xml</code> config. file <em>(old way)</em></li>
+</ul>
+
+
+
+        
+            <p><a href="/notes/frameworks/java/spring/beans" role="button">Read More</a></p>
+        
+    </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Spring Beans&p[summary]=A spring bean is the basic building block of a Spring App. In its basis, it’s an Object which Spring Framework manages at runtime.
+
+This ...&p[url]=https://julesssss.github.io/notes/frameworks/java/spring/beans" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frameworks/java/spring/beans&text=A spring bean is the basic building block of a Spring App. In its basis, it’s an Object which Spring Framework manages at runtime.
+
+This ...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
+</article>
+
+<article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        <ul>
+            <li><time datetime="2019-03-06T12:31:00+00:00" itemprop="datePublished">6 Mar, 2019</time></li>
+            
+        </ul>
+        <h2 itemprop="name headline"><a href="https://julesssss.github.io/notes/frameworks/java/spring/cache">Spring Cache</a></h2>
+    </header>
+
+    <div class="post-content">
+        <h3 id="spring-cache">Spring Cache</h3>
+<p>A cache itself may be imagined as a key-value map. For a basic Cache we need:</p>
+<ul>
+  <li><code class="highlighter-rouge">@EnableCaching</code> tag in <code class="highlighter-rouge">@Configuration</code> class</li>
+  <li>Declare a <code class="highlighter-rouge">CacheManager</code> Bean</li>
+  <li>Tag the method to cache w. <code class="highlighter-rouge">@Cacheable</code></li>
+  <li>Create a method with <code class="highlighter-rouge">@CacheEvict</code></li>
+</ul>
+
+<p>We may declare +1 cache(s) at the cache manager and select the one we want to use in the method we tag. As key for the cache we may use any conjunction of the parameters given to the method, or if this is a class, any of it’s accessible variables. The cache will only be triggered when the exact key is given again. <strong>Then the method won’t be executed</strong> and the value will be directly given from the cache. If the parameters don’t match any key, the method will be executed as normal and then the value will be saved into the cache to be returned the next time.</p>
+
+<p>Caution with logs in big apps as they need to be written accordingly.<br />
+The hard part is not knowing when to cache something, but to know when to Evict the cache.</p>
+
+
+
+        
+            <p><a href="/notes/frameworks/java/spring/cache" role="button">Read More</a></p>
+        
+    </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Spring Cache&p[summary]=Spring Cache
+A cache itself may be imagined as a key-value map. For a basic Cache we need:
+
+  @EnableCaching tag in @Configuration class
+...&p[url]=https://julesssss.github.io/notes/frameworks/java/spring/cache" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frameworks/java/spring/cache&text=Spring Cache
+A cache itself may be imagined as a key-value map. For a basic Cache we need:
+
+  @EnableCaching tag in @Configuration class
+...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
+</article>
+
+<article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        <ul>
+            <li><time datetime="2019-03-06T12:29:00+00:00" itemprop="datePublished">6 Mar, 2019</time></li>
+            
+        </ul>
+        <h2 itemprop="name headline"><a href="https://julesssss.github.io/notes/frameworks/java/vertx">Java frameworks - Vertx notes</a></h2>
+    </header>
+
+    <div class="post-content">
+        <h3 id="compile--execute">Compile &amp; execute:</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn clean <span class="nb">install  
+</span>java <span class="nt">-jar</span> target/[substitute_with_name]-fat.jar <span class="nt">-cluster</span>
+</code></pre></div></div>
+
+<h3 id="standard-vs-worker-verticle">Standard vs Worker Verticle</h3>
+<p>Concurrency is handled completely by Vert.x</p>
+
+<p>When created, a <em>standard verticle</em> will have one Event-loop assigned to it (it’ll always use the same) and the start method it’s called within that Event-loop.
+If it calls other Handlers, it can guarantee that they’ll be executed in the same Event-Loop<br />
+Meanwhile, a <em>worker verticle</em> will have a different Thread assigned to it, everytime it wants to perform a Job.<br />
+If you’re able to use a standard verticle for <em>non-blocking</em> jobs, you’ll save resources every time you execute code with it.</p>
+
+<p>A standard verticle runs in an Event-Loop thread (one of many). If they’re completely blocked, <strong>the whole Program will be blocked and it will just halt.</strong>
+On the other side, the worker verticles run on a different Thread than the main event-loop, so they’re perfect to execute blocking code (another option is an inline <em>.executeBlocking()</em> call). They will never be executed by more than one Thread simultaneously, but they may be executed each time by different Threads.</p>
+
+<p>The downside of using always workers, is that the max. concurrency achievable is much lesser than using normal verticles + workers. With a lot of blocking tasks, you may create a processing queue.</p>
+
+
+
+        
+            <p><a href="/notes/frameworks/java/vertx" role="button">Read More</a></p>
+        
+    </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Java frameworks - Vertx notes&p[summary]=Compile &amp; execute:
+mvn clean install  
+java -jar target/[substitute_with_name]-fat.jar -cluster
+
+
+Standard vs Worker Verticle
+Concurr...&p[url]=https://julesssss.github.io/notes/frameworks/java/vertx" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frameworks/java/vertx&text=Compile &amp; execute:
+mvn clean install  
+java -jar target/[substitute_with_name]-fat.jar -cluster
+
+
+Standard vs Worker Verticle
+Concurr...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
+</article>
+
+<article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        <ul>
+            <li><time datetime="2019-03-06T12:28:00+00:00" itemprop="datePublished">6 Mar, 2019</time></li>
+            
+        </ul>
+        <h2 itemprop="name headline"><a href="https://julesssss.github.io/notes/frameworks/java/testing">Java testing notes</a></h2>
+    </header>
+
+    <div class="post-content">
+        <h2 id="codeartes-catch-exception">Codearte’s Catch exception</h2>
+<p>The only thing it does, it’s to do a bit easier to test and assert for exceptions in a Test Driven Development-like way. <strong>To use together with AssertJ.</strong> It only has two methods which are useful to me:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// When</span>
+<span class="nc">BDDCatchException</span><span class="o">.</span><span class="na">when</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">instance</span><span class="o">)</span>  
+	<span class="o">.</span><span class="na">methodWhichThrowsException</span><span class="o">();</span>
+
+<span class="c1">// Then</span>
+<span class="nc">Assertions</span>  
+<span class="o">.</span><span class="na">assertThat</span><span class="o">(</span><span class="nc">BDDCatchException</span><span class="o">.</span><span class="na">caughtException</span><span class="o">())</span>  
+<span class="o">.</span><span class="na">isNotNull</span><span class="o">()</span>  
+<span class="o">.</span><span class="na">isExactlyInstanceOf</span><span class="o">(</span><span class="nc">IndexOutOfBoundsException</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h4 id="reference">Reference</h4>
+<p><a href="https://github.com/Codearte/catch-exception">https://github.com/Codearte/catch-exception</a></p>
+
+
+
+        
+            <p><a href="/notes/frameworks/java/testing" role="button">Read More</a></p>
+        
+    </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Java testing notes&p[summary]=Codearte’s Catch exception
+The only thing it does, it’s to do a bit easier to test and assert for exceptions in a Test Driven Development...&p[url]=https://julesssss.github.io/notes/frameworks/java/testing" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frameworks/java/testing&text=Codearte’s Catch exception
+The only thing it does, it’s to do a bit easier to test and assert for exceptions in a Test Driven Development...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
 
             </main>

@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Category: java10 | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Category: java10 | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Category: java10 | Jules Rosser &mdash; Android Engineer " />
 
-    <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
-    <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
-    <meta name="twitter:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
+    <meta name="description" content="Category: java10">
+    <meta name="description" property="og:description" content="Category: java10" />
+    <meta name="twitter:description" content="Category: java10" />
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/categories/java10/" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/categories/java10/">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,17 +7486,60 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <h1>Posts From Category: java10</h1>
+
+
+<article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-03-04T16:57:00+00:00" itemprop="datePublished">4 Mar, 2019</time></li>
+            
+        </ul>
+        <h2 itemprop="name headline"><a href="https://julesssss.github.io/notes/languages/java/java8-to-java11">From Java8 to Java11</a></h2>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <p>This is a list of the changes at Java’s API I found interesting or that I may use frecuently. Not all the changes from Java9, 10 &amp; 11 are listed here.</p>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h2 id="java-9">Java 9</h2>
 
+<h3 id="java-repl-jshell">Java REPL (JShell)</h3>
+<p>It stands for <em>Java Shell</em>. It’s used to easily execute and test any Java construction like a class, interface, enum, etc.</p>
+
+<h3 id="module-system">Module System</h3>
+<p>The way we deploy Java-Based applications using jars has a lot of limitations &amp; drawbacks. Some of these are: The JRE &amp; JDK are too big; JAR files are too big to use in small devices and applications; There’s no strong encapsulation, <em>public</em> is open to everyone.</p>
+
+<p>The new Module System introduces new features to avoid all this. <a href="https://www.journaldev.com/13106/java-9-modules">More information here.</a></p>
+
+<h3 id="factory-methods-for-inmutable-collections-list-map-set--mapentry">Factory Methods for Inmutable Collections (List, Map, Set &amp; Map.Entry)</h3>
+<p><em>(I’ll use Lists as an example in this file, but this is valid for Maps and Sets too)</em></p>
+
+<p>Until Java8 we could use <code class="highlighter-rouge">Collections.unmodifiableList()</code> to achieve this, but this is really verbose. Now we can do the same with</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span> <span class="n">inmutableList</span> <span class="o">=</span> <span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"bla"</span><span class="o">,</span> <span class="s">"ble"</span><span class="o">,</span> <span class="s">"bli"</span><span class="o">);</span>
+</code></pre></div></div>
+
+
+
+        
+            <p><a href="/notes/languages/java/java8-to-java11" role="button">Read More</a></p>
+        
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=From Java8 to Java11&p[summary]=This is a list of the changes at Java’s API I found interesting or that I may use frecuently. Not all the changes from Java9, 10 &amp; 11...&p[url]=https://julesssss.github.io/notes/languages/java/java8-to-java11" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/languages/java/java8-to-java11&text=This is a list of the changes at Java’s API I found interesting or that I may use frecuently. Not all the changes from Java9, 10 &amp; 11...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
 
             </main>

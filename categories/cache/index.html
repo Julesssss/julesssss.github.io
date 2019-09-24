@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Category: cache | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Category: cache | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Category: cache | Jules Rosser &mdash; Android Engineer " />
 
-    <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
-    <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
-    <meta name="twitter:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
+    <meta name="description" content="Category: cache">
+    <meta name="description" property="og:description" content="Category: cache" />
+    <meta name="twitter:description" content="Category: cache" />
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/categories/cache/" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/categories/cache/">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,17 +7486,63 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <h1>Posts From Category: cache</h1>
+
+
+<article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-03-06T12:31:00+00:00" itemprop="datePublished">6 Mar, 2019</time></li>
+            
+        </ul>
+        <h2 itemprop="name headline"><a href="https://julesssss.github.io/notes/frameworks/java/spring/cache">Spring Cache</a></h2>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <h3 id="spring-cache">Spring Cache</h3>
+<p>A cache itself may be imagined as a key-value map. For a basic Cache we need:</p>
+<ul>
+  <li><code class="highlighter-rouge">@EnableCaching</code> tag in <code class="highlighter-rouge">@Configuration</code> class</li>
+  <li>Declare a <code class="highlighter-rouge">CacheManager</code> Bean</li>
+  <li>Tag the method to cache w. <code class="highlighter-rouge">@Cacheable</code></li>
+  <li>Create a method with <code class="highlighter-rouge">@CacheEvict</code></li>
+</ul>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<p>We may declare +1 cache(s) at the cache manager and select the one we want to use in the method we tag. As key for the cache we may use any conjunction of the parameters given to the method, or if this is a class, any of it’s accessible variables. The cache will only be triggered when the exact key is given again. <strong>Then the method won’t be executed</strong> and the value will be directly given from the cache. If the parameters don’t match any key, the method will be executed as normal and then the value will be saved into the cache to be returned the next time.</p>
 
+<p>Caution with logs in big apps as they need to be written accordingly.<br />
+The hard part is not knowing when to cache something, but to know when to Evict the cache.</p>
+
+
+
+        
+            <p><a href="/notes/frameworks/java/spring/cache" role="button">Read More</a></p>
+        
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Spring Cache&p[summary]=Spring Cache
+A cache itself may be imagined as a key-value map. For a basic Cache we need:
+
+  @EnableCaching tag in @Configuration class
+...&p[url]=https://julesssss.github.io/notes/frameworks/java/spring/cache" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frameworks/java/spring/cache&text=Spring Cache
+A cache itself may be imagined as a key-value map. For a basic Cache we need:
+
+  @EnableCaching tag in @Configuration class
+...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
 
             </main>

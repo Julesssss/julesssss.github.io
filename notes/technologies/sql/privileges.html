@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>MySQL User Privileges | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="MySQL User Privileges | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="MySQL User Privileges | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/technologies/sql/privileges" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/technologies/sql/privileges">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,60 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-05-22T09:22:00+01:00" itemprop="datePublished">22 May, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">MySQL User Privileges</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <p>How to grant privileges for a database to a user, when both already exist.</p>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<p>In this case the database name will be <code class="highlighter-rouge">project_node1</code>, the user <code class="highlighter-rouge">project_user</code> and the password <code class="highlighter-rouge">project_pass</code>. All the following commands have to be executed as <code class="highlighter-rouge">root</code> or with a user with enough privileges.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- list system users</span>
+<span class="k">SELECT</span> <span class="k">user</span><span class="p">,</span> <span class="k">host</span> <span class="k">FROM</span> <span class="n">mysql</span><span class="p">.</span><span class="k">user</span><span class="p">;</span>
+
+<span class="c1">-- see current privileges</span>
+<span class="k">SHOW</span> <span class="n">GRANTS</span> <span class="k">FOR</span> <span class="s1">'project_user'</span><span class="o">@</span><span class="s1">'%'</span><span class="p">;</span>
+
+<span class="c1">-- delete all previous privileges (if needed)</span>
+<span class="c1">-- REVOKE ALL PRIVILEGES ON `project_node1`.* FROM 'project_user'@'%';</span>
+
+<span class="c1">-- grant new privileges and flush</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="nv">`project_node1`</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">'project_user'</span><span class="o">@</span><span class="s1">'%'</span><span class="p">;</span>
+<span class="n">FLUSH</span> <span class="k">PRIVILEGES</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="references">Reference(s)</h4>
+<p><a href="https://serverfault.com/questions/115950/how-do-i-change-the-privileges-for-mysql-user-that-is-already-created">https://serverfault.com/questions/115950/how-do-i-change-the-privileges-for-mysql-user-that-is-already-created</a></p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=MySQL User Privileges&p[summary]=How to grant privileges for a database to a user, when both already exist.
+
+In this case the database name will be project_node1, the use...&p[url]=https://julesssss.github.io/notes/technologies/sql/privileges" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/technologies/sql/privileges&text=How to grant privileges for a database to a user, when both already exist.
+
+In this case the database name will be project_node1, the use...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>

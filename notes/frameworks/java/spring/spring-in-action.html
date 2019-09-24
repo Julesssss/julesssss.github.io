@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="About | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="About | Jules Rosser &mdash; Android Engineer " />
+    <title>Spring in Action (1/5) - Foundational Spring | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Spring in Action (1/5) - Foundational Spring | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Spring in Action (1/5) - Foundational Spring | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="I am an Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/" />
+    <meta property="og:url" content="https://julesssss.github.io/notes/frameworks/java/spring/spring-in-action" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -94,7 +94,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/">
+    <link rel="canonical" href="https://julesssss.github.io/notes/frameworks/java/spring/spring-in-action">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -120,7 +120,7 @@
     
         
         <div class="mainmenu">
-            <a href="https://julesssss.github.io" class="active">About</a>
+            <a href="https://julesssss.github.io" >About</a>
             <!--
                 Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
                     I'm able to sort my categories by my own order and not alphabetically.
@@ -7486,18 +7486,302 @@
 </div>
 
  -->
-                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <article class="post single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">About</h1>
+        <ul>
+            <li><time datetime="2019-04-03T12:10:00+01:00" itemprop="datePublished">3 Apr, 2019</time></li>
+            
+        </ul>
+        <h1 itemprop="name headline">Spring in Action (1/5) - Foundational Spring</h1>
     </header>
 
     <div class="post-content">
-        <p>I am an Android Engineer with an interest in architectural design, state management, reactive programming and continuous integration.</p>
+        <p><em>(This are my notes taken from the book Spring in Action 5th Edition)</em></p>
 
-<p>This site contains my projects, blogs and resume. Please reach out if you know of any positions you think I might be interested in.</p>
+<h2 id="spring-parts">Spring parts</h2>
+<ul>
+  <li><code class="highlighter-rouge">Spring core</code> Provides the core container, dependency injection framework, Spring MVC (Rest APIs), Spring’s web framework and support for template-based JDBC and reactive programming with Spring WebFlux.</li>
+  <li><code class="highlighter-rouge">Spring boot</code> Starter dependencies and autoconfiguration.</li>
+  <li><code class="highlighter-rouge">Spring data</code> Provides the ability to define your application’s data repository as Java interfaces. Works with relational (JPA), document (Mongo) and graph (Neo4j) databases.</li>
+  <li><code class="highlighter-rouge">Spring security</code> Authentication, authorization and API security.</li>
+  <li><code class="highlighter-rouge">Spring integration &amp; Batch</code> helps integrate with other applications</li>
+  <li><code class="highlighter-rouge">Spring cloud</code> helps with microservices
+<!--more--></li>
+</ul>
+
+<h2 id="project-structure">Project structure</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>src/main/java
+  ApplicationStarter.java
+
+src/test/java
+  ApplicationStarterTest.java
+
+src/main/resources
+  static
+  templates
+  application.properties
+  schema.sql  
+  data.sql
+
+mvnw.cmd
+pom.xml
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">mvnw.cmd</code> maven wrapper scripts. Used to build the project even without maven installed on your computer</li>
+  <li><code class="highlighter-rouge">static</code> folder to place images, stylesheets, js resources to serve to the browser</li>
+  <li><code class="highlighter-rouge">templates</code> folder to place template files that will be used to render content to the browser</li>
+  <li><code class="highlighter-rouge">schema.sql</code> &amp; <code class="highlighter-rouge">data.sql</code> they will be executed on start. Useful to create the structure of databases and fill them with data.</li>
+</ul>
+
+<h2 id="mains-config">Main’s config</h2>
+<p><code class="highlighter-rouge">@SpringBootApplication</code> is used at the main jar’s Starter as in</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@SpringBootApplication</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ApplicationStarter</span> <span class="o">{</span>
+    <span class="c1">// main</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>It’s a composition Tag which contains another three</p>
+<ul>
+  <li><code class="highlighter-rouge">@SpringBootConfiguration</code> Designates the class as a configuration one. is a specialized form of <code class="highlighter-rouge">@Configuration</code></li>
+  <li><code class="highlighter-rouge">@EnableAutoConfiguration</code> Enables Spring to auto-configure any components that it thinks you may need</li>
+  <li><code class="highlighter-rouge">@ComponentScan</code> It lets you use another annotations such as <code class="highlighter-rouge">@Component</code> to declare Beans</li>
+</ul>
+
+<h2 id="web-requests">Web requests</h2>
+<p>The basic structure is an application which will be started with the embedded tomcat. A controller marked with <code class="highlighter-rouge">@Controller</code> tag and a <code class="highlighter-rouge">@GetMapping("/")</code> tag, which returns the name of the <em>Thymeleaf</em> view to give to the browser.</p>
+
+<p>Controller class. It handles HTTP Requests and either gives it to a view to return HTML or writes data directly to the body (RESTful)</p>
+
+<h3 id="basic-controller">basic controller</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Controller</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/design"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyController</span> <span class="o">{</span>
+
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">home</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"home"</span><span class="o">;</span> <span class="c1">// view name</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Thymeleaf will automatically search for <code class="highlighter-rouge">/templates/home.html</code> and return it as the view if it exists.</p>
+
+<h3 id="view-controller">view controller</h3>
+<p>For a <code class="highlighter-rouge">@Controller</code> which is used just to redirect a <em>path</em> to a <em>view</em> and it doesn’t adds any kind of input to the Model, we may implement it with just a single a line at a <code class="highlighter-rouge">WebConfig</code> file.<br />
+The example implemented on top would be better as the following</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WebConfig</span> <span class="kd">implements</span> <span class="nc">WebMvcConfig</span> <span class="o">{</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addViewControllers</span><span class="o">(</span><span class="kd">final</span>
+            <span class="nc">ViewControllerRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">registry</span><span class="o">.</span><span class="na">addViewController</span><span class="o">(</span><span class="s">"/"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">setViewName</span><span class="o">(</span><span class="s">"home"</span><span class="o">);</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="request-mapping-tags">request mapping tags</h3>
+<ul>
+  <li><code class="highlighter-rouge">@RequestMapping(method = RequestMethod.GET)</code> general tag prior to Spring 4.3</li>
+  <li><code class="highlighter-rouge">@GetMapping</code> handles <code class="highlighter-rouge">HTTP GET</code> request</li>
+  <li><code class="highlighter-rouge">@PostMapping</code> handles <code class="highlighter-rouge">HTTP POST</code> request</li>
+  <li><code class="highlighter-rouge">@PutMapping</code> handles …</li>
+  <li><code class="highlighter-rouge">@DeleteMapping</code></li>
+  <li><code class="highlighter-rouge">@PatchMapping</code></li>
+</ul>
+
+<h3 id="thymeleaf">thymeleaf</h3>
+<p><em>(See thymeleaf notes)</em></p>
+
+<h2 id="full-validation-example">Full Validation Example</h2>
+<p>Java’s validation API works with Spring and Hibernate, this last adds a bunch of annotations to use and may work together between Model, View and Controller.</p>
+
+<h3 id="declare-validation-rules">declare validation rules</h3>
+<p>This is done at the model.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Taco</span> <span class="o">{</span>
+
+  <span class="nd">@NotNull</span>
+  <span class="nd">@Size</span><span class="o">(</span><span class="n">min</span><span class="o">=</span><span class="mi">5</span><span class="o">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="s">"must be at least 5 chars long"</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+  <span class="nd">@Size</span><span class="o">(</span><span class="n">min</span><span class="o">=</span><span class="mi">1</span><span class="o">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="s">"must choose at least 1 ing"</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">ingredients</span><span class="o">;</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>We also have other tags such as</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@NotBlank</span><span class="o">(</span><span class="n">message</span><span class="o">=</span><span class="s">"name is required"</span><span class="o">)</span>
+<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+<span class="nd">@CreditCardNumber</span><span class="o">(</span><span class="n">message</span><span class="o">=</span><span class="s">"card not valid"</span><span class="o">)</span>
+<span class="kd">private</span> <span class="nc">String</span> <span class="n">ccNumber</span><span class="o">;</span>
+
+<span class="nd">@Pattern</span><span class="o">(</span><span class="n">regexp</span><span class="o">=</span><span class="s">"here comes the regex"</span><span class="o">,</span>
+         <span class="n">message</span><span class="o">=</span><span class="s">"must be MM/YY"</span><span class="o">)</span>
+<span class="kd">private</span> <span class="nc">String</span> <span class="n">ccExpiration</span><span class="o">;</span>
+
+<span class="nd">@Digits</span><span class="o">(</span><span class="n">integer</span><span class="o">=</span><span class="mi">3</span><span class="o">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="s">"invalid CVV"</span><span class="o">)</span>
+<span class="kd">private</span> <span class="nc">String</span> <span class="n">ccCVV</span><span class="o">;</span>
+</code></pre></div></div>
+
+<h3 id="activate-validation">activate validation</h3>
+<p>This is done at the controller w. <code class="highlighter-rouge">@Valid</code>.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@PostMapping</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">process</span><span class="o">(</span><span class="nd">@Valid</span>
+<span class="nd">@ModelAttribute</span><span class="o">(</span><span class="s">"design"</span><span class="o">)</span> <span class="kd">final</span> <span class="nc">Taco</span> <span class="n">design</span><span class="o">,</span>
+                          <span class="kd">final</span> <span class="nc">Errors</span> <span class="n">errors</span><span class="o">)</span>
+<span class="o">{</span>
+  <span class="k">if</span><span class="o">(</span><span class="n">errors</span><span class="o">.</span><span class="na">hasErrors</span><span class="o">())</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"design"</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="c1">// do something</span>
+  <span class="k">return</span> <span class="s">"viewX"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>If an error is found, the details of this error will be loaded into the <code class="highlighter-rouge">Errors</code> object</p>
+
+<h3 id="access-the-errors">access the errors</h3>
+<p>This is done at the view.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"POST"</span> <span class="na">th:object=</span><span class="s">"${design}"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">th:if=</span><span class="s">"${#fields.hasErrors()}"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"validationError"</span><span class="nt">&gt;</span>
+      Please, correct following problems
+    <span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>Name your Taco creation:<span class="nt">&lt;/h3&gt;</span>
+
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"validationError"</span>
+        <span class="na">th:if=</span><span class="s">"${#fields.hasErrors('name')}"</span>
+        <span class="na">th:errors=</span><span class="s">"*{name}"</span><span class="nt">&gt;</span>Placeholder<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;br/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">th:field=</span><span class="s">"*{name}"</span><span class="nt">/&gt;</span>
+
+  <span class="nt">&lt;button&gt;</span>Submit your taco<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<h3 id="all-broken-together">all broken together</h3>
+<ol>
+  <li>The tags <code class="highlighter-rouge">@NotNull</code> declare what’s wrong and when an Error should be thrown.</li>
+  <li>At the controller with the line <code class="highlighter-rouge">@Valid @ModelAttribute("design") final Taco design</code> we declare what the model is and we assign it an <code class="highlighter-rouge">id = design</code>.</li>
+  <li>At the view form:
+    <ul>
+      <li>we access this model with <code class="highlighter-rouge">th:object="${design}"</code></li>
+      <li>we check if the form has any error(s) with <code class="highlighter-rouge">th:if="${#fields.hasErrors()}"</code> to show a general error</li>
+      <li>we check a specific field with <code class="highlighter-rouge">th:if="${#fields.hasErrors('name')}"</code> and access the error message with <code class="highlighter-rouge">th:errors="*{name}"</code> to overwrite the placeholder.<br />
+This <code class="highlighter-rouge">name</code> is a field of the model we gave. At this example <code class="highlighter-rouge">Taco</code> has a <code class="highlighter-rouge">private String name</code> field which is the one we’re checking here.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>## Store Model attributes in a HTTP session (cache)
+  This is used to store values which have to be used in between requests.</p>
+
+<p>The <code class="highlighter-rouge">@SessionAttributes</code> is used in a <code class="highlighter-rouge">@Controller</code> class and whose value matches the one in <code class="highlighter-rouge">@ModelAttribute</code>.<br />
+  When a request comes in it checks if there’s an existing value in the HTTP session, if it does, it retrieves it directly without calling the method again.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nd">@Controller</span>
+  <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/design"</span><span class="o">)</span>
+  <span class="nd">@SessionAttributes</span><span class="o">(</span><span class="s">"ingredients"</span><span class="o">)</span>
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Controller</span> <span class="o">{</span>
+
+    <span class="nd">@ModelAttribute</span><span class="o">(</span><span class="s">"ingredients"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Ingredient</span><span class="o">&gt;</span> <span class="nf">addIng</span><span class="o">(</span><span class="kd">final</span> <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">final</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Ingredient</span><span class="o">&gt;</span> <span class="n">ings</span> <span class="o">=</span> <span class="c1">// ...</span>
+      <span class="c1">// first time this will be executed</span>
+      <span class="c1">// second time it will retrieve the value from the cache</span>
+      <span class="k">return</span> <span class="n">ings</span><span class="o">;</span>
+    <span class="o">}</span>
+
+  <span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="databases">Databases</h2>
+<h3 id="jdbc-java-database-connection">JDBC (Java DataBase Connection)</h3>
+<p>Its support is rooted at <code class="highlighter-rouge">JdbcTemplate.java</code>. It provides a mean for developers to perform SQL operations against a relation database without boilerplate code.</p>
+
+<h4 id="working-with-jdbctemplate">Working with JdbcTemplate</h4>
+<p>Dependencies to add:</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-jdbc<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>For every Bean to support, we should have an interface and an implementation of it, which will delegate all the operations to JDBC.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">TacoRepository</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="nc">Taco</span> <span class="nf">save</span><span class="o">(</span><span class="kd">final</span> <span class="nc">Taco</span> <span class="n">taco</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Repository</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JdbcTacoRepository</span>
+  <span class="kd">implements</span> <span class="nc">TacoRepository</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">JdbcTemplate</span> <span class="n">jdbc</span><span class="o">;</span>  
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Taco</span> <span class="nf">save</span><span class="o">(</span><span class="kd">final</span> <span class="nc">Taco</span> <span class="n">taco</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// ...</span>
+      <span class="kd">final</span> <span class="nc">PreparedStatementCreator</span> <span class="n">psc</span> <span class="o">=</span> <span class="k">new</span>
+        <span class="nc">PreparedStatementCreatorFactory</span><span class="o">(</span>
+          <span class="s">"insert into Taco (name, createdAt) values (?, ?)"</span><span class="o">,</span>
+          <span class="nc">Types</span><span class="o">.</span><span class="na">VARCHAR</span><span class="o">,</span> <span class="nc">Types</span><span class="o">.</span><span class="na">TIMESTAMP</span>
+        <span class="o">).</span><span class="na">newPreparedStatementCreator</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">taco</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span>
+        <span class="k">new</span> <span class="nf">Timestamp</span><span class="o">(</span><span class="n">taco</span><span class="o">.</span><span class="na">getCreatedAt</span><span class="o">().</span><span class="na">getTime</span><span class="o">())));</span>
+
+      <span class="kd">final</span> <span class="nc">KeyHolder</span> <span class="n">kh</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GeneratedKeyHolder</span><span class="o">();</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">psc</span><span class="o">,</span> <span class="n">kh</span><span class="o">);</span>
+      <span class="k">return</span> <span class="n">keyHolder</span><span class="o">.</span><span class="na">getKey</span><span class="o">().</span><span class="na">longValue</span><span class="o">();</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre></div></div>
+
+<p>The code is hard to read, and it still requires quite an amount of boilerplate for just an operation.</p>
 
     </div>
+
+    <footer class="post-footer">
+        <div class="share">Share
+            <ul class="social-networks">
+                <li class="share-facebook"><a href="https://www.facebook.com/sharer.php?s=100&p[title]=Spring in Action (1/5) - Foundational Spring&p[summary]=(This are my notes taken from the book Spring in Action 5th Edition)
+
+Spring parts
+
+  Spring core Provides the core container, dependency...&p[url]=https://julesssss.github.io/notes/frameworks/java/spring/spring-in-action" class="s_facebook" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#facebook-icon"></use></svg></a></li>
+                <li class="share-twitter"><a href="http://twitter.com/share?url=https://julesssss.github.io/notes/frameworks/java/spring/spring-in-action&text=(This are my notes taken from the book Spring in Action 5th Edition)
+
+Spring parts
+
+  Spring core Provides the core container, dependency...&hashtags=" rel="noreferrer" target="_blank" onclick="window.open(this.href, '','width=700,height=300');return false;"><svg title="" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://julesssss.github.io/assets/svg/social-icons.svg#twitter-icon"></use></svg></a></li>
+            </ul>
+        </div>
+        
+        <div class="tags">
+            <ul>
+                
+            </ul>
+        </div>
+        
+    </footer>
 </article>
+
 
             </main>
         </div>
