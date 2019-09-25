@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Resume | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="Resume | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="Resume | Jules Rosser &mdash; Android Engineer " />
+    <title>Add Dagger To A Simple Android App | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Add Dagger To A Simple Android App | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Add Dagger To A Simple Android App | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/resume/" />
+    <meta property="og:url" content="https://julesssss.github.io/blog/add-Dagger-to-a-simple-Android-app.html" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -92,7 +92,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/resume/">
+    <link rel="canonical" href="https://julesssss.github.io/blog/add-Dagger-to-a-simple-Android-app.html">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -175,7 +175,7 @@
                     
                 
                     
-                        <a href="https://julesssss.github.io/resume/" class="active">Resume</a>
+                        <a href="https://julesssss.github.io/resume/" >Resume</a>
                         
                     
                 
@@ -530,81 +530,82 @@
  -->
                 <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">Resume</h1>
+        <h1 itemprop="name headline">Add Dagger To A Simple Android App</h1>
     </header>
 
     <div class="post-content">
-        <p>Enthusiastic engineer with four years experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger. Current areas of interest include state management, architectural design, and Reactive programming with Rx.</p>
+        <p><em>23rd July, 2018</em></p>
 
-<h2 id="professional-experience">Professional Experience</h2>
+<h3 id="a-simple-guide-for-adding-dagger2-to-a-modern-mvvm-android-project">A simple guide for adding Dagger2 to a modern MVVM Android project.</h3>
 
-<h4 id="verv-energy">Verv Energy</h4>
-<p>Senior Android Developer (Contract) <br />
-Feb 2019 — September 2019<br />
-London</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*i86yVhBOw2rft8eDEpHFSQ.jpeg" alt="A delicious selection of self contained, testable food modules." /></p>
 
-<p><strong>Verv Home Energy Assistant</strong> - Play Store</p>
-<ul>
-  <li>Implemented bluetooth pairing solution for connecting app to IOT device.</li>
-  <li>Introduced CI/CD pipeline (Docker/Jenkins), including test support, build deployment, KTLint and automated releases.</li>
-  <li>Held technical ownership role for two large cross-platform features, taking responsibility for engineering and business decisions.</li>
-  <li>Introduced best practices for Android; Modularisation, Testing, Gradle build configuration, MVVM.</li>
-</ul>
+<h2 id="intro">Intro</h2>
 
-<h4 id="ostmodern">Ostmodern</h4>
-<p>Android Developer<br />
-Apr 2017 — Feb 2019<br />
-London</p>
+<p>Dagger is always one of the first libraries I add when starting new Android projects. Not only does is simplify the process of adding further libraries, it doesn’t have many pre-requisites and it forces you to think about project architecture early on in the setup stages.</p>
 
-<p><strong>Arsenal (Arsenal F.C.)</strong></p>
-<ul>
-  <li>Architected a modern Android project consisting of Kotlin, MVVM, Data Binding, RxJava and Dagger.</li>
-  <li>Responsible for the Android application, leading the project through agile methodology while mentoring another developer.</li>
-  <li>Solved client requirement for an offline-first architecture using Observer Pattern, Repository Pattern, RxJava data flows and Realm.</li>
-  <li>Ensured codebase quality with unit/automation test coverage using Junit, Mockito and Espresso.</li>
-  <li>Set up Continuous Integration pipeline including Ktlint, Kotlin doc generation, Fabric for automated release process.</li>
-</ul>
+<p>However, it’s hard to find a source which covers the latest features like <strong>@ContributesAndroidInjector</strong> &amp; <strong>DaggerActivity</strong> in a Kotlin code base. This article aims to walk you through the implementation step by step, explaining the how and why along the way.</p>
 
-<p><strong>F1TV (Formula 1)</strong></p>
-<ul>
-  <li>Architected a modularised OTT streaming app in Kotlin with 5 integrations; F1 for live race data via websocket, 21 video streams from NBC, CSG for authentication, GooglePlay for subscriptions and Skylark for dynamic CMS content.</li>
-  <li>Synchronised multiple concurrent live video streams and race data every 100ms, handling delay, entitlement checks and recalibration with minimal user impact. Heavy use of Rx for managing data flow with Flowables and Publishers.</li>
-  <li>Created authentication and GooglePlay in-app purchase library, which was consumed by third party app via Maven.</li>
-  <li>Built Android/Amazon TV module which shared ViewModels, business logic and data package with the mobile app.</li>
-</ul>
+<p>The app structure was based on <a href="https://medium.com/@rahul.singh?source=post_header_lockup">Rahul Singh</a>’s <a href="https://medium.com/@rahul.singh/clean-architecture-kotlin-dagger-2-rxjava-mvvm-and-unit-testing-dc05dcdf3ce6">Clean Architecture project,</a> which is a great example of a modern Android app architecture. This post focuses on the dependency injection section of the architecture and I recommend reading his post for a better understanding of the rest of the components that make a modern Android application.</p>
 
-<p><strong>BBC Player (BBC Worldwide)</strong></p>
-<ul>
-  <li>Proposed MVP and RxJava architecture improvements, leading to more performant and faster networking solution.</li>
-  <li>Migrated project to Kotlin, starting with data objects, eventually using Kotlin for every additional feature or fix.</li>
-</ul>
+<p>I’m using MVVM here, but you can easily apply the steps to an MVP project as the Dagger implementation remains largely the same.</p>
 
-<h4 id="reply">Reply</h4>
-<p>Android Developer/Consultant<br />
-Feb 2016 — Apr 2017<br />
-London</p>
+<p>Implementing Dagger is actually quite straight forward when you take the time to understand each step. I’ll begin by showing the starting project, but feel free to skip to the <strong>Dagger Setup</strong> section if you’re just looking for a reference guide.</p>
 
-<p><strong>CinemApp (Brandiment)</strong> - Play Store</p>
-<ul>
-  <li>Built a cross-platform, location-aware social app for cinema showings using Firebase as a backend.</li>
-  <li>Built native group messaging solution, push notifications, video playback, friend system, and social sign in.</li>
-</ul>
+<h2 id="pre-dagger">Pre-Dagger</h2>
 
-<p><strong>Delhaize and AB Click2Shop (Delhaize Group)</strong> - Delhaize Play Store - AB Play Store</p>
-<ul>
-  <li>Maintained two of the largest European supermarket apps in a single code base, partitioned with Gradle configurations.</li>
-  <li>Pitched addition of Material Design and new SDK components to the client, leading to additional client spend.</li>
-</ul>
+<p>To demonstrate the implementation of Dagger we’ll need a simple app that would benefit from the addition. Lets take a look at the starting app we’ll be improving with Dagger.</p>
 
-<h2 id="technical-competencies">Technical Competencies</h2>
+<p><a href="https://github.com/Julesssss/Modern-Dagger/tree/688d66e5a5ece733cad9c8407990febaf6d08860">Modern-Dagger repositiory</a></p>
 
-<ul>
-  <li><strong>Android:</strong> Kotlin, Java, Gradle, RxJava, Live Data, Dagger2, Koin, Retrofit, Realm, Room, Live Data, Extension Functions, Sealed Classes.</li>
-  <li><strong>Architecture Patterns:</strong> MVVM, MVP, Clean Code, Data-binding,  Lifecycle aware view-models, Observer Pattern.</li>
-  <li><strong>Integrations:</strong> Firebase Database, Firebase Remote Config, Analytics, AWS Lambda, Fabric, Jenkins, Urban Airship.</li>
-  <li><strong>Testing:</strong> JUnit, Espresso, Mockito, TDD.</li>
-  <li><strong>Productivity:</strong> Jenkins task configuration, Git flow, GitHub, BitBucket, Dokka, Jira, Confluence, Agile, Scrum, Target Process, Slack</li>
-</ul>
+<p><img src="https://cdn-images-1.medium.com/max/4740/1*neo7ixQ-42QVeX0CMdGbCQ.png" alt="A bare bones app that could benefit from Dependency Injection" /></p>
+
+<p>The app consists of an Application, MainActivity, MainViewModel and an AnalyticsHelper class. Analytics tracking is a common client request and can touch almost anywhere in your code base, so it’s a prime example of an object that would benefit from dependency injection — imagine changing the constructor of the AnalyticsHelper, then having to modify each class in which is was instantiated.</p>
+
+<p>In our simplified project the AnalyticsHelper prints out the page parameter string along with the hash code of the object itself. We’ll use this hash code to demonstrate that we’re accessing the same instance of the object after implementing Dagger. Running the app at this point outputs the following logs:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Tracking page:
+'Application-onCreate', from AnalyticsHelper:       **757408072**
+'MainActivity-onCreate', from AnalyticsHelper:      **424961346**
+'ViewModel-initialisation', from AnalyticsHelper:   **315976019**
+'MainActivity-observingData', from AnalyticsHelper: **424961346**
+</code></pre></div></div>
+
+<p>As you can see, Application, Activity and ViewModel each have a different instance of the AnalyticsHelper class. After implementing Dagger, the same object instance will be used. This is one of the simplest changes we can demonstrate with Dagger, but is a great starting point. Lets get started!</p>
+
+<h2 id="implementation">Implementation</h2>
+
+<p>As always, we’ll need to add the required dependencies first. As we’re using Kotlin we need to ensure that kotlin-kapt is declared as a plugin so that annotation processing works correctly.</p>
+
+<p>After a sync, we can specify our dependencies in a class annotated with @Module. We use the @Provides annotation on a function to do this, while @Singleton insures that the same instance is returned. Typically the function name is the class name prefixed with ‘provides’, but it’s not strictly necessary to do so.</p>
+
+<p>Next, we’ll need to create an <strong>AppComponent</strong> interface. This is where we set module types, giving Dagger the dependencies it needs to build the object graph. We only have one custom module — <strong>AppModule</strong>, <strong>AndroidInjectionModule</strong> is an internal class which maps the graph to Activities (more about this later).</p>
+
+<p>Now we need to modify our Application class, changing it’s super-class to DaggerApplication, implementing the applicationInjector function and using the @Inject annotation on the AnalyticsHelper parameter so that Dagger will construct the object for us.</p>
+
+<p>In order to link MainActivity to the dependency graph, we’ll need a second Module which will contain individual Activity dependencies. Currently, we’re not declaring any specific dependencies, but we’ll create the structure now for future reference.</p>
+
+<p>We use @ContributesAndroidInjector to set the modules for the MainActivity and will create a similar function for any additional Activities. These modules are submodules of AppModule, so any dependencies will only be available to the returned activity, whereas all AppModule dependencies will be available to the Activities.</p>
+
+<p>Finally, ensure you add the ActivityModule to the list of modules declared in AppComponent</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Singleton @Component(modules = [(AndroidInjectionModule::class), **(ActivityBuilder::class)**, (AppModule::class)])
+</code></pre></div></div>
+
+<h2 id="singleton-analyticshelper">Singleton AnalyticsHelper</h2>
+
+<p>Now when we run the app, we can see that Dagger is returning the same AnalyticsHelper instance to Application and MainActivity!</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Application-onCreate', from AnalyticsHelper:       **757408072**.
+'MainActivity-onCreate', from AnalyticsHelper:      **757408072**.
+'ViewModel-initialisation', from AnalyticsHelper:   **705483104**.
+'MainActivity-observingData', from AnalyticsHelper: **757408072**.
+</code></pre></div></div>
+
+<p>The exception being the ViewModel, which is still creating a new instance of the object. This requires a few extra steps, which we’ll cover in the future! In the meantime, check out the project in it’s current state below.
+<a href="https://github.com/Julesssss/Modern-Dagger">Modern-Dagger repository</a></p>
+
+<p><em>Thanks for reading, please feel free to suggest changes or improvements!</em></p>
 
     </div>
 </article>

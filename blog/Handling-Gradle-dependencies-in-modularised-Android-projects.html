@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Resume | Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content="Resume | Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content="Resume | Jules Rosser &mdash; Android Engineer " />
+    <title>Handling Gradle Dependencies In Modularised Android Projects | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Handling Gradle Dependencies In Modularised Android Projects | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Handling Gradle Dependencies In Modularised Android Projects | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.">
     <meta name="description" property="og:description" content="Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger." />
@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesssss.github.io/resume/" />
+    <meta property="og:url" content="https://julesssss.github.io/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -92,7 +92,7 @@
     
     <link rel="stylesheet" href="https://julesssss.github.io/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesssss.github.io/resume/">
+    <link rel="canonical" href="https://julesssss.github.io/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesssss.github.io/feed.xml">
 </head>
@@ -175,7 +175,7 @@
                     
                 
                     
-                        <a href="https://julesssss.github.io/resume/" class="active">Resume</a>
+                        <a href="https://julesssss.github.io/resume/" >Resume</a>
                         
                     
                 
@@ -530,81 +530,95 @@
  -->
                 <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post-header">
-        <h1 itemprop="name headline">Resume</h1>
+        <h1 itemprop="name headline">Handling Gradle Dependencies In Modularised Android Projects</h1>
     </header>
 
     <div class="post-content">
-        <p>Enthusiastic engineer with four years experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger. Current areas of interest include state management, architectural design, and Reactive programming with Rx.</p>
+        <p><em>28th October, 2018</em></p>
 
-<h2 id="professional-experience">Professional Experience</h2>
+<blockquote>
+  <p>How do I share dependencies between Android modules?</p>
+</blockquote>
 
-<h4 id="verv-energy">Verv Energy</h4>
-<p>Senior Android Developer (Contract) <br />
-Feb 2019 — September 2019<br />
-London</p>
+<p>With the benefits that modularised projects bring it would seem like this should be a solved problem, but it’s only recently that a good solution to managing multi-module dependencies has become available.</p>
 
-<p><strong>Verv Home Energy Assistant</strong> - Play Store</p>
+<p>As of late 2017, there was no satisfactory solution to this problem. The best option was to declare dependency version strings in a shared build.gradle file to ensure that each module implemented the same version of the library.</p>
+
+<p>This works, but the repetition isn’t great and the solution doesn’t scale well as module count and complexity increases…</p>
+
+<h2 id="introducing-gradle-40-">Introducing Gradle 4.0 🎉</h2>
+
+<p>In October 2017 Gradle 4.0 was released along with <a href="https://developer.android.com/studio/releases/gradle-plugin#3-0-0">Android Gradle plugin 3.0.0</a>. Some of the improvements included faster build speeds due to better parallelism, Java 8 support for certain features and faster incremental builds.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/3140/1*AgyiBkXlpmtwBi4LKq3E2Q.png" alt="Supposed improvements to a 130 module skeleton project." /></p>
+
+<p>However, the change that we’re interested in was the addition of new Gradle dependency configurations.</p>
+
+<p><em>Hopefully by now you’re already using Gradle 4.0+ with Android Studio Gradle plugin 3.0.0+, but if not you’ll first need to <a href="https://developer.android.com/studio/releases/gradle-plugin">update</a>.</em></p>
+
+<h2 id="new-dependency-configurations">New dependency configurations</h2>
+
+<p>Two new dependency configurations replace <strong>‘compile’</strong> and allow us to decide whether a modules Gradle dependencies are accessible to <strong>any other module which depends upon it</strong>, or <strong>only within the module</strong>. (a simple comparison is using public/private to set the visibility of variables/functions). This allows us to keep a clear layer of separation between modules while removing the repetition of declaring dependencies in multiple modules.</p>
+
+<h3 id="previous-dependency-config">Previous dependency config</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>compile 'example.dependency:1.0.0'
+</code></pre></div></div>
+
+<p>Hopefully this looks familiar to you. We’re declaring our dependency on an external library within the module that requires it.</p>
+
+<h3 id="new-and-improved-dependency-config">New and improved dependency config</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>implementation 'example.dependency:1.0.0'
+// or
+api 'example.dependency:1.0.0'
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>implementation</strong> → this dependency is only available to entities within this module</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>api</strong> → this dependency will also be available within any module which depends on this module</p>
+</blockquote>
+
+<p>The change is as simple as that. For any dependencies which should be self contained within the module, use <strong>implementation.</strong> For any dependencies which should also be made available to modules which depend on the module, use <strong>api</strong>.</p>
+
+<h2 id="architecture">Architecture</h2>
+
+<p>We can now replace <strong>compile</strong> with either <strong>implementation</strong> or <strong>api</strong> depending on the structure of our modules and setup a chain of dependencies which makes sense for our architecture.</p>
+
+<p>Here are a couple of simple example projects with alternate module architectures and the correct usage in each case.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*EEegKqKKxv7Dn_QDJThpQQ.png" alt="" /></p>
+
+<p>Here’s a simple app which has only a single module: app. In this case we only need to replace compile with implementation as there are no other modules which might be able to share dependencies.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*J6UWH17GbvwAsCX6INFeZA.png" alt="" /></p>
+
+<p>Here’s a more complex app with three modules: <strong>app</strong>, <strong>tv</strong> and <strong>core</strong>.</p>
+
 <ul>
-  <li>Implemented bluetooth pairing solution for connecting app to IOT device.</li>
-  <li>Introduced CI/CD pipeline (Docker/Jenkins), including test support, build deployment, KTLint and automated releases.</li>
-  <li>Held technical ownership role for two large cross-platform features, taking responsibility for engineering and business decisions.</li>
-  <li>Introduced best practices for Android; Modularisation, Testing, Gradle build configuration, MVVM.</li>
+  <li>
+    <p>Both app and tv modules depend on the core module</p>
+  </li>
+  <li>
+    <p>only the core module should interact directly with Retrofit, so we use <strong>implementation</strong> to ensure that the library is inaccessible from app and tv.</p>
+  </li>
+  <li>
+    <p>RxJava is required in all three modules, therefore we can use the <strong>api</strong> config to ensure that all projects depending on core can access RxJava.</p>
+  </li>
 </ul>
 
-<h4 id="ostmodern">Ostmodern</h4>
-<p>Android Developer<br />
-Apr 2017 — Feb 2019<br />
-London</p>
+<p>Hopefully a similar structure can apply to your project, but please leave a comment if you have a problem working out the correct dependency flow.</p>
 
-<p><strong>Arsenal (Arsenal F.C.)</strong></p>
-<ul>
-  <li>Architected a modern Android project consisting of Kotlin, MVVM, Data Binding, RxJava and Dagger.</li>
-  <li>Responsible for the Android application, leading the project through agile methodology while mentoring another developer.</li>
-  <li>Solved client requirement for an offline-first architecture using Observer Pattern, Repository Pattern, RxJava data flows and Realm.</li>
-  <li>Ensured codebase quality with unit/automation test coverage using Junit, Mockito and Espresso.</li>
-  <li>Set up Continuous Integration pipeline including Ktlint, Kotlin doc generation, Fabric for automated release process.</li>
-</ul>
+<h2 id="notes">Notes</h2>
 
-<p><strong>F1TV (Formula 1)</strong></p>
-<ul>
-  <li>Architected a modularised OTT streaming app in Kotlin with 5 integrations; F1 for live race data via websocket, 21 video streams from NBC, CSG for authentication, GooglePlay for subscriptions and Skylark for dynamic CMS content.</li>
-  <li>Synchronised multiple concurrent live video streams and race data every 100ms, handling delay, entitlement checks and recalibration with minimal user impact. Heavy use of Rx for managing data flow with Flowables and Publishers.</li>
-  <li>Created authentication and GooglePlay in-app purchase library, which was consumed by third party app via Maven.</li>
-  <li>Built Android/Amazon TV module which shared ViewModels, business logic and data package with the mobile app.</li>
-</ul>
+<p>I recently answered this question on <a href="https://stackoverflow.com/questions/31841259/how-do-i-share-dependencies-between-android-modules">StackOverflow </a>which inspired this post, check out the <a href="https://stackoverflow.com/questions/31841259/how-do-i-share-dependencies-between-android-modules">question </a>for further discussion and the older solutions.</p>
 
-<p><strong>BBC Player (BBC Worldwide)</strong></p>
-<ul>
-  <li>Proposed MVP and RxJava architecture improvements, leading to more performant and faster networking solution.</li>
-  <li>Migrated project to Kotlin, starting with data objects, eventually using Kotlin for every additional feature or fix.</li>
-</ul>
+<p>If you’re not yet taking advantage of a modularised android project, check out this <a href="https://medium.freecodecamp.org/how-modularisation-affects-build-time-of-an-android-application-43a984ce9968">detailed blog post</a> for detailed information on the build time improvements.</p>
 
-<h4 id="reply">Reply</h4>
-<p>Android Developer/Consultant<br />
-Feb 2016 — Apr 2017<br />
-London</p>
-
-<p><strong>CinemApp (Brandiment)</strong> - Play Store</p>
-<ul>
-  <li>Built a cross-platform, location-aware social app for cinema showings using Firebase as a backend.</li>
-  <li>Built native group messaging solution, push notifications, video playback, friend system, and social sign in.</li>
-</ul>
-
-<p><strong>Delhaize and AB Click2Shop (Delhaize Group)</strong> - Delhaize Play Store - AB Play Store</p>
-<ul>
-  <li>Maintained two of the largest European supermarket apps in a single code base, partitioned with Gradle configurations.</li>
-  <li>Pitched addition of Material Design and new SDK components to the client, leading to additional client spend.</li>
-</ul>
-
-<h2 id="technical-competencies">Technical Competencies</h2>
-
-<ul>
-  <li><strong>Android:</strong> Kotlin, Java, Gradle, RxJava, Live Data, Dagger2, Koin, Retrofit, Realm, Room, Live Data, Extension Functions, Sealed Classes.</li>
-  <li><strong>Architecture Patterns:</strong> MVVM, MVP, Clean Code, Data-binding,  Lifecycle aware view-models, Observer Pattern.</li>
-  <li><strong>Integrations:</strong> Firebase Database, Firebase Remote Config, Analytics, AWS Lambda, Fabric, Jenkins, Urban Airship.</li>
-  <li><strong>Testing:</strong> JUnit, Espresso, Mockito, TDD.</li>
-  <li><strong>Productivity:</strong> Jenkins task configuration, Git flow, GitHub, BitBucket, Dokka, Jira, Confluence, Agile, Scrum, Target Process, Slack</li>
-</ul>
+<p><em>Thanks for reading, please let me know if I’ve missed anything or if you have any further tips.</em></p>
 
     </div>
 </article>
