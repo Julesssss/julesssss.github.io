@@ -12,7 +12,7 @@ var index = lunr(function () {
     index.add({
       title: "Nasa Astronomy Photo Of The Day",
       category: "project",
-      content: "Personal project\n\nA Kotlin Android app demonstrating a modern architecture consisting of Kotlin, MVVM, RxJava, Koin, LiveData and lifecycle aware ViewModels.\n\nView state is represented by an immutable data class emitted as a LiveData subscription from the ViewModels.\n\nView project on Github\n\n\n\nArchitecture\n\nMVVM, Android Arch ViewModel, RxJava, RxAndroid, LiveData, Koin\n\nTesting\nJunit, Mockito, Espresso\n\nBuilding the project\n\nTo build the project, you will need your own auth token for the NASA APOD API (sign up here). If you don’t follow the steps below, the project will not compile.\n\nOnce you have a key, you will need to make it available as a gradle.properties file. Navigate to ‘$HOME/.gradle/’ and if a gradle.properties file does not exist, create it.\n\nAdd the following to the gradle.properties file, replacing XYZ for your NASA API key.\nnasaApiKey=\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"\n\n\nAfter a project refresh, you should see the gradle.properties file in the Android Studio project browser view under ‘Gradle Scripts’. Switch to the Android view if you don’t see ‘Gradle Scripts’\n",
+      content: "Personal project\n\nA Kotlin Android app demonstrating a modern architecture consisting of Kotlin, MVVM, RxJava, Koin, LiveData and lifecycle aware ViewModels.\n\nView state is represented by an immutable data class emitted as a LiveData subscription from the ViewModels.\n\nView project on Github\n\n\n\n\nArchitecture\n\nMVVM, Android Arch ViewModel, RxJava, RxAndroid, LiveData, Koin\n\nTesting\nJunit, Mockito, Espresso\n\nBuilding the project\n\nTo build the project, you will need your own auth token for the NASA APOD API (sign up here). If you don’t follow the steps below, the project will not compile.\n\nOnce you have a key, you will need to make it available as a gradle.properties file. Navigate to ‘$HOME/.gradle/’ and if a gradle.properties file does not exist, create it.\n\nAdd the following to the gradle.properties file, replacing XYZ for your NASA API key.\nnasaApiKey=\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"\n\n\nAfter a project refresh, you should see the gradle.properties file in the Android Studio project browser view under ‘Gradle Scripts’. Switch to the Android view if you don’t see ‘Gradle Scripts’\n",
       tags: [],
       id: 0
     });
@@ -76,7 +76,7 @@ var index = lunr(function () {
 var store = [{
     "title": "Nasa Astronomy Photo Of The Day",
     "link": "/project/nasa-astronomy-photo-of-the-day.html",
-    "image": "https://github.com/Julesssss/Nasa-photo-of-the-day/blob/develop/media/screenshot1.png?raw=true",
+    "image": "../../assets/images/apod-list.png",
     "date": "April 15, 2019",
     "category": "project",
     "excerpt": "Personal project A Kotlin Android app demonstrating a modern architecture consisting of Kotlin, MVVM, RxJava, Koin, LiveData and lifecycle aware..."

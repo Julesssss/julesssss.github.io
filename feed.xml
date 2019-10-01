@@ -5,8 +5,8 @@
     <description>Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.</description>
     <link>https://julesssss.github.io/</link>
     <atom:link href="https://julesssss.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 30 Sep 2019 11:08:09 +0100</pubDate>
-    <lastBuildDate>Mon, 30 Sep 2019 11:08:09 +0100</lastBuildDate>
+    <pubDate>Tue, 01 Oct 2019 11:48:05 +0100</pubDate>
+    <lastBuildDate>Tue, 01 Oct 2019 11:48:05 +0100</lastBuildDate>
     <generator>Jekyll v3.8.4</generator>
     
       <item>
@@ -19,7 +19,8 @@
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/Julesssss/Nasa-photo-of-the-day&quot;&gt;View project on Github&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://github.com/Julesssss/Nasa-photo-of-the-day/blob/develop/media/screenshot1.png?raw=true#appscreen&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/images/apod-list.png#appscreen&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;../../assets/images/apod-detail.png#appscreen&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;architecture&quot;&gt;Architecture&lt;/h3&gt;
 
