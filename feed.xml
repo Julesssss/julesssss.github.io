@@ -5,8 +5,8 @@
     <description>Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.</description>
     <link>https://julesrosser.com/</link>
     <atom:link href="https://julesrosser.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 03 Oct 2019 11:46:31 +0100</pubDate>
-    <lastBuildDate>Thu, 03 Oct 2019 11:46:31 +0100</lastBuildDate>
+    <pubDate>Thu, 03 Oct 2019 13:10:45 +0100</pubDate>
+    <lastBuildDate>Thu, 03 Oct 2019 13:10:45 +0100</lastBuildDate>
     <generator>Jekyll v3.8.4</generator>
     
       <item>
@@ -564,6 +564,29 @@ reportUndocumented = true
         
         
         <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Cinemapp</title>
+        <description>&lt;p class=&quot;project-type&quot;&gt;Professional project&lt;/p&gt;
+
+&lt;p&gt;CinemApp was the first project I built professionally. It is a social app for cinema lovers, who can find other users to chat and watch movies with. Local cinemas and moview showings can be searched by location. Group chat rooms can be used to discuss the movie and arrange viewings.&lt;/p&gt;
+
+&lt;p&gt;It consumes a film showtime API and heavily uses the Google Maps API.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/cinemapp-home.png#appscreen&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;../../assets/images/cinemapp-movie.png#appscreen&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;../../assets/images/cinemapp-map.png#appscreen&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://play.google.com/store/apps/details?id=com.brandiment.cinemapp&quot;&gt;View on the PlayStore&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 01 Feb 2016 00:00:00 +0000</pubDate>
+        <link>https://julesrosser.com/project/cinemapp.html</link>
+        <guid isPermaLink="true">https://julesrosser.com/project/cinemapp.html</guid>
+        
+        
+        <category>project</category>
         
       </item>
     

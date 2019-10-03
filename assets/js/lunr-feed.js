@@ -82,11 +82,20 @@ var index = lunr(function () {
     
 
     index.add({
+      title: "Cinemapp",
+      category: "project",
+      content: "Professional project\n\nCinemApp was the first project I built professionally. It is a social app for cinema lovers, who can find other users to chat and watch movies with. Local cinemas and moview showings can be searched by location. Group chat rooms can be used to discuss the movie and arrange viewings.\n\nIt consumes a film showtime API and heavily uses the Google Maps API.\n\n\n\n\n\nView on the PlayStore\n",
+      tags: [],
+      id: 8
+    });
+    
+
+    index.add({
       title: "Birthday Reminder",
       category: "project",
       content: "Personal project\n\nBirthday reminder is a simple Material Design Android app which notifies users of upcoming birthdays. Released in 2015, it has had many design and feature update since then, many coming from user requests. Recent additions include Firebase auth and realtime database for data backup. As I built this when I was quite inexperienced, it doesn’t follow any of the common Android architecture patterns, so I wouldn’t recommend using this structure elsewhere.\n\n\n\nView the code on GitHub\n\nView on the PlayStore\n",
       tags: [],
-      id: 8
+      id: 9
     });
     
 
@@ -147,6 +156,13 @@ var store = [{
     "date": "June 26, 2018",
     "category": "blog",
     "excerpt": "22nd August, 2018 I’ve recently been trying to write better documentation, and after discovering how simple this was for Java..."
+},{
+    "title": "Cinemapp",
+    "link": "/project/cinemapp.html",
+    "image": "../../assets/images/cinemapp-home.png",
+    "date": "February 1, 2016",
+    "category": "project",
+    "excerpt": "Professional project CinemApp was the first project I built professionally. It is a social app for cinema lovers, who can..."
 },{
     "title": "Birthday Reminder",
     "link": "/project/birthday-reminder.html",
