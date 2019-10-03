@@ -3,10 +3,10 @@
   <channel>
     <title></title>
     <description>Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.</description>
-    <link>https://julesssss.github.io/</link>
-    <atom:link href="https://julesssss.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 02 Oct 2019 11:50:57 +0100</pubDate>
-    <lastBuildDate>Wed, 02 Oct 2019 11:50:57 +0100</lastBuildDate>
+    <link>https://julesrosser.com/</link>
+    <atom:link href="https://julesrosser.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 03 Oct 2019 11:46:31 +0100</pubDate>
+    <lastBuildDate>Thu, 03 Oct 2019 11:46:31 +0100</lastBuildDate>
     <generator>Jekyll v3.8.4</generator>
     
       <item>
@@ -166,8 +166,8 @@ userRepository.registerSocial(...)
 &lt;h2 id=&quot;thank-you-for-reading&quot;&gt;Thank you for reading!&lt;/h2&gt;
 </description>
         <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
-        <link>https://julesssss.github.io/blog/Android-Data-Binding-A-practical-experience.html</link>
-        <guid isPermaLink="true">https://julesssss.github.io/blog/Android-Data-Binding-A-practical-experience.html</guid>
+        <link>https://julesrosser.com/blog/Android-Data-Binding-A-practical-experience.html</link>
+        <guid isPermaLink="true">https://julesrosser.com/blog/Android-Data-Binding-A-practical-experience.html</guid>
         
         
         <category>blog</category>
@@ -190,8 +190,8 @@ userRepository.registerSocial(...)
 &lt;p&gt;&lt;a href=&quot;https://play.google.com/store/apps/details?id=com.arsenal.official&amp;amp;hl=en&quot;&gt;View on the PlayStore&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 25 Feb 2019 00:00:00 +0000</pubDate>
-        <link>https://julesssss.github.io/project/arsenal.html</link>
-        <guid isPermaLink="true">https://julesssss.github.io/project/arsenal.html</guid>
+        <link>https://julesrosser.com/project/arsenal.html</link>
+        <guid isPermaLink="true">https://julesrosser.com/project/arsenal.html</guid>
         
         
         <category>project</category>
@@ -231,8 +231,8 @@ userRepository.registerSocial(...)
 &lt;p&gt;After a project refresh, you should see the gradle.properties file in the Android Studio project browser view under ‘Gradle Scripts’. Switch to the Android view if you don’t see ‘Gradle Scripts’&lt;/p&gt;
 </description>
         <pubDate>Sat, 10 Nov 2018 00:00:00 +0000</pubDate>
-        <link>https://julesssss.github.io/project/nasa-astronomy-photo-of-the-day.html</link>
-        <guid isPermaLink="true">https://julesssss.github.io/project/nasa-astronomy-photo-of-the-day.html</guid>
+        <link>https://julesrosser.com/project/nasa-astronomy-photo-of-the-day.html</link>
+        <guid isPermaLink="true">https://julesrosser.com/project/nasa-astronomy-photo-of-the-day.html</guid>
         
         
         <category>project</category>
@@ -328,8 +328,8 @@ api 'example.dependency:1.0.0'
 &lt;p&gt;&lt;em&gt;Thanks for reading, please let me know if I’ve missed anything or if you have any further tips.&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 28 Oct 2018 00:00:00 +0100</pubDate>
-        <link>https://julesssss.github.io/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html</link>
-        <guid isPermaLink="true">https://julesssss.github.io/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html</guid>
+        <link>https://julesrosser.com/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html</link>
+        <guid isPermaLink="true">https://julesrosser.com/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html</guid>
         
         
         <category>blog</category>
@@ -412,8 +412,8 @@ api 'example.dependency:1.0.0'
 &lt;p&gt;&lt;em&gt;Thanks for reading, please feel free to suggest changes or improvements!&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 23 Jul 2018 00:00:00 +0100</pubDate>
-        <link>https://julesssss.github.io/blog/add-Dagger-to-a-simple-Android-app.html</link>
-        <guid isPermaLink="true">https://julesssss.github.io/blog/add-Dagger-to-a-simple-Android-app.html</guid>
+        <link>https://julesrosser.com/blog/add-Dagger-to-a-simple-Android-app.html</link>
+        <guid isPermaLink="true">https://julesrosser.com/blog/add-Dagger-to-a-simple-Android-app.html</guid>
         
         
         <category>blog</category>
@@ -430,8 +430,8 @@ api 'example.dependency:1.0.0'
 &lt;img src=&quot;../../assets/images/f1tv-past-season.png#appscreen&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 01 Jul 2018 00:00:00 +0100</pubDate>
-        <link>https://julesssss.github.io/project/formula-1-tv.html</link>
-        <guid isPermaLink="true">https://julesssss.github.io/project/formula-1-tv.html</guid>
+        <link>https://julesrosser.com/project/formula-1-tv.html</link>
+        <guid isPermaLink="true">https://julesrosser.com/project/formula-1-tv.html</guid>
         
         
         <category>project</category>
@@ -448,8 +448,8 @@ api 'example.dependency:1.0.0'
 &lt;img src=&quot;../../assets/images/album-shuffle-2.png#appscreen&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 01 Jul 2018 00:00:00 +0100</pubDate>
-        <link>https://julesssss.github.io/project/spotify-album-shuffle.html</link>
-        <guid isPermaLink="true">https://julesssss.github.io/project/spotify-album-shuffle.html</guid>
+        <link>https://julesrosser.com/project/spotify-album-shuffle.html</link>
+        <guid isPermaLink="true">https://julesrosser.com/project/spotify-album-shuffle.html</guid>
         
         
         <category>project</category>
@@ -559,8 +559,8 @@ reportUndocumented = true
 &lt;p&gt;&lt;em&gt;Thanks for reading, please let me know if I’ve missed anything or if you have any tips for using Dokka!&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 26 Jun 2018 00:00:00 +0100</pubDate>
-        <link>https://julesssss.github.io/blog/auto-generate-Kotlin-Android-documentation-with-Dokka.html</link>
-        <guid isPermaLink="true">https://julesssss.github.io/blog/auto-generate-Kotlin-Android-documentation-with-Dokka.html</guid>
+        <link>https://julesrosser.com/blog/auto-generate-Kotlin-Android-documentation-with-Dokka.html</link>
+        <guid isPermaLink="true">https://julesrosser.com/blog/auto-generate-Kotlin-Android-documentation-with-Dokka.html</guid>
         
         
         <category>blog</category>
@@ -580,8 +580,8 @@ reportUndocumented = true
 &lt;p&gt;&lt;a href=&quot;https://play.google.com/store/apps/details?id=website.julianrosser.birthdays&quot;&gt;View on the PlayStore&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 01 Nov 2015 00:00:00 +0000</pubDate>
-        <link>https://julesssss.github.io/project/birthday-reminder.html</link>
-        <guid isPermaLink="true">https://julesssss.github.io/project/birthday-reminder.html</guid>
+        <link>https://julesrosser.com/project/birthday-reminder.html</link>
+        <guid isPermaLink="true">https://julesrosser.com/project/birthday-reminder.html</guid>
         
         
         <category>project</category>
