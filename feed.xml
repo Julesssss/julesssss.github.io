@@ -5,9 +5,37 @@
     <description>Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.</description>
     <link>https://julesrosser.com/</link>
     <atom:link href="https://julesrosser.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 03 Oct 2019 13:10:45 +0100</pubDate>
-    <lastBuildDate>Thu, 03 Oct 2019 13:10:45 +0100</lastBuildDate>
+    <pubDate>Wed, 06 Nov 2019 11:38:43 +0000</pubDate>
+    <lastBuildDate>Wed, 06 Nov 2019 11:38:43 +0000</lastBuildDate>
     <generator>Jekyll v3.8.4</generator>
+    
+      <item>
+        <title>Betrayal Companion App</title>
+        <description>&lt;p class=&quot;datestyle&quot;&gt;October 2019&lt;/p&gt;
+&lt;p class=&quot;project-type&quot;&gt;Personal project&lt;/p&gt;
+
+&lt;p&gt;Character attribute tracker for ‘Betrayal at the House on the Hill’ board game, replacing the provided character cards.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Removes the need to track attributes with the included character cards.&lt;/li&gt;
+  &lt;li&gt;Play with multiple characters from the same colour (player limit increases to 12).&lt;/li&gt;
+  &lt;li&gt;Attributes are persisted to device, so that games can be continued at a later date.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/betrayal-characters.png#appscreen&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;../../assets/images/betrayal-selection.png#appscreen&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;../../assets/images/betrayal-characters.png#appscreen&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://play.google.com/store/apps/details?id=julesssss.github.betrayal&quot;&gt;View on the PlayStore&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 20 Oct 2019 00:00:00 +0100</pubDate>
+        <link>https://julesrosser.com/project/betrayal-companion-app.html</link>
+        <guid isPermaLink="true">https://julesrosser.com/project/betrayal-companion-app.html</guid>
+        
+        
+        <category>project</category>
+        
+      </item>
     
       <item>
         <title>Android Data Binding: A Practical Experience</title>
@@ -175,7 +203,7 @@ userRepository.registerSocial(...)
       </item>
     
       <item>
-        <title>Arsenal</title>
+        <title>Arsenal Football Club</title>
         <description>&lt;p class=&quot;datestyle&quot;&gt;July 2018 - February 2019&lt;/p&gt;
 &lt;p class=&quot;project-type&quot;&gt;Professional project&lt;/p&gt;
 
@@ -190,8 +218,8 @@ userRepository.registerSocial(...)
 &lt;p&gt;&lt;a href=&quot;https://play.google.com/store/apps/details?id=com.arsenal.official&amp;amp;hl=en&quot;&gt;View on the PlayStore&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 25 Feb 2019 00:00:00 +0000</pubDate>
-        <link>https://julesrosser.com/project/arsenal.html</link>
-        <guid isPermaLink="true">https://julesrosser.com/project/arsenal.html</guid>
+        <link>https://julesrosser.com/project/arsenal-football-club.html</link>
+        <guid isPermaLink="true">https://julesrosser.com/project/arsenal-football-club.html</guid>
         
         
         <category>project</category>
@@ -584,27 +612,6 @@ reportUndocumented = true
         <pubDate>Mon, 01 Feb 2016 00:00:00 +0000</pubDate>
         <link>https://julesrosser.com/project/cinemapp.html</link>
         <guid isPermaLink="true">https://julesrosser.com/project/cinemapp.html</guid>
-        
-        
-        <category>project</category>
-        
-      </item>
-    
-      <item>
-        <title>Birthday Reminder</title>
-        <description>&lt;p class=&quot;project-type&quot;&gt;Personal project&lt;/p&gt;
-
-&lt;p&gt;Birthday reminder is a simple Material Design Android app which notifies users of upcoming birthdays. Released in 2015, it has had many design and feature update since then, many coming from user requests. Recent additions include Firebase auth and realtime database for data backup. As I built this when I was quite inexperienced, it doesn’t follow any of the common Android architecture patterns, so I wouldn’t recommend using this structure elsewhere.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/857b6f916e18665e46896d8013ac0259574efd79/687474703a2f2f692e696d6775722e636f6d2f7a63463258345a2e706e67#appscreen&quot; alt=&quot;&quot; /&gt;&lt;img src=&quot;https://camo.githubusercontent.com/13b36087275d2d5c24cf86af24bdd3d50c174877/687474703a2f2f692e696d6775722e636f6d2f506169584745562e706e67#appscreen&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/Julesssss/BirthdayReminder&quot;&gt;View the code on GitHub&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://play.google.com/store/apps/details?id=website.julianrosser.birthdays&quot;&gt;View on the PlayStore&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 01 Nov 2015 00:00:00 +0000</pubDate>
-        <link>https://julesrosser.com/project/birthday-reminder.html</link>
-        <guid isPermaLink="true">https://julesrosser.com/project/birthday-reminder.html</guid>
         
         
         <category>project</category>
