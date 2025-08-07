@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
-    <description>Android Engineer with four years professional experience architecting modern Android applications, with an expertise in Kotlin, MVVM, RxJava and Dagger.</description>
+    <description></description>
     <link>https://julesrosser.com/</link>
     <atom:link href="https://julesrosser.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 06 Nov 2019 11:38:43 +0000</pubDate>
-    <lastBuildDate>Wed, 06 Nov 2019 11:38:43 +0000</lastBuildDate>
-    <generator>Jekyll v3.8.4</generator>
+    <pubDate>Wed, 06 Aug 2025 22:06:05 -0700</pubDate>
+    <lastBuildDate>Wed, 06 Aug 2025 22:06:05 -0700</lastBuildDate>
+    <generator>Jekyll v4.4.1</generator>
     
       <item>
         <title>Betrayal Companion App</title>
@@ -28,7 +28,7 @@
 
 &lt;p&gt;&lt;a href=&quot;https://play.google.com/store/apps/details?id=julesssss.github.betrayal&quot;&gt;View on the PlayStore&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sun, 20 Oct 2019 00:00:00 +0100</pubDate>
+        <pubDate>Sun, 20 Oct 2019 00:00:00 -0700</pubDate>
         <link>https://julesrosser.com/project/betrayal-companion-app.html</link>
         <guid isPermaLink="true">https://julesrosser.com/project/betrayal-companion-app.html</guid>
         
@@ -65,14 +65,14 @@
 
 &lt;p&gt;Say goodbye to countless lines of boring code!&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;profileTextName.text = model.profileName
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;profileTextName.text = model.profileName
 profileTextSubtitle.text = model.profileSubtitle
 profileTextHeader.text = model.profileHeader
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;With Data Binding, TextViews, EditTexts and other View classes state their data source directly in the XML layout file and will observe these fields for changes with &lt;a href=&quot;https://developer.android.com/topic/libraries/data-binding/start&quot;&gt;minimal setup&lt;/a&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;layout
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;layout
     &amp;lt;data&amp;gt;
         &amp;lt;variable
             name=&quot;viewModel&quot;
@@ -112,7 +112,7 @@ profileTextHeader.text = model.profileHeader
 
 &lt;p&gt;The real benefit wasn’t initially obvious, but soon felt completely natural. Because UI components state were bound to ViewModel properties, we became able to further integrate RxJava to our architecture. Single subscribe-able Rx flows which emitted state changes was &lt;strong&gt;the dream for functional programming proponents&lt;/strong&gt;. This became easily achievable within our ViewModels thanks to data bound properties.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var registerButtonEnabled = false
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var registerButtonEnabled = false
 var progressBarVisible = false
 var errorMessageVisible = false
 
@@ -142,7 +142,7 @@ userRepository.registerSocial(...)
 
 &lt;p&gt;However, we quickly found that we couldn’t use the library from within the layout file like we could for setting text — requiring us to revert to old methods. Mixing old and new techniques led us &lt;em&gt;away&lt;/em&gt; from our desired clean and readable code.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fun onBindView(_profile: Profile) {
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fun onBindView(_profile: Profile) {
 
     // simple and clean data binding
     binding.profile= _profile
@@ -157,7 +157,7 @@ userRepository.registerSocial(...)
 
 &lt;p&gt;Unfortunately, this wasn’t the only thing that we couldn’t solve with Data Binding. Another essential Android UI Component is &lt;strong&gt;EditText&lt;/strong&gt;, used for user input. In our case, we needed to listen for input changes so that we could enable/disable the Login button depending on whether all input fields were filled.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; */
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; */
  * Called when EditText values are changed. Used to disable button
  * when all fields are not complete. Needs to be delayed as bound
  * inputs are updated after this function is called.
@@ -193,7 +193,7 @@ userRepository.registerSocial(...)
 
 &lt;h2 id=&quot;thank-you-for-reading&quot;&gt;Thank you for reading!&lt;/h2&gt;
 </description>
-        <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+        <pubDate>Fri, 01 Mar 2019 00:00:00 -0800</pubDate>
         <link>https://julesrosser.com/blog/Android-Data-Binding-A-practical-experience.html</link>
         <guid isPermaLink="true">https://julesrosser.com/blog/Android-Data-Binding-A-practical-experience.html</guid>
         
@@ -217,7 +217,7 @@ userRepository.registerSocial(...)
 
 &lt;p&gt;&lt;a href=&quot;https://play.google.com/store/apps/details?id=com.arsenal.official&amp;amp;hl=en&quot;&gt;View on the PlayStore&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Mon, 25 Feb 2019 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 25 Feb 2019 00:00:00 -0800</pubDate>
         <link>https://julesrosser.com/project/arsenal-football-club.html</link>
         <guid isPermaLink="true">https://julesrosser.com/project/arsenal-football-club.html</guid>
         
@@ -253,12 +253,12 @@ userRepository.registerSocial(...)
 &lt;p&gt;Once you have a key, you will need to make it available as a gradle.properties file. Navigate to ‘$HOME/.gradle/’ and if a gradle.properties file does not exist, create it.&lt;/p&gt;
 
 &lt;p&gt;Add the following to the gradle.properties file, replacing XYZ for your NASA API key.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nasaApiKey=&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nasaApiKey=&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;After a project refresh, you should see the gradle.properties file in the Android Studio project browser view under ‘Gradle Scripts’. Switch to the Android view if you don’t see ‘Gradle Scripts’&lt;/p&gt;
 </description>
-        <pubDate>Sat, 10 Nov 2018 00:00:00 +0000</pubDate>
+        <pubDate>Sat, 10 Nov 2018 00:00:00 -0800</pubDate>
         <link>https://julesrosser.com/project/nasa-astronomy-photo-of-the-day.html</link>
         <guid isPermaLink="true">https://julesrosser.com/project/nasa-astronomy-photo-of-the-day.html</guid>
         
@@ -297,16 +297,16 @@ userRepository.registerSocial(...)
 
 &lt;h3 id=&quot;previous-dependency-config&quot;&gt;Previous dependency config&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;compile 'example.dependency:1.0.0'
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;compile &apos;example.dependency:1.0.0&apos;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Hopefully this looks familiar to you. We’re declaring our dependency on an external library within the module that requires it.&lt;/p&gt;
 
 &lt;h3 id=&quot;new-and-improved-dependency-config&quot;&gt;New and improved dependency config&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;implementation 'example.dependency:1.0.0'
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;implementation &apos;example.dependency:1.0.0&apos;
 // or
-api 'example.dependency:1.0.0'
+api &apos;example.dependency:1.0.0&apos;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
@@ -355,7 +355,7 @@ api 'example.dependency:1.0.0'
 
 &lt;p&gt;&lt;em&gt;Thanks for reading, please let me know if I’ve missed anything or if you have any further tips.&lt;/em&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sun, 28 Oct 2018 00:00:00 +0100</pubDate>
+        <pubDate>Sun, 28 Oct 2018 00:00:00 -0700</pubDate>
         <link>https://julesrosser.com/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html</link>
         <guid isPermaLink="true">https://julesrosser.com/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html</guid>
         
@@ -396,11 +396,11 @@ api 'example.dependency:1.0.0'
 
 &lt;p&gt;In our simplified project the AnalyticsHelper prints out the page parameter string along with the hash code of the object itself. We’ll use this hash code to demonstrate that we’re accessing the same instance of the object after implementing Dagger. Running the app at this point outputs the following logs:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Tracking page:
-'Application-onCreate', from AnalyticsHelper:       **757408072**
-'MainActivity-onCreate', from AnalyticsHelper:      **424961346**
-'ViewModel-initialisation', from AnalyticsHelper:   **315976019**
-'MainActivity-observingData', from AnalyticsHelper: **424961346**
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Tracking page:
+&apos;Application-onCreate&apos;, from AnalyticsHelper:       **757408072**
+&apos;MainActivity-onCreate&apos;, from AnalyticsHelper:      **424961346**
+&apos;ViewModel-initialisation&apos;, from AnalyticsHelper:   **315976019**
+&apos;MainActivity-observingData&apos;, from AnalyticsHelper: **424961346**
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;As you can see, Application, Activity and ViewModel each have a different instance of the AnalyticsHelper class. After implementing Dagger, the same object instance will be used. This is one of the simplest changes we can demonstrate with Dagger, but is a great starting point. Lets get started!&lt;/p&gt;
@@ -421,17 +421,17 @@ api 'example.dependency:1.0.0'
 
 &lt;p&gt;Finally, ensure you add the ActivityModule to the list of modules declared in AppComponent&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Singleton @Component(modules = [(AndroidInjectionModule::class), **(ActivityBuilder::class)**, (AppModule::class)])
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Singleton @Component(modules = [(AndroidInjectionModule::class), **(ActivityBuilder::class)**, (AppModule::class)])
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;singleton-analyticshelper&quot;&gt;Singleton AnalyticsHelper&lt;/h2&gt;
 
 &lt;p&gt;Now when we run the app, we can see that Dagger is returning the same AnalyticsHelper instance to Application and MainActivity!&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;'Application-onCreate', from AnalyticsHelper:       **757408072**.
-'MainActivity-onCreate', from AnalyticsHelper:      **757408072**.
-'ViewModel-initialisation', from AnalyticsHelper:   **705483104**.
-'MainActivity-observingData', from AnalyticsHelper: **757408072**.
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&apos;Application-onCreate&apos;, from AnalyticsHelper:       **757408072**.
+&apos;MainActivity-onCreate&apos;, from AnalyticsHelper:      **757408072**.
+&apos;ViewModel-initialisation&apos;, from AnalyticsHelper:   **705483104**.
+&apos;MainActivity-observingData&apos;, from AnalyticsHelper: **757408072**.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;The exception being the ViewModel, which is still creating a new instance of the object. This requires a few extra steps, which we’ll cover in the future! In the meantime, check out the project in it’s current state below.
@@ -439,7 +439,7 @@ api 'example.dependency:1.0.0'
 
 &lt;p&gt;&lt;em&gt;Thanks for reading, please feel free to suggest changes or improvements!&lt;/em&gt;&lt;/p&gt;
 </description>
-        <pubDate>Mon, 23 Jul 2018 00:00:00 +0100</pubDate>
+        <pubDate>Mon, 23 Jul 2018 00:00:00 -0700</pubDate>
         <link>https://julesrosser.com/blog/add-Dagger-to-a-simple-Android-app.html</link>
         <guid isPermaLink="true">https://julesrosser.com/blog/add-Dagger-to-a-simple-Android-app.html</guid>
         
@@ -457,7 +457,7 @@ api 'example.dependency:1.0.0'
 &lt;p&gt;&lt;img src=&quot;../../assets/images/f1tv-current-season.png#appscreen&quot; alt=&quot;&quot; /&gt;
 &lt;img src=&quot;../../assets/images/f1tv-past-season.png#appscreen&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sun, 01 Jul 2018 00:00:00 +0100</pubDate>
+        <pubDate>Sun, 01 Jul 2018 00:00:00 -0700</pubDate>
         <link>https://julesrosser.com/project/formula-1-tv.html</link>
         <guid isPermaLink="true">https://julesrosser.com/project/formula-1-tv.html</guid>
         
@@ -475,7 +475,7 @@ api 'example.dependency:1.0.0'
 &lt;p&gt;&lt;img src=&quot;../../assets/images/album-shuffle.png#appscreen&quot; alt=&quot;&quot; /&gt;
 &lt;img src=&quot;../../assets/images/album-shuffle-2.png#appscreen&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sun, 01 Jul 2018 00:00:00 +0100</pubDate>
+        <pubDate>Sun, 01 Jul 2018 00:00:00 -0700</pubDate>
         <link>https://julesrosser.com/project/spotify-album-shuffle.html</link>
         <guid isPermaLink="true">https://julesrosser.com/project/spotify-album-shuffle.html</guid>
         
@@ -508,9 +508,9 @@ api 'example.dependency:1.0.0'
 
 &lt;p&gt;First, in the &lt;strong&gt;project&lt;/strong&gt; level &lt;strong&gt;build.gradle&lt;/strong&gt; file, add the following classpath dependency (using a Dokka version variable if desired):&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;buildscript {
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;buildscript {
     ext {
-      dokkaVersion = '0.9.17'
+      dokkaVersion = &apos;0.9.17&apos;
     }
 
     repositories {
@@ -533,12 +533,12 @@ api 'example.dependency:1.0.0'
 
 &lt;p&gt;…&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;android {
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;android {
 
     ...
 
     dokka {
-        outputFormat = 'html'
+        outputFormat = &apos;html&apos;
         outputDirectory = &quot;$buildDir/javadoc&quot;
     }
 
@@ -555,7 +555,7 @@ api 'example.dependency:1.0.0'
 
 &lt;p&gt;You can find a list of all Dokka config options on the &lt;a href=&quot;https://github.com/Kotlin/dokka&quot;&gt;Documentation page,&lt;/a&gt; but here are a few useful examples to get you started:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Do not output deprecated members
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Do not output deprecated members
 skipDeprecated = true
 
 // Emit warnings about not documented members.
@@ -586,7 +586,7 @@ reportUndocumented = true
 
 &lt;p&gt;&lt;em&gt;Thanks for reading, please let me know if I’ve missed anything or if you have any tips for using Dokka!&lt;/em&gt;&lt;/p&gt;
 </description>
-        <pubDate>Tue, 26 Jun 2018 00:00:00 +0100</pubDate>
+        <pubDate>Tue, 26 Jun 2018 00:00:00 -0700</pubDate>
         <link>https://julesrosser.com/blog/auto-generate-Kotlin-Android-documentation-with-Dokka.html</link>
         <guid isPermaLink="true">https://julesrosser.com/blog/auto-generate-Kotlin-Android-documentation-with-Dokka.html</guid>
         
@@ -609,7 +609,7 @@ reportUndocumented = true
 
 &lt;p&gt;&lt;a href=&quot;https://play.google.com/store/apps/details?id=com.brandiment.cinemapp&quot;&gt;View on the PlayStore&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Mon, 01 Feb 2016 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 01 Feb 2016 00:00:00 -0800</pubDate>
         <link>https://julesrosser.com/project/cinemapp.html</link>
         <guid isPermaLink="true">https://julesrosser.com/project/cinemapp.html</guid>
         
