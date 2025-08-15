@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Jules Rosser</title>
+<title>Making Claude Behave | Jules Rosser</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Jules Rosser" />
+<meta property="og:title" content="Making Claude Behave" />
+<meta name="author" content="jules" />
 <meta property="og:locale" content="en_US" />
-<link rel="canonical" href="https://julesrosser.com/404" />
-<meta property="og:url" content="https://julesrosser.com/404" />
+<meta name="description" content="After hearing great things about the Claude code agent, I made the switch from Cursor, but becoming efficient was a bit of a struggle. So here are some notes to help other beginners get started with Claude code." />
+<meta property="og:description" content="After hearing great things about the Claude code agent, I made the switch from Cursor, but becoming efficient was a bit of a struggle. So here are some notes to help other beginners get started with Claude code." />
+<link rel="canonical" href="https://julesrosser.com/blog/Making-Claude-Behave.html" />
+<meta property="og:url" content="https://julesrosser.com/blog/Making-Claude-Behave.html" />
 <meta property="og:site_name" content="Jules Rosser" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-15T00:00:00-07:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Jules Rosser" />
+<meta property="twitter:title" content="Making Claude Behave" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","headline":"Jules Rosser","url":"https://julesrosser.com/404"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jules"},"dateModified":"2025-08-15T00:00:00-07:00","datePublished":"2025-08-15T00:00:00-07:00","description":"After hearing great things about the Claude code agent, I made the switch from Cursor, but becoming efficient was a bit of a struggle. So here are some notes to help other beginners get started with Claude code.","headline":"Making Claude Behave","mainEntityOfPage":{"@type":"WebPage","@id":"https://julesrosser.com/blog/Making-Claude-Behave.html"},"url":"https://julesrosser.com/blog/Making-Claude-Behave.html"}</script>
 <!-- End Jekyll SEO tag -->
 
     <head>
@@ -20,9 +24,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title> Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content=" Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content=" Jules Rosser &mdash; Android Engineer " />
+    <title>Making Claude Behave | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Making Claude Behave | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Making Claude Behave | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="">
     <meta name="description" property="og:description" content="" />
@@ -30,7 +34,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesrosser.com/404" />
+    <meta property="og:url" content="https://julesrosser.com/blog/Making-Claude-Behave.html" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -109,7 +113,7 @@
     
     <link rel="stylesheet" href="https://julesrosser.com/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesrosser.com/404">
+    <link rel="canonical" href="https://julesrosser.com/blog/Making-Claude-Behave.html">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesrosser.com/feed.xml">
 </head>
@@ -180,7 +184,7 @@
                     
                         
                         
-                        <a href="https://julesrosser.com/blog/" >Blog</a>
+                        <a href="https://julesrosser.com/blog/" class="active">Blog</a>
                         
                     
                 
@@ -550,7 +554,151 @@
 </div>
 
  -->
-                <div class="not-found post">Oops! There is nothing here.</div>
+                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        <h1 itemprop="name headline">Making Claude Behave</h1>
+    </header>
+
+    <div class="post-content">
+        <p><em>15th August, 2025</em></p>
+
+<p>After hearing great things about the <a href="https://www.anthropic.com/claude-code">Claude code agent</a>, I made the switch from Cursor, but becoming efficient was a bit of a struggle. So here are some notes to help other beginners get started with Claude code.</p>
+
+<p><em>For context ;) I am using Claude as a full stack engineer working on many existing codebases.</em></p>
+
+<h3 id="basics">Basics</h3>
+
+<ul>
+  <li>Create <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> memory files, they are essential</li>
+  <li>The <a href="https://cli.github.com/">GitHub CLI</a> tool is essential for efficient Claude usage</li>
+  <li>Use planning mode <code class="language-plaintext highlighter-rouge">shift + tab</code> at the start of a session to create a detailed plan with clear requirements</li>
+  <li>Provide specific context: reference specific files with <code class="language-plaintext highlighter-rouge">@</code>, paste server logs, drop screenshots, and link to Github issues</li>
+</ul>
+
+<h3 id="claude-memory-training">Claude Memory Training</h3>
+<p>Similar to Cursor rules, <a href="https://docs.anthropic.com/en/docs/claude-code/memory#determine-memory-type">Claude’s memory</a> is made of markdown files that hold its instructions and knowledge. These memory files are persistent context included in every sessions context. For improved results create a memory file for every directory you work from!</p>
+
+<p>You can have memory files at the global, project, and even subproject level. The files are not created by default, but you can create them with the <code class="language-plaintext highlighter-rouge">/memory</code> and <code class="language-plaintext highlighter-rouge">/init</code> commands:</p>
+
+<p>More context improves results, but keep memory files focused. Don’t bloat them with hundreds of hard to manage rules. Keep rules in their relevant file:</p>
+
+<p><img src="/assets/images/claude-memory.png" alt="Claude memory" /></p>
+
+<h4 id="user-memory">User memory</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">~/.claude/CLAUDE.md</code></li>
+</ul>
+
+<p>This is the user memory file where Claude’s global personality and behaviour rules can be set. For example, your preferred branch naming convention. Use this to make Claude always behave in certain ways:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Git branches should be prefixed with jules- and use camel case
+- Git commit messages should be a brief single line message
+- Avoid phrases like "You're absolutely right"
+</code></pre></div></div>
+
+<p><a href="https://gist.github.com/Julesssss/170f73bb35dff22c110d3b56128b741c">Here’s</a> an example Claude file attempting to make Claude more analytical I found in a HackerNews comment that is working well.</p>
+
+<h4 id="project-memory">Project Memory</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">~/your-project/CLAUDE.md</code></li>
+</ul>
+
+<p>In each project directory this file holds project context. Include information such as project architecture, commands for running tests, links to style guides.</p>
+
+<p>Claude’s <code class="language-plaintext highlighter-rouge">/init</code> command does a pretty good job of creating this project file for you. Or you can provide more specific instructions:</p>
+
+<blockquote>
+  <p><em>Analyse this codebase, summarise the project’s purpose, architecture, and key components, and relation to other repos, then create a claude project file</em></p>
+</blockquote>
+
+<p>I had to review these files and remove some unnecessary sections, but Claude makes this easy: <em>‘Remove that migration section and any specific library version’</em></p>
+
+<h4 id="subdirectory-memory">Subdirectory Memory</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">~/.../your-project/sub-directory/CLAUDE.md</code></li>
+</ul>
+
+<p>You can go further and provide additional context for subdirectories. This is useful for documenting features that require more context.</p>
+
+<p>Do this where possible to avoid bloating the project level Claude file. Again you can ask Claude to help you create these files: </p>
+
+<blockquote>
+  <p><em>For the the following directories within this project, summarise the contents and purpose, then writing a claude file</em> </p>
+</blockquote>
+
+<p><img src="/assets/images/claude-init.png" alt="Claude init" /></p>
+
+<h4 id="other-memory-stuff">Other Memory Stuff</h4>
+
+<p><img src="/assets/images/claude-rule.png" alt="Claude rule" /></p>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">#</code> shortcut lets you quickly add a new rule to your current or main memory file</li>
+  <li>You can use a <code class="language-plaintext highlighter-rouge">~/your-project/CLAUDE.local.md</code> file for personal memory that builds on the team’s shared memory</li>
+</ul>
+
+<h3 id="models">Models</h3>
+
+<p>As tempting as it is, you don’t need the most expensive Opus model for great results. According to Anthropic it’s overkill for most tasks. And expensive! This is just 7 work days of usage:</p>
+
+<p><img src="/assets/images/claude-costs.png" alt="Claude costs" /></p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">/model opus-plan</code> for a balance between models. It’ll use Opus for initial discussion then will switch to Sonnet once you exit planning mode.</p>
+
+<p>Another tip is to set  the Sonnet model as default, then create a sub agent for specific purposes that uses the more expensive Opus model.</p>
+
+<p>Still it is way more expensive that using the same agents in Cursor… It doesn’t take long to hit the limit of my personal subscription.</p>
+
+<h3 id="agents">Agents</h3>
+
+<p><a href="https://docs.anthropic.com/en/docs/claude-code/sub-agents">Agents</a> are specialised Claude instances for a specific task with a fresh context.  Define an agent once and Claude will automatically delegate relevant tasks to it, assuming your agents are defined clearly.</p>
+
+<p><img src="/assets/images/claude-subagent.png" alt="Claude agents" /></p>
+
+<p>Claude will help you create agents with the <code class="language-plaintext highlighter-rouge">/agent</code> command, or you can copy one of the many <a href="https://github.com/wshobson/agents">examples</a> online such as <a href="https://github.com/qdhenry/Claude-Command-Suite/blob/main/.claude/agents/code-auditor.md">code reviewer</a>.</p>
+
+<p>Copying them is as simple pasting the markdown file into <code class="language-plaintext highlighter-rouge">/Users/jules/.claude/agents</code>.</p>
+
+<p>Code reviewer is an easy starting agent, but I would suggest creating agents as you find yourself repeating prompts, rather than copying specialised agents. I was very excited to get my first custom <a href="https://gist.github.com/Julesssss/3e65b2b461ad8a5d9c41a53f7e82f876">raise-pr</a> agent working.</p>
+
+<p>A workflow that is working well for me is to spend as much time as possible in plan mode, and to refactor as much repeated prompting as possible to specialised agents:</p>
+
+<blockquote>
+  <p><strong><a href="https://gist.github.com/Julesssss/8aa9d57785a22dd21758e07dc1997b5f">triage agent </a>&gt;  implement &gt; <a href="https://gist.github.com/Julesssss/d4b190f2d7d73847e4d9abd7ce4c3a9c">code-review agent</a>, commit changes, <a href="https://gist.github.com/Julesssss/3e65b2b461ad8a5d9c41a53f7e82f876">raise pr agent</a></strong></p>
+</blockquote>
+
+<h3 id="permissions">Permissions</h3>
+
+<p>Claude asks for permissions the first time it does specific actions such as reading a GitHub issue or running a bash command. It repeats this for each new directory, but you can simply ask Claude to copy an existing file to prevent this.</p>
+
+<p>Add the <code class="language-plaintext highlighter-rouge">settings.local.json</code> file to <code class="language-plaintext highlighter-rouge">.gitignore</code> to avoid this annoying diff. I guess you could use a similar file to set repository level rules for all contributors but haven’t tried this.</p>
+
+<p><img src="/assets/images/claude-permissions.png" alt="Claude permissions settings" /></p>
+
+<h3 id="multiple-accounts">Multiple accounts</h3>
+
+<p>Finally, it’s <a href="https://julesrosser.com/blog/Multiple-Claude-accounts.html">easy</a> to separate your personal and work accounts using an alias. Maybe this could be used to give Claude different personalities.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>alias claude-personal="CLAUDE_CONFIG_DIR=~/.claude-personal claude"
+</code></pre></div></div>
+
+<h3 id="links">Links</h3>
+
+<p>Here are some cool links for more advanced Claude usage:</p>
+
+<ul>
+  <li><a href="https://github.com/jamesponddotco/llm-prompts/blob/trunk/data/socratic-coder.md">Socratic Coder</a> &lt; thorough project planning through conversation</li>
+  <li><a href="https://news.ycombinator.com/item?id=44836879">Getting good results from Claude Code</a> &lt; Interesting HN discussion</li>
+  <li><a href="https://youtu.be/gv0WHhKelSE?si=AV7iMsFbcvYPSA8L">Claude Code Best Practices</a> &lt; Presentation from Anthropic</li>
+  <li><a href="https://github.com/qdhenry/Claude-Command-Suite/tree/main/.claude/agents">Claude command suite agents</a> &lt; advanced Claude workflows</li>
+</ul>
+
+
+    </div>
+</article>
 
             </main>
         </div>

@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Jules Rosser</title>
+<title>Handling Gradle Dependencies In Modularised Android Projects | Jules Rosser</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Jules Rosser" />
+<meta property="og:title" content="Handling Gradle Dependencies In Modularised Android Projects" />
+<meta name="author" content="jules" />
 <meta property="og:locale" content="en_US" />
-<link rel="canonical" href="https://julesrosser.com/404" />
-<meta property="og:url" content="https://julesrosser.com/404" />
+<meta name="description" content="With the benefits that modularised projects bring it would seem like this should be a solved problem, but it’s only recently that a good solution to managing multi-module dependencies has become available. As of late 2017, there was no satisfactory solution to this problem. The best option was to declare dependency version strings in a shared build.gradle file to ensure that each module implemented the same version of the library." />
+<meta property="og:description" content="With the benefits that modularised projects bring it would seem like this should be a solved problem, but it’s only recently that a good solution to managing multi-module dependencies has become available. As of late 2017, there was no satisfactory solution to this problem. The best option was to declare dependency version strings in a shared build.gradle file to ensure that each module implemented the same version of the library." />
+<link rel="canonical" href="https://julesrosser.com/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html" />
+<meta property="og:url" content="https://julesrosser.com/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html" />
 <meta property="og:site_name" content="Jules Rosser" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-28T00:00:00-07:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Jules Rosser" />
+<meta property="twitter:title" content="Handling Gradle Dependencies In Modularised Android Projects" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","headline":"Jules Rosser","url":"https://julesrosser.com/404"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jules"},"dateModified":"2018-10-28T00:00:00-07:00","datePublished":"2018-10-28T00:00:00-07:00","description":"With the benefits that modularised projects bring it would seem like this should be a solved problem, but it’s only recently that a good solution to managing multi-module dependencies has become available. As of late 2017, there was no satisfactory solution to this problem. The best option was to declare dependency version strings in a shared build.gradle file to ensure that each module implemented the same version of the library.","headline":"Handling Gradle Dependencies In Modularised Android Projects","mainEntityOfPage":{"@type":"WebPage","@id":"https://julesrosser.com/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html"},"url":"https://julesrosser.com/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html"}</script>
 <!-- End Jekyll SEO tag -->
 
     <head>
@@ -20,9 +24,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title> Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content=" Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content=" Jules Rosser &mdash; Android Engineer " />
+    <title>Handling Gradle Dependencies In Modularised Android Projects | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Handling Gradle Dependencies In Modularised Android Projects | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Handling Gradle Dependencies In Modularised Android Projects | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="">
     <meta name="description" property="og:description" content="" />
@@ -30,7 +34,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesrosser.com/404" />
+    <meta property="og:url" content="https://julesrosser.com/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -109,7 +113,7 @@
     
     <link rel="stylesheet" href="https://julesrosser.com/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesrosser.com/404">
+    <link rel="canonical" href="https://julesrosser.com/blog/Handling-Gradle-dependencies-in-modularised-Android-projects.html">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesrosser.com/feed.xml">
 </head>
@@ -180,7 +184,7 @@
                     
                         
                         
-                        <a href="https://julesrosser.com/blog/" >Blog</a>
+                        <a href="https://julesrosser.com/blog/" class="active">Blog</a>
                         
                     
                 
@@ -550,7 +554,100 @@
 </div>
 
  -->
-                <div class="not-found post">Oops! There is nothing here.</div>
+                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        <h1 itemprop="name headline">Handling Gradle Dependencies In Modularised Android Projects</h1>
+    </header>
+
+    <div class="post-content">
+        <p><em>28th October, 2018</em></p>
+
+<blockquote>
+  <p>How do I share dependencies between Android modules?</p>
+</blockquote>
+
+<p>With the benefits that modularised projects bring it would seem like this should be a solved problem, but it’s only recently that a good solution to managing multi-module dependencies has become available.</p>
+
+<p>As of late 2017, there was no satisfactory solution to this problem. The best option was to declare dependency version strings in a shared build.gradle file to ensure that each module implemented the same version of the library.</p>
+
+<p>This works, but the repetition isn’t great and the solution doesn’t scale well as module count and complexity increases…</p>
+
+<h2 id="introducing-gradle-40-">Introducing Gradle 4.0 🎉</h2>
+
+<p>In October 2017 Gradle 4.0 was released along with <a href="https://developer.android.com/studio/releases/gradle-plugin#3-0-0">Android Gradle plugin 3.0.0</a>. Some of the improvements included faster build speeds due to better parallelism, Java 8 support for certain features and faster incremental builds.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/3140/1*AgyiBkXlpmtwBi4LKq3E2Q.png" alt="Supposed improvements to a 130 module skeleton project." /></p>
+
+<p>However, the change that we’re interested in was the addition of new Gradle dependency configurations.</p>
+
+<p><em>Hopefully by now you’re already using Gradle 4.0+ with Android Studio Gradle plugin 3.0.0+, but if not you’ll first need to <a href="https://developer.android.com/studio/releases/gradle-plugin">update</a>.</em></p>
+
+<h2 id="new-dependency-configurations">New dependency configurations</h2>
+
+<p>Two new dependency configurations replace <strong>‘compile’</strong> and allow us to decide whether a modules Gradle dependencies are accessible to <strong>any other module which depends upon it</strong>, or <strong>only within the module</strong>. (a simple comparison is using public/private to set the visibility of variables/functions). This allows us to keep a clear layer of separation between modules while removing the repetition of declaring dependencies in multiple modules.</p>
+
+<h3 id="previous-dependency-config">Previous dependency config</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>compile 'example.dependency:1.0.0'
+</code></pre></div></div>
+
+<p>Hopefully this looks familiar to you. We’re declaring our dependency on an external library within the module that requires it.</p>
+
+<h3 id="new-and-improved-dependency-config">New and improved dependency config</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>implementation 'example.dependency:1.0.0'
+// or
+api 'example.dependency:1.0.0'
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>implementation</strong> → this dependency is only available to entities within this module</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>api</strong> → this dependency will also be available within any module which depends on this module</p>
+</blockquote>
+
+<p>The change is as simple as that. For any dependencies which should be self contained within the module, use <strong>implementation.</strong> For any dependencies which should also be made available to modules which depend on the module, use <strong>api</strong>.</p>
+
+<h2 id="architecture">Architecture</h2>
+
+<p>We can now replace <strong>compile</strong> with either <strong>implementation</strong> or <strong>api</strong> depending on the structure of our modules and setup a chain of dependencies which makes sense for our architecture.</p>
+
+<p>Here are a couple of simple example projects with alternate module architectures and the correct usage in each case.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*EEegKqKKxv7Dn_QDJThpQQ.png" alt="" /></p>
+
+<p>Here’s a simple app which has only a single module: app. In this case we only need to replace compile with implementation as there are no other modules which might be able to share dependencies.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*J6UWH17GbvwAsCX6INFeZA.png" alt="" /></p>
+
+<p>Here’s a more complex app with three modules: <strong>app</strong>, <strong>tv</strong> and <strong>core</strong>.</p>
+
+<ul>
+  <li>
+    <p>Both app and tv modules depend on the core module</p>
+  </li>
+  <li>
+    <p>only the core module should interact directly with Retrofit, so we use <strong>implementation</strong> to ensure that the library is inaccessible from app and tv.</p>
+  </li>
+  <li>
+    <p>RxJava is required in all three modules, therefore we can use the <strong>api</strong> config to ensure that all projects depending on core can access RxJava.</p>
+  </li>
+</ul>
+
+<p>Hopefully a similar structure can apply to your project, but please leave a comment if you have a problem working out the correct dependency flow.</p>
+
+<h2 id="notes">Notes</h2>
+
+<p>I recently answered this question on <a href="https://stackoverflow.com/questions/31841259/how-do-i-share-dependencies-between-android-modules">StackOverflow </a>which inspired this post, check out the <a href="https://stackoverflow.com/questions/31841259/how-do-i-share-dependencies-between-android-modules">question </a>for further discussion and the older solutions.</p>
+
+<p>If you’re not yet taking advantage of a modularised android project, check out this <a href="https://medium.freecodecamp.org/how-modularisation-affects-build-time-of-an-android-application-43a984ce9968">detailed blog post</a> for detailed information on the build time improvements.</p>
+
+<p><em>Thanks for reading, please let me know if I’ve missed anything or if you have any further tips.</em></p>
+
+    </div>
+</article>
 
             </main>
         </div>

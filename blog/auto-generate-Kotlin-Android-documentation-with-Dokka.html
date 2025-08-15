@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Jules Rosser</title>
+<title>Auto Generate Kotlin Android Documentation With Dokka | Jules Rosser</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Jules Rosser" />
+<meta property="og:title" content="Auto Generate Kotlin Android Documentation With Dokka" />
+<meta name="author" content="jules" />
 <meta property="og:locale" content="en_US" />
-<link rel="canonical" href="https://julesrosser.com/404" />
-<meta property="og:url" content="https://julesrosser.com/404" />
+<meta name="description" content="I’ve recently been trying to write better documentation, and after discovering how simple this was for Java projects using Android Studio was upset to find out that this doesn’t work for Android projects written in Kotlin. Until a couple of minutes later when I found Dokka, Jet-brain’s documentation engine for Kotlin. For anyone unlucky enough to not be completely free from Java, you’ll be pleased to know it also works with mixed Java/Kotlin projects." />
+<meta property="og:description" content="I’ve recently been trying to write better documentation, and after discovering how simple this was for Java projects using Android Studio was upset to find out that this doesn’t work for Android projects written in Kotlin. Until a couple of minutes later when I found Dokka, Jet-brain’s documentation engine for Kotlin. For anyone unlucky enough to not be completely free from Java, you’ll be pleased to know it also works with mixed Java/Kotlin projects." />
+<link rel="canonical" href="https://julesrosser.com/blog/auto-generate-Kotlin-Android-documentation-with-Dokka.html" />
+<meta property="og:url" content="https://julesrosser.com/blog/auto-generate-Kotlin-Android-documentation-with-Dokka.html" />
 <meta property="og:site_name" content="Jules Rosser" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-06-26T00:00:00-07:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Jules Rosser" />
+<meta property="twitter:title" content="Auto Generate Kotlin Android Documentation With Dokka" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","headline":"Jules Rosser","url":"https://julesrosser.com/404"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jules"},"dateModified":"2018-06-26T00:00:00-07:00","datePublished":"2018-06-26T00:00:00-07:00","description":"I’ve recently been trying to write better documentation, and after discovering how simple this was for Java projects using Android Studio was upset to find out that this doesn’t work for Android projects written in Kotlin. Until a couple of minutes later when I found Dokka, Jet-brain’s documentation engine for Kotlin. For anyone unlucky enough to not be completely free from Java, you’ll be pleased to know it also works with mixed Java/Kotlin projects.","headline":"Auto Generate Kotlin Android Documentation With Dokka","mainEntityOfPage":{"@type":"WebPage","@id":"https://julesrosser.com/blog/auto-generate-Kotlin-Android-documentation-with-Dokka.html"},"url":"https://julesrosser.com/blog/auto-generate-Kotlin-Android-documentation-with-Dokka.html"}</script>
 <!-- End Jekyll SEO tag -->
 
     <head>
@@ -20,9 +24,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title> Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content=" Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content=" Jules Rosser &mdash; Android Engineer " />
+    <title>Auto Generate Kotlin Android Documentation With Dokka | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Auto Generate Kotlin Android Documentation With Dokka | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Auto Generate Kotlin Android Documentation With Dokka | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="">
     <meta name="description" property="og:description" content="" />
@@ -30,7 +34,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesrosser.com/404" />
+    <meta property="og:url" content="https://julesrosser.com/blog/auto-generate-Kotlin-Android-documentation-with-Dokka.html" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -109,7 +113,7 @@
     
     <link rel="stylesheet" href="https://julesrosser.com/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesrosser.com/404">
+    <link rel="canonical" href="https://julesrosser.com/blog/auto-generate-Kotlin-Android-documentation-with-Dokka.html">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesrosser.com/feed.xml">
 </head>
@@ -180,7 +184,7 @@
                     
                         
                         
-                        <a href="https://julesrosser.com/blog/" >Blog</a>
+                        <a href="https://julesrosser.com/blog/" class="active">Blog</a>
                         
                     
                 
@@ -550,7 +554,114 @@
 </div>
 
  -->
-                <div class="not-found post">Oops! There is nothing here.</div>
+                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        <h1 itemprop="name headline">Auto Generate Kotlin Android Documentation With Dokka</h1>
+    </header>
+
+    <div class="post-content">
+        <p><em>22nd August, 2018</em></p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*4r_QNds14Tjv8eddEofoGg.png" alt="" /></p>
+
+<p>I’ve recently been trying to write better documentation, and after discovering how simple this was for Java projects using Android Studio was upset to find out that this doesn’t work for Android projects written in Kotlin.</p>
+
+<p>Until a couple of minutes later when I found <a href="https://github.com/Kotlin/dokka">Dokka</a>, Jet-brain’s documentation engine for Kotlin. For anyone unlucky enough to not be completely free from Java, you’ll be pleased to know it also works with mixed Java/Kotlin projects.</p>
+
+<p><em>For a sneak peak, <a href="https://github.com/Julesssss/Android-MVVM/blob/master/documentation/app.julianrosser.androidmvvm.viewmodel/-observable-view-model/index.md">here’s an example</a> of Markdown documentation that I’ve generated from a simple project.</em></p>
+
+<h2 id="preconditions">Preconditions</h2>
+
+<p>Unfortunately, good documentation doesn’t write itself, so the first step is to comment your code properly. Dokka will pick up comments from classes, methods and properties as well as highlighting param, return and other tag comments.</p>
+
+<p>Thankfully, that is the only precondition that’s necessary in order to use Dokka. Once we’ve setup the Dokka plugin and specified a few plugin preferences, we’ll be able to run a Gradle task which exports nicely organised, hyperlinked documentation in a couple of different formats. It’s that simple! Lets get started…</p>
+
+<h2 id="plugin-setup">Plugin Setup</h2>
+
+<p><em>For those with no patience, <a href="https://github.com/Julesssss/Android-MVVM/commit/d205ab6c315f9ada064b93ee80b47f86a841accd">this commit</a> shows the few necessary changes we need to make.</em></p>
+
+<p>First, in the <strong>project</strong> level <strong>build.gradle</strong> file, add the following classpath dependency (using a Dokka version variable if desired):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>buildscript {
+    ext {
+      dokkaVersion = '0.9.17'
+    }
+
+    repositories {
+      jcenter()
+    }
+
+    dependencies {
+      classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaVersion"
+    }
+}
+</code></pre></div></div>
+
+<p>Now, for each module you would like to generate documentation for, add this plugin beneath the Kotlin kapt plugin in the <strong>build.gradle</strong> file. Followed by the a Dokka configuration block.</p>
+
+<p><em>This will most likely be the <strong>app</strong> module build.gradle for single module projects.</em></p>
+
+<p>apply plugin: ‘kotlin-android-extensions’
+  apply plugin: ‘kotlin-kapt’
+  apply plugin: ‘org.jetbrains.dokka-android’</p>
+
+<p>…</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android {
+
+    ...
+
+    dokka {
+        outputFormat = 'html'
+        outputDirectory = "$buildDir/javadoc"
+    }
+
+}
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>outputFormat:</strong> We have a choice of <a href="https://github.com/Kotlin/dokka#output-formats">6 output formats</a> including html, javadoc, and a few types of markdown.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>outputDirectory:</strong> Choose the location you would like the documentation to be built to.</p>
+</blockquote>
+
+<p>You can find a list of all Dokka config options on the <a href="https://github.com/Kotlin/dokka">Documentation page,</a> but here are a few useful examples to get you started:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Do not output deprecated members
+skipDeprecated = true
+
+// Emit warnings about not documented members.
+reportUndocumented = true
+</code></pre></div></div>
+
+<h2 id="building-the-docs">Building the docs</h2>
+
+<p>That’s all! After syncing your project you should see a new Gradle task which will generate the documentation for you.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*R3eFsLWDGB-Scrs7cfTQTg.png" alt="Your new favourite Gradle task" /></p>
+
+<p>Run the Gradle task from the Android Studio Gradle window or from the terminal with <strong>./gradlew dokka</strong>, and navigate to the output directory you specified in the config. <em>(You will need to switch to the Project view in order to see the output folder from within Android Studio).</em></p>
+
+<p>By default, the above output directory will output docs to the ‘<em>project &gt; app &gt; build &gt; javadoc &gt; app’</em> folder.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*qtleZNUurBosK1MM-fJx-A.png" alt="Your shiny documentation in all its glory" /></p>
+
+<p>Open the <strong>index.html</strong> file in a browser and admire your new documentation, organised by package.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*-Obn5t6iiZBPNguGtE8JYw.png" alt="A somewhat empty but perfectly functional documentation hub." /></p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*J9JZ35JaoQOpWXIkc4tNlg.png" alt="An example package, with clearly defined comments" /></p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*-VzQsFjFmYqoDKUrlZJLgQ.png" alt="*Here](https://github.com/Julesssss/Android-MVVM/blob/master/documentation/index.md) is an example of markdown formatted documentation hosted on a public GitHub repository*" /></p>
+
+<p>Now we face the harder problem of getting people to actually read our docs!</p>
+
+<p><em>Thanks for reading, please let me know if I’ve missed anything or if you have any tips for using Dokka!</em></p>
+
+    </div>
+</article>
 
             </main>
         </div>

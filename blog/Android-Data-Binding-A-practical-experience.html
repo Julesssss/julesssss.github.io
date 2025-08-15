@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Jules Rosser</title>
+<title>Android Data Binding: A Practical Experience | Jules Rosser</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Jules Rosser" />
+<meta property="og:title" content="Android Data Binding: A Practical Experience" />
+<meta name="author" content="jules" />
 <meta property="og:locale" content="en_US" />
-<link rel="canonical" href="https://julesrosser.com/404" />
-<meta property="og:url" content="https://julesrosser.com/404" />
+<meta name="description" content="At Ostmodern, we build a variety of mobile applications with a focus on VOD, OTT and sports. While the apps vary in functionality, the Android team uses a proven architectural design throughout each project, which is constantly refined and improved. Our current structure is a combination of MVVM (Model-View-ViewModel), with heavy usage of Dagger for dependency injection, and RxJava for data flows." />
+<meta property="og:description" content="At Ostmodern, we build a variety of mobile applications with a focus on VOD, OTT and sports. While the apps vary in functionality, the Android team uses a proven architectural design throughout each project, which is constantly refined and improved. Our current structure is a combination of MVVM (Model-View-ViewModel), with heavy usage of Dagger for dependency injection, and RxJava for data flows." />
+<link rel="canonical" href="https://julesrosser.com/blog/Android-Data-Binding-A-practical-experience.html" />
+<meta property="og:url" content="https://julesrosser.com/blog/Android-Data-Binding-A-practical-experience.html" />
 <meta property="og:site_name" content="Jules Rosser" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-01T00:00:00-08:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Jules Rosser" />
+<meta property="twitter:title" content="Android Data Binding: A Practical Experience" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","headline":"Jules Rosser","url":"https://julesrosser.com/404"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jules"},"dateModified":"2019-03-01T00:00:00-08:00","datePublished":"2019-03-01T00:00:00-08:00","description":"At Ostmodern, we build a variety of mobile applications with a focus on VOD, OTT and sports. While the apps vary in functionality, the Android team uses a proven architectural design throughout each project, which is constantly refined and improved. Our current structure is a combination of MVVM (Model-View-ViewModel), with heavy usage of Dagger for dependency injection, and RxJava for data flows.","headline":"Android Data Binding: A Practical Experience","mainEntityOfPage":{"@type":"WebPage","@id":"https://julesrosser.com/blog/Android-Data-Binding-A-practical-experience.html"},"url":"https://julesrosser.com/blog/Android-Data-Binding-A-practical-experience.html"}</script>
 <!-- End Jekyll SEO tag -->
 
     <head>
@@ -20,9 +24,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title> Jules Rosser &mdash; Android Engineer </title>
-    <meta property="og:title" content=" Jules Rosser &mdash; Android Engineer " />
-    <meta name="twitter:title" content=" Jules Rosser &mdash; Android Engineer " />
+    <title>Android Data Binding: A Practical Experience | Jules Rosser &mdash; Android Engineer </title>
+    <meta property="og:title" content="Android Data Binding: A Practical Experience | Jules Rosser &mdash; Android Engineer " />
+    <meta name="twitter:title" content="Android Data Binding: A Practical Experience | Jules Rosser &mdash; Android Engineer " />
 
     <meta name="description" content="">
     <meta name="description" property="og:description" content="" />
@@ -30,7 +34,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta property="og:url" content="https://julesrosser.com/404" />
+    <meta property="og:url" content="https://julesrosser.com/blog/Android-Data-Binding-A-practical-experience.html" />
 
     <meta property="og:image" content="" />
     <meta name="twitter:image" content="" />
@@ -109,7 +113,7 @@
     
     <link rel="stylesheet" href="https://julesrosser.com/assets/css/main.css">
 
-    <link rel="canonical" href="https://julesrosser.com/404">
+    <link rel="canonical" href="https://julesrosser.com/blog/Android-Data-Binding-A-practical-experience.html">
 
     <link rel="alternate" type="application/rss+xml" title="" href="https://julesrosser.com/feed.xml">
 </head>
@@ -180,7 +184,7 @@
                     
                         
                         
-                        <a href="https://julesrosser.com/blog/" >Blog</a>
+                        <a href="https://julesrosser.com/blog/" class="active">Blog</a>
                         
                     
                 
@@ -550,7 +554,168 @@
 </div>
 
  -->
-                <div class="not-found post">Oops! There is nothing here.</div>
+                <article class="post page single" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        <h1 itemprop="name headline">Android Data Binding: A Practical Experience</h1>
+    </header>
+
+    <div class="post-content">
+        <p><em>1st March, 2019</em></p>
+
+<h3 id="our-journey-with-the-data-binding-library-while-building-a-large-greenfield-application">Our journey with the Data Binding library while building a large greenfield application.</h3>
+
+<p><img src="https://cdn-images-1.medium.com/max/3528/1*SfBCpqeC_45tLKHpIl35gA.jpeg" alt="" /></p>
+
+<p>At <a href="https://medium.com/@Ostmodern">Ostmodern</a>, we build a variety of mobile applications with a focus on VOD, OTT and sports. While the apps vary in functionality, the Android team uses a proven architectural design throughout each project, which is constantly refined and improved. Our current structure is a combination of MVVM (Model-View-ViewModel), with heavy usage of Dagger for dependency injection, and RxJava for data flows.</p>
+
+<p>We love experimenting with new technology and regularly discuss new patterns and libraries as a team. Our architecture is heavily influenced by these discussions and our early adoption of <strong>Kotlin</strong> and move from Model-View-Presenter to MVVM are some previous outcomes of these talks.</p>
+
+<p>In the lead up to our latest project kick-off, we reignited our previous <a href="https://developer.android.com/topic/libraries/architecture/room">Room</a> vs <a href="https://realm.io/">Realm</a> data persistence debate. Google’s new library (Room) is built on top of SQLite, making it a powerful and lightweight competitor to the popular Realm library, which is commonly used for its ease of use when working with complex model relationships.</p>
+
+<p>Migrating to Room had appealed to us for the above-mentioned reasons and also because it plugs into RxJava right out of the box, but a stable build wasn’t available last time around. This time, we nearly went with Room. In the end, we decided to stick with Realm as the new project data structure consisted of a <strong>complex class hierarchy</strong>. While class relationships can be managed in Room, they require a bit of boilerplate and we felt the implementation would be much simpler to handle with Realm, especially with our prior usage of the library.</p>
+
+<p>A second discussion was focused on <a href="https://developer.android.com/topic/libraries/data-binding/">Data Binding</a>. As a technique, it isn’t new. It exists in many frameworks and was introduced to Android back in 2015 — yet it is often cast aside.</p>
+
+<p>We had chosen MVVM for a better separation of concerns and reduced view logic, thus Data Binding seemed an obvious choice for additional research: it enhanced both of these and could easily extend our existing architecture without major restructuring.</p>
+
+<h3 id="introducing-data-binding">Introducing Data Binding</h3>
+
+<p>Data Binding aims to simplify the process of updating UI components with data. By binding UI components directly to ViewModel properties, we could remove the need for UI framework calls in our Fragments/Activities.</p>
+
+<p>Google recommended that developers use the Data Binding library for improved memory usage and performance, but the <strong>simplicity and reduced boilerplate</strong> was also appealing to us.</p>
+
+<p>Say goodbye to countless lines of boring code!</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>profileTextName.text = model.profileName
+profileTextSubtitle.text = model.profileSubtitle
+profileTextHeader.text = model.profileHeader
+</code></pre></div></div>
+
+<p>With Data Binding, TextViews, EditTexts and other View classes state their data source directly in the XML layout file and will observe these fields for changes with <a href="https://developer.android.com/topic/libraries/data-binding/start">minimal setup</a>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;layout
+    &lt;data&gt;
+        &lt;variable
+            name="viewModel"
+            type="package.profile.ProfileViewModel" /&gt;
+    &lt;/data&gt;
+
+    &lt;TextView&gt;
+        ...        
+        android:text="@={viewModel.profileName}" /&gt;
+
+&lt;/layout&gt;
+</code></pre></div></div>
+
+<p>Shown above is a Data Binding compatible layout file. Layouts now have a reference to the related ViewModel (or presenter if using MVP). This allows us to keep logic out of our Fragments and Activities, <strong>making our project easier to test and debug</strong>.</p>
+
+<p>Data Binding seemed useful and an obvious choice for further research, as it could extend to our existing architecture without considerable changes, so we gave it a go.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/10326/1*IrRvF5R4I8PfjnxIoYTzAQ.jpeg" alt="" /></p>
+
+<p><a href="https://github.com/Julesssss/Android-MVVM">Early investigations</a> seemed promising. Not only did it require less code, but our IDE (Android Studio) also had built-in support for converting layouts to Data Binding compatible files, and it led to a better separation of logic from views — one of our primary concerns.</p>
+
+<p>This encouraged us to attempt wider usage. We were interested in what issues might arise at scale, but eager to find out more. To that end, when the new project kicked off, we started building the first features with Data Binding.</p>
+
+<h3 id="1-month-later-first-impressions">…1 Month later: First Impressions</h3>
+
+<p>Initially, our usage didn’t stray far from our previous investigations. The early features were simple and our UI components observed fields in the ViewModel without issue. We enjoyed our clean and simple Fragments.</p>
+
+<p>It felt like we were learning the Android platform all over again. Want to add a TextChangedListener? Need to bind to an included layout? Progress wasn’t fast. As early adopters we had to navigate a reduced knowledge base, but <strong>each new discovery felt rewarding</strong>.</p>
+
+<p>While it took us a while to work out our general approach to Data Binding, we were happy to find that views were less dependent on logic for determining state.</p>
+
+<p><em>It felt like a natural iteration to our architecture.</em></p>
+
+<p>We also started to work out our rules and exceptions. One of our team members suggested that we shouldn’t bind function calls to the onClick attribute in layout files. She had used Data Binding previously for a different platform and found that functionality became obfuscated and hard to read.</p>
+
+<p>Tracing function calls back to the originating view click was time-consuming. By keeping UI component clicks in code, it again became simple to get an overview of flow when revisiting unfamiliar pages.</p>
+
+<p>The real benefit wasn’t initially obvious, but soon felt completely natural. Because UI components state were bound to ViewModel properties, we became able to further integrate RxJava to our architecture. Single subscribe-able Rx flows which emitted state changes was <strong>the dream for functional programming proponents</strong>. This became easily achievable within our ViewModels thanks to data bound properties.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var registerButtonEnabled = false
+var progressBarVisible = false
+var errorMessageVisible = false
+
+userRepository.registerSocial(...)
+        .doOnSubscribe {
+            progressBarVisible = true
+            registerButtonEnabled = false
+            errorMessageVisible = false
+            notifyChange()
+        }.doOnError {
+            progressBarVisible = false
+            registerButtonEnabled = true
+            errorMessageVisible = true
+            notifyChange()
+        }.doFinally {
+            progressBarVisible = false
+            registerButtonEnabled = true
+            notifyChange()
+        }
+</code></pre></div></div>
+
+<p>As the xml layouts observed the ViewModels properties shown above, state could be controlled from a simple Rx chain: an excellent way to move logic from views and allow them to be tested with ease.</p>
+
+<h3 id="3-months-later-second-thoughts">…3 Months later: Second thoughts</h3>
+
+<p>One of the first complications we found with Data Binding was with loading images. A simple task, but one which usually requires an Image loading library for accessible and <strong>hassle-free image caching</strong>.</p>
+
+<p>However, we quickly found that we couldn’t use the library from within the layout file like we could for setting text — requiring us to revert to old methods. Mixing old and new techniques led us <em>away</em> from our desired clean and readable code.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fun onBindView(_profile: Profile) {
+
+    // simple and clean data binding
+    binding.profile= _profile
+
+    // old methods returned to haunt us
+    profileImageUser.loadWithGlide(_profile.imageUrl)
+    profileImageCountryFlag.loadWithGlide(_profile.flagUrl)
+}
+</code></pre></div></div>
+
+<p>One solution to this was to create a custom ImageView class and add specific image library functions that could be called from the XML file. On the other hand, we worried that glueing libraries to custom views was not scaleable and went against our desire for separation of concerns.</p>
+
+<p>Unfortunately, this wasn’t the only thing that we couldn’t solve with Data Binding. Another essential Android UI Component is <strong>EditText</strong>, used for user input. In our case, we needed to listen for input changes so that we could enable/disable the Login button depending on whether all input fields were filled.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> */
+ * Called when EditText values are changed. Used to disable button
+ * when all fields are not complete. Needs to be delayed as bound
+ * inputs are updated after this function is called.
+ */
+ fun onInputChanged(s: CharSequence, ...) {
+    delay({
+        loginButtonEnabled =
+           inputUsername.isNotEmpty() &amp;&amp; inputPassword.isNotEmpty()
+        notifyChange()
+    }, 50)
+}
+</code></pre></div></div>
+
+<p>The problem was that data bound fields inputUsername &amp; inputPassword were not being updated fast enough when using Data Binding. When receiving an onInputChanged callback from the EditText, the ViewModel hadn’t yet registered the new values — meaning that we had to add an artificial delay!</p>
+
+<p><strong>More issues became apparent at scale</strong>. Navigating a large code base where old features became unfamiliar was tricky. Adapters required generated binding classes, rather than a clickable layout resource Id during setup. Therefore, navigation between classes became less simple. We had to decipher generated class names to find the layout files. Annoying *and *time consuming in a project with over 140 layout files.</p>
+
+<p><em>Later on we learnt that the generated class bindings are customisable and <a href="https://developer.android.com/topic/libraries/data-binding/generated-binding#custom_binding_class_names">can be renamed</a>, solving the deciphering problem.</em></p>
+
+<h3 id="-6-months-later-reflecting-on-our-experience">… 6 months later: Reflecting on our experience</h3>
+
+<p>As the project came to an end we sat down to review our experiences with Data Binding.</p>
+
+<p>We loved that this technique let us <strong>move logic out of our View classes</strong> and made future changes fast once initially set up. However, while we hadn’t expected the process of using it in a large project to be without issue, we felt that the workarounds and exceptions reduced and sometimes <em>nullified</em> the benefits of Data Binding usage.</p>
+
+<p>Simplifying our view classes, increased separation and better state management were t<strong>he desired objectives</strong> and outcomes. While Data Binding helped us to achieve these, many more issues than we had hoped for emerged.</p>
+
+<p>We had also since been informed about more recent, better solutions to help us achieve the above-stated goals. Our current favourite being a Redux/Model-View-Intent influenced ViewState management pattern which facilitates View classes with immutable state data classes, making more of the business logic testable. This can be extended with a modularised state reducer, responsible for taking actions and manipulating state.</p>
+
+<p>Important lessons were learned and we don’t regret attempting to use the library, but have decided as a team not to give Data Binding a place in our base architecture for future projects. Instead, we will be focusing on the referenced ViewState pattern for better state management.</p>
+
+<p>With that said, <strong>Data Binding shouldn’t be overlooked</strong> as a library for simple or minimum viable products and there may be new or missed solutions to the issues we faced. Our advice would be for you to investigate the library’s pitfalls with your own project in mind and ensure that rules and guidelines on its use are defined before committing fully.</p>
+
+<h2 id="thank-you-for-reading">Thank you for reading!</h2>
+
+    </div>
+</article>
 
             </main>
         </div>
