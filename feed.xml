@@ -5,9 +5,157 @@
     <description></description>
     <link>https://julesrosser.com/</link>
     <atom:link href="https://julesrosser.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 08 Aug 2025 17:35:39 -0700</pubDate>
-    <lastBuildDate>Fri, 08 Aug 2025 17:35:39 -0700</lastBuildDate>
+    <pubDate>Thu, 14 Aug 2025 23:14:47 -0700</pubDate>
+    <lastBuildDate>Thu, 14 Aug 2025 23:14:47 -0700</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
+    
+      <item>
+        <title>Making Claude Behave</title>
+        <description>&lt;p&gt;&lt;em&gt;14th August, 2025&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;After hearing great things about the &lt;a href=&quot;https://www.anthropic.com/claude-code&quot;&gt;Claude code agent&lt;/a&gt;, I made the switch from Cursor, but becoming efficient was a bit of a struggle. So here are some notes to help other beginners get started with Claude code.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;For context ;) I am using Claude as a full stack engineer working on  existing codebases.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;basics&quot;&gt;Basics&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CLAUDE.md&lt;/code&gt; memory files, they are essential&lt;/li&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://cli.github.com/&quot;&gt;GitHub CLI&lt;/a&gt; tool is essential for efficient Claude usage&lt;/li&gt;
+  &lt;li&gt;Use planning mode &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shift + tab&lt;/code&gt; at the start of a session to create a detailed plan with clear requirements&lt;/li&gt;
+  &lt;li&gt;Provide specific context: reference specific files with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@&lt;/code&gt;, paste server logs, drop screenshots, and link to Github issues&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;claude-memory-training&quot;&gt;Claude Memory Training&lt;/h3&gt;
+&lt;p&gt;Similar to Cursor rules, &lt;a href=&quot;https://docs.anthropic.com/en/docs/claude-code/memory#determine-memory-type&quot;&gt;Claude’s memory&lt;/a&gt; is made of markdown files that hold its instructions and knowledge. These memory files are persistent context included in every sessions context. For improved results create a memory file for every directory you work from!&lt;/p&gt;
+
+&lt;p&gt;You can have memory files at the global, project, and even subproject level. The files are not created by default, but you can create them with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/memory&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/init&lt;/code&gt; commands:&lt;/p&gt;
+
+&lt;p&gt;More context improves results, but keep memory files focused. Don’t bloat them with hundreds of hard to manage rules. Keep rules in their relevant file:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/claude-memory.png&quot; alt=&quot;Claude memory&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;user-memory&quot;&gt;User memory&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.claude/CLAUDE.md&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is the user memory file where Claude’s global personality and behaviour rules can be set. For example, your preferred branch naming convention. Use this to make Claude always behave in certain ways:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- Git branches should be prefixed with jules- and use camel case
+- Git commit messages should be a brief single line message
+- Avoid phrases like &quot;You&apos;re absolutely right&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://gist.github.com/Julesssss/170f73bb35dff22c110d3b56128b741c&quot;&gt;Here’s&lt;/a&gt; an example Claude file attempting to make Claude more analytical I found in a HackerNews comment that is working well.&lt;/p&gt;
+
+&lt;h4 id=&quot;project-memory&quot;&gt;Project Memory&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/your-project/CLAUDE.md&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In each project directory this file holds project context. Include information such as project architecture, commands for running tests, links to style guides.&lt;/p&gt;
+
+&lt;p&gt;Claude’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/init&lt;/code&gt; command does a pretty good job of creating this project file for you. Or you can provide more specific instructions:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;Analyse this codebase, summarise the project’s purpose, architecture, and key components, and relation to other repos, then create a claude project file&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I had to review these files and remove some unnecessary sections, but Claude makes this easy: &lt;em&gt;‘Remove that migration section and any specific library version’&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;subdirectory-memory&quot;&gt;Subdirectory Memory&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.../your-project/sub-directory/CLAUDE.md&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can go further and provide additional context for subdirectories. This is useful for documenting features that require more context.&lt;/p&gt;
+
+&lt;p&gt;Do this where possible to avoid bloating the project level Claude file. Again you can ask Claude to help you create these files: &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;For the the following directories within this project, summarise the contents and purpose, then writing a claude file&lt;/em&gt; &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/claude-init.png&quot; alt=&quot;Claude init&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;other-memory-stuff&quot;&gt;Other Memory Stuff&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/claude-rule.png&quot; alt=&quot;Claude rule&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt; shortcut lets you quickly add a new rule to your current or main memory file&lt;/li&gt;
+  &lt;li&gt;You can use a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/your-project/CLAUDE.local.md&lt;/code&gt; file for personal memory that builds on the team’s shared memory&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;models&quot;&gt;Models&lt;/h3&gt;
+
+&lt;p&gt;As tempting as it is, you don’t need the most expensive Opus model for great results. According to Anthropic it’s overkill for most tasks. And expensive! This is just 7 work days of usage:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/claude-costs.png&quot; alt=&quot;Claude costs&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/model opus-plan&lt;/code&gt; for a balance between models. It’ll use Opus for initial discussion then will switch to Sonnet once you exit planning mode.&lt;/p&gt;
+
+&lt;p&gt;Another tip is to set  the Sonnet model as default, then create a sub agent for specific purposes that uses the more expensive Opus model.&lt;/p&gt;
+
+&lt;p&gt;Still it is way more expensive that using the same agents in Cursor… It doesn’t take long to hit the limit of my personal subscription.&lt;/p&gt;
+
+&lt;h3 id=&quot;agents&quot;&gt;Agents&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.anthropic.com/en/docs/claude-code/sub-agents&quot;&gt;Agents&lt;/a&gt; are specialised Claude instances for a specific task with a fresh context.  Define an agent once and Claude will automatically delegate relevant tasks to it, assuming your agents are defined clearly.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/claude-subagent.png&quot; alt=&quot;Claude agents&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Claude will help you create agents with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/agent&lt;/code&gt; command, or you can copy one of the many &lt;a href=&quot;https://github.com/wshobson/agents&quot;&gt;examples&lt;/a&gt; online such as &lt;a href=&quot;https://github.com/qdhenry/Claude-Command-Suite/blob/main/.claude/agents/code-auditor.md&quot;&gt;code reviewer&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Copying them is as simple pasting the markdown file into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/Users/jules/.claude/agents&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Code reviewer is an easy starting agent, but I would suggest creating agents as you find yourself repeating prompts, rather than copying specialised agents. I was very excited to get my first custom &lt;a href=&quot;https://gist.github.com/Julesssss/3e65b2b461ad8a5d9c41a53f7e82f876&quot;&gt;raise-pr&lt;/a&gt; agent working.&lt;/p&gt;
+
+&lt;p&gt;A workflow that is working well for me is to spend as much time as possible in plan mode, and to refactor as much repeated prompting as possible to specialised agents:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://gist.github.com/Julesssss/8aa9d57785a22dd21758e07dc1997b5f&quot;&gt;triage agent &lt;/a&gt;&amp;gt;  implement &amp;gt; &lt;a href=&quot;https://gist.github.com/Julesssss/d4b190f2d7d73847e4d9abd7ce4c3a9c&quot;&gt;code-review agent&lt;/a&gt;, commit changes, &lt;a href=&quot;https://gist.github.com/Julesssss/3e65b2b461ad8a5d9c41a53f7e82f876&quot;&gt;raise pr agent&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;permissions&quot;&gt;Permissions&lt;/h3&gt;
+
+&lt;p&gt;Claude asks for permissions the first time it does specific actions such as reading a GitHub issue or running a bash command. It repeats this for each new directory, but you can simply ask Claude to copy an existing file to prevent this.&lt;/p&gt;
+
+&lt;p&gt;Add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;settings.local.json&lt;/code&gt; file to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt; to avoid this annoying diff. I guess you could use a similar file to set repository level rules for all contributors but haven’t tried this.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/claude-permissions.png&quot; alt=&quot;Claude permissions settings&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;multiple-accounts&quot;&gt;Multiple accounts&lt;/h3&gt;
+
+&lt;p&gt;Finally, it’s &lt;a href=&quot;https://julesrosser.com/blog/Multiple-Claude-accounts.html&quot;&gt;easy&lt;/a&gt; to separate your personal and work accounts using an alias. Maybe this could be used to give Claude different personalities.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;alias claude-personal=&quot;CLAUDE_CONFIG_DIR=~/.claude-personal claude&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;links&quot;&gt;Links&lt;/h3&gt;
+
+&lt;p&gt;Here are some cool links for more advanced Claude usage:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jamesponddotco/llm-prompts/blob/trunk/data/socratic-coder.md&quot;&gt;Socratic Coder&lt;/a&gt; &amp;lt; thorough project planning through conversation&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://news.ycombinator.com/item?id=44836879&quot;&gt;Getting good results from Claude Code&lt;/a&gt; &amp;lt; Interesting HN discussion&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/gv0WHhKelSE?si=AV7iMsFbcvYPSA8L&quot;&gt;Claude Code Best Practices&lt;/a&gt; &amp;lt; Presentation from Anthropic&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/qdhenry/Claude-Command-Suite/tree/main/.claude/agents&quot;&gt;Claude command suite agents&lt;/a&gt; &amp;lt; advanced Claude workflows&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 14 Aug 2025 00:00:00 -0700</pubDate>
+        <link>https://julesrosser.com/blog/Making-Claude-Behave.html</link>
+        <guid isPermaLink="true">https://julesrosser.com/blog/Making-Claude-Behave.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>Twinkle</title>
@@ -15,7 +163,7 @@
 
 &lt;h3 id=&quot;twinkle&quot;&gt;Twinkle&lt;/h3&gt;
 
-&lt;p&gt;Meet Twinkle, a distinguished British tabby adopted in 2022. It didn’t take long to abandon the idea of renaming her.&lt;/p&gt;
+&lt;p&gt;Meet Twinkle, a British tabby adopted as a rescue in 2022. It didn’t take long to abandon the idea of renaming her.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/twinkle2.jpg&quot; alt=&quot;Twinkle sunbathing&quot; /&gt;&lt;/p&gt;
 
@@ -516,24 +664,6 @@ api &apos;example.dependency:1.0.0&apos;
         <pubDate>Sun, 01 Jul 2018 00:00:00 -0700</pubDate>
         <link>https://julesrosser.com/project/formula-1-tv.html</link>
         <guid isPermaLink="true">https://julesrosser.com/project/formula-1-tv.html</guid>
-        
-        
-        <category>project</category>
-        
-      </item>
-    
-      <item>
-        <title>Spotify Album Shuffle</title>
-        <description>&lt;p class=&quot;project-type&quot;&gt;Personal project&lt;/p&gt;
-
-&lt;p&gt;A music player, which uses the Spotify API to add functionality for playing a random album from your library. Background gradient is generated from the album artwork.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../assets/images/album-shuffle.png#appscreen&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;../../assets/images/album-shuffle-2.png#appscreen&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 01 Jul 2018 00:00:00 -0700</pubDate>
-        <link>https://julesrosser.com/project/spotify-album-shuffle.html</link>
-        <guid isPermaLink="true">https://julesrosser.com/project/spotify-album-shuffle.html</guid>
         
         
         <category>project</category>
