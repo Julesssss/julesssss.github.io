@@ -1,0 +1,60 @@
+<aside class="user-profile {% if site.fixed_sidebar == 1 %}fixed{% endif %}" role="complementary">
+    <div class="burger">
+        <input class="trigger hidden" id="toggleBurger" type="checkbox" />
+        <label for="toggleBurger">
+            <span>Navigation</span>
+        </label>
+    </div>
+
+    <div class="compact-header">
+        <a class="avatar" href="{{ site.baseurl | prepend: site.url }}"><img alt="Avatar" src="{% if site.avatar %}{{site.avatar}}{% else %}{{ site.email | to_gravatar:140 }}{% endif %}" /></a>
+        <div class="my-info">
+            <strong class="my-name">{{ site.name }}</strong>
+        </div>
+    </div>
+
+    {% if site.show_menu == 1 %}
+        {% if site.pages %}
+        <div class="mainmenu">
+            <a href="{{ site.baseurl | prepend: site.url }}" {% if page.url == "/" %}class="active"{% endif %}>{{ site.home_sidebar }}</a>
+            <!--
+                Custom change. As per the limitations of liquid when working with arrays this was the only option I found which works. It's not nice but at least
+                    I'm able to sort my categories by my own order and not alphabetically.
+            -->
+            {% assign current_index = 0 %}
+            {% for all_pages in site.pages %} <!-- For every page to check, start a new for loop with counter++ and check if it's the turn for the page to be inserted. -->
+                {% for p in site.pages %}
+                    {% if p.order == current_index %}
+                        {% assign is_active = false %}
+                        {% if p.url == page.url %}
+                            {% assign is_active = true %}
+                        {% elsif p.title contains "Blog" and page.category == "blog" %}
+                            {% assign is_active = true %}
+                        {% elsif p.title contains "Cats" and page.category == "cats" %}
+                            {% assign is_active = true %}
+                        {% elsif p.title contains "Projects" and page.category == "project" %}
+                            {% assign is_active = true %}
+                        {% endif %}
+                        <a href="{{ p.url | prepend: site.baseurl | prepend: site.url }}" {% if is_active %}class="active"{% endif %}>{{ p.title }}</a>
+                        {% assign current_index = current_index | plus:1 %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endif %}
+
+    <p class="about-me">{{ site.description }}</p>
+
+    <ul class="socials">
+        {% for social in site.social_networks %}{% if social.url != '' %}<li><a href="{{social.url}}"><svg title="{{social.name}}" width="16" height="16" {% if social.name == 'applemusic' %} style="margin: 0 0 0 -2px" {% endif %}><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{ site.baseurl | prepend: site.url }}/assets/svg/social-icons.svg#{{social.name}}-icon"></use></svg></a></li>{% endif %}{% endfor %}
+
+        {% if site.email != blank and site.show_email == 1 %}
+            <li><a href="mailto:{{site.email}}"><svg title="{{social.name}}" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{ site.baseurl | prepend: site.url }}/assets/svg/social-icons.svg#email-icon"></use></svg></a></li>
+        {% endif %}
+
+        {% if site.show_rss == 1 %}
+         <li><a href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}"><svg title="{{social.name}}" width="16" height="16"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{ site.baseurl | prepend: site.url }}/assets/svg/social-icons.svg#rss-icon"></use></svg></a></li>
+        {% endif %}
+    </ul>
+</aside>

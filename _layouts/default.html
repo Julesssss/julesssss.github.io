@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    {% seo %}
+    {% include head.html %}
+
+    <body>
+        <div class="wrapper">
+            {% include sidebar.html %}
+
+            <main class="the-content" role="main">
+                <!-- disable search {% include search.html %} -->
+                {{ content }}
+            </main>
+        </div>
+
+        {% include scripts.html %}
+    </body>
+</html>

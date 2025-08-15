@@ -1,0 +1,68 @@
+# General Settings
+name: Jules Rosser
+job_title: Android Engineer
+email: julianrosser91@gmail.com
+description:
+avatar: /assets/images/profile_image.png
+favicon: /favicon.ico
+twitter_handler:
+analytics_code: # UA-XXXXXXX-2
+disqus: # your_disqus_site
+
+home_sidebar: About # String to show as "Home" at the sidebar. It was hardcoded.
+
+# Social Accounts
+social_networks:
+-  { name: github, url: 'https://github.com/Julesssss' }
+-  { name: medium, url: 'https://medium.com/@julesrosser' }
+-  { name: stack-overflow, url: 'https://stackoverflow.com/users/4160784' }
+-  { name: youtube, url: 'https://www.youtube.com/watch?v=UPGbGjFEFa8' }
+
+# Modules Settings
+show_categories: 0
+show_tags: 0
+show_email: 1
+show_rss: 0
+show_comments: 0
+show_menu: 1
+fixed_sidebar: 1
+
+# Defaults
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: "false"
+
+# Serving
+url: "https://julesrosser.com"
+baseurl: ""
+
+# Includes
+include: ["_pages"]
+
+# Excludes
+exclude: ["CLAUDE.md", ".claude/"]
+
+# Outputting
+permalink: /:categories/:title.html
+category_dir: categories
+
+# Pagination (disabled)
+# paginate: 10
+# paginate_path: "/page:num/"
+
+# Conversion
+markdown: kramdown
+excerpt_separator: <!--more-->
+
+# Assets Settings
+sass:
+  sass_dir: assets/partials
+  style: compressed
+
+plugins:
+ - jekyll-sitemap
+ - jekyll-seo-tag

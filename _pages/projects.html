@@ -1,0 +1,63 @@
+---
+layout: default
+title:  "Projects"
+permalink: "/projects/"
+order: 0
+---
+
+<ul>
+  {% for post in site.categories.project %}
+
+  <article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <header class="post-header">
+        <ul>
+            <li><time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%-d %b, %Y" }}</time></li>
+            {% if site.show_categories == 1 and post.category %}
+                <li class="cats">
+                    {% for category in post.category %}
+                        <a href="{{site.baseurl}}/{{site.category_dir}}/{{category}}/">{{ category }}</a>
+                    {% endfor %}
+                </li>
+            {% endif %}
+        </ul>
+        <h2 itemprop="name headline"><a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">{{ post.title }}</a></h2>
+    </header>
+
+    <li>
+      <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}" style="text-decoration: none; color: inherit; display: block;">
+        <div class="post-content">
+            {{ post.excerpt }}
+            <p></p>
+            <img style="width:260px;height:495px;" src="{{ post.image }}" >
+            <p></p>
+            <span role="button" style="color: #3DDB86;">Read More</span>
+        </div>
+      </a>
+    </li>
+
+  </article>
+
+  {% endfor %}
+</ul>
+
+<!--
+### Professional
+
+* Verv Energy
+* Arsenal F.C.
+* F1TV
+
+<!--
+#### Code Implementations & notes
+* [F1TV]({{p.url}}/notes/languages/java/java8-to-java11)
+* frameworks implementation [code](https://github.com/MarioCodes/java-frameworks)
+  * vertx [notes]({{p.url}}/notes/frameworks/java/vertx)
+  * testing frameworks [notes]({{p.url}}/notes/frameworks/java/testing)
+* patterns [code](https://github.com/MarioCodes/java-patterns-implementations) [notes]({{p.url}}/notes/patterns)
+-->
+<!--
+### Personal
+
+* [NASA Photo of the day](https://github.com/Julesssss/Nasa-photo-of-the-day)
+* [Birthday Reminder](https://github.com/Julesssss/BirthdayReminder) -->
